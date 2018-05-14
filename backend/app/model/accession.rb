@@ -60,18 +60,37 @@ class Accession < Sequel::Model(:accession)
                   %w(id_0 id_1 id_2 id_3).map{|p| json[p]}.compact.join("-")
                 }
 
+
   auto_generate :property => :slug,
                 :generator => proc { |json|
                   if AppConfig[:use_human_readable_urls]
                     if json["is_slug_auto"]
-                      AppConfig[:auto_generate_slugs_with_id] ? 
-                        SlugHelpers.id_based_slug_for(json, Accession) : 
+                      AppConfig[:auto_generate_slugs_with_id] ?
+                        SlugHelpers.id_based_slug_for(json, Accession) :
                         SlugHelpers.name_based_slug_for(json, Accession)
                     else
                       json["slug"]
                     end
                   end
-                }               
+                }
 
+  # If we have an ID in any of the ID fields for a resource that looks like an ARK,
+  # update the external_id field in the linked ARKIdentifier record
+  def after_save
+    # self.identifier is a String representation of an array, like:
+    # "[\"https://n2t.net/ark:/00001/f1mw5e\",null,null,null]"
+    # We need to remove superflous charaters so we can turn it into an actual array.
+
+    id_ary = self.identifier.gsub('[', "").gsub(']', "").gsub('"', '').split(",")
+
+    id_ary.each do |i|
+      if i =~ /ark:\//
+        ark = ARKIdentifier.first(accession_id: self.id)
+        ark.update(:external_id => i) if ark
+      end
+    end
+
+    super
+  end
 
 end
