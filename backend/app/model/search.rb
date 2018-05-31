@@ -25,13 +25,15 @@ class Search
       set_excluded_ids(params[:exclude]).
       set_filter(params[:filter]).
       set_facets(params[:facet], (params[:facet_mincount] || 0)).
-      set_sort(params[:sort]).
       set_root_record(params[:root_record]).
       highlighting(params[:hl]).
       set_writer_type( params[:dt] || "json" )
 
+
     query.remove_csv_header if ( params[:dt] == "csv" and params[:no_csv_header] )
     query.limit_fields_to(params[:fields]) if params[:fields]
+
+    query.set_sort(params[:sort]) if params.key?(:sort)
 
     results = Solr.search(query)
 
