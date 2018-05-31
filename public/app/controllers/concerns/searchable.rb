@@ -155,9 +155,8 @@ module Searchable
 
       advanced_query_builder.and(this_repo)
     end
-    advanced_query_builder.and('types', 'pui')
+    # advanced_query_builder.and('types', 'pui')
     # advanced_query_builder.and('publish', true)
-
     @base_search += "&limit=#{@search[:limit]}" unless @search[:limit].blank?
 
     @facet_filter = FacetFilter.new(default_facets, @search[:filter_fields],  @search[:filter_values])
@@ -168,6 +167,7 @@ module Searchable
       b.or('types', type)
     }
 
+    @criteria['types'] = "pui"
     @criteria['aq'] = advanced_query_builder.build.to_json
     @criteria['filter'] = @facet_filter.get_filter_query.and(type_query_builder).build.to_json
     @criteria['facet[]'] = @facet_filter.get_facet_types
