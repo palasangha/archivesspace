@@ -10,6 +10,8 @@
     "properties" => {
 
       "digital_object_id" => {"type" => "string", "maxLength" => 255, "ifmissing" => "error"},
+      "external_ark_url" => {"type" => "string", "required" => false},
+      
       "level" => {"type" => "string", "dynamic_enum" => "digital_object_level"},
       "slug" => {"type" => "string"},
       "is_slug_auto" => {"type" => "boolean", "default" => true},
