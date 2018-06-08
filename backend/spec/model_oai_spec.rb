@@ -383,7 +383,7 @@ describe 'OAI handler' do
         response = get uri
 
         resource_id = @test_resource_record.split("/")[4]
-        ark_url = JSONModel.get_ark_url(resource_id.to_i, :resource)
+        ark_url = ARKIdentifier.get_ark_url(resource_id.to_i, :resource)
 
         expect(response.body).to match(/<dc:identifier>#{ark_url}<\/dc:identifier>/)
       end
@@ -396,7 +396,7 @@ describe 'OAI handler' do
         response = get uri
 
         resource_id = @test_resource_record.split("/")[4]
-        ark_url = JSONModel.get_ark_url(resource_id.to_i, :resource)
+        ark_url = ARKIdentifier.get_ark_url(resource_id.to_i, :resource)
 
         expect(response.body).to match(/<dcterms:identifier>#{ark_url}<\/dcterms:identifier>/)
       end
@@ -409,7 +409,7 @@ describe 'OAI handler' do
         response = get uri
 
         resource_id = @test_resource_record.split("/")[4]
-        ark_url = JSONModel.get_ark_url(resource_id.to_i, :resource)
+        ark_url = ARKIdentifier.get_ark_url(resource_id.to_i, :resource)
 
         expect(response.body).to match(/<identifier>#{ark_url}<\/identifier>/)
       end
