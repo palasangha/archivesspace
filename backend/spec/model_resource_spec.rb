@@ -9,6 +9,7 @@ describe 'Resource model' do
     resource = create_resource(opts)
 
     expect(Resource[resource[:id]].title).to eq(opts[:title])
+    resource.delete
   end
 
   it "creates an ARK identifier with resource" do
@@ -17,6 +18,8 @@ describe 'Resource model' do
     resource = create_resource(opts)
 
     expect(ARKIdentifier.first(:resource_id => resource.id)).to_not be_nil
+
+    resource.delete
   end
 
   it "deletes ARK Identifier when resource is deleted" do
