@@ -98,7 +98,7 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include BackendClientMethods
-  
+
   # show retry status in spec process
   config.verbose_retry = true
   # Try thrice (retry twice)

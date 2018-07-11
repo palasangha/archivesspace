@@ -244,7 +244,7 @@ class Solr
 
       if @show_published_only
         add_solr_param(:fq, "publish:true")
-        add_solr_param(:fq, "types:pui")
+        # add_solr_param(:fq, "types:pui")
         if AppConfig[:solr_params].any?
           if !AppConfig[:solr_params].has_key? :qf
             add_solr_param(:qf, pui_qf)
@@ -284,9 +284,6 @@ class Solr
       if @query_type == :edismax
         add_solr_param(:defType, "edismax")
         if AppConfig[:solr_params].any?
-          if !AppConfig[:solr_params].has_key? :"q.op"
-            add_solr_param(:"q.op", "AND")
-          end
           if !AppConfig[:solr_params].has_key? :mm
             add_solr_param(:mm, "6<-1 6<90%")
           end
@@ -302,7 +299,6 @@ class Solr
             add_solr_param(:bq, "primary_type:agent_family^30")
           end
         else
-          add_solr_param(:"q.op", "AND")
           add_solr_param(:mm, "6<-1 6<90%")
           add_solr_param(:pf, "four_part_id^50")
           add_solr_param(:qf, "title^25")
