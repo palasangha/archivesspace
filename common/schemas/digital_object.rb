@@ -65,6 +65,12 @@
           }
         },
       },
+      
+      "ark_identifier" => {
+        "type" => "JSONModel(:ark_identifier) object",
+        "readonly" => true,
+        "required" => false
+      }
     },
   },
 }

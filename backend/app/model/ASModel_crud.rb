@@ -251,8 +251,12 @@ module ASModel
 
           if model.my_jsonmodel(true)
             ids_to_delete.each do |id|
-              deleted_uri = model.my_jsonmodel(true).
-                                  uri_for(id, :repo_id => model.active_repository)
+              deleted_model = model.my_jsonmodel(true) 
+
+              # ARKIdentifiers don't have URIs, so they are deleted above
+              unless model == ARKIdentifier
+                deleted_uri = deleted_model.uri_for(id, :repo_id => model.active_repository)
+              end
 
               if deleted_uri
                 deleted_uris << deleted_uri

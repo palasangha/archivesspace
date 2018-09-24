@@ -174,6 +174,12 @@
       },
 
       "instances" => {"type" => "array", "items" => {"type" => "JSONModel(:instance) object"}},
+      
+      "ark_identifier" => {
+        "type" => "JSONModel(:ark_identifier) object",
+        "readonly" => true,
+        "required" => false
+      }
 
     },
   },

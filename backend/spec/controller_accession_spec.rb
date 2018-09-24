@@ -214,4 +214,14 @@ describe 'Accession controller' do
   end
 
 
+  it "includes the ARK identifier in the accession's JSON" do
+    accession = create(:json_accession)
+    uri = JSONModel(:accession).uri_for(accession.id)
+    json = JSONModel::HTTP.get_json(uri)
+    
+    expect(json['ark_identifier']).to_not be_nil
+    expect(json['ark_identifier']['id']).to_not be_nil
+  end
+
+
 end

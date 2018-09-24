@@ -1,5 +1,8 @@
 class ARKIdentifier < Sequel::Model(:ark_identifier)
   include ASModel
+  corresponds_to JSONModel(:ark_identifier)
+
+  set_model_scope :global
 
   one_to_one :resource  
   one_to_one :accession

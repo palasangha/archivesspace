@@ -733,6 +733,39 @@ module AspaceFormHelper
       control_group << "</div>"
       control_group.html_safe
     end
+
+    def ark_url_field
+      html = ""
+      url = get_ark_url
+
+      if url
+        html << "<div class='form-group'>"
+        html << "<label class='col-sm-2 control-label' for='ark_identifier_'>"
+            html << "ARK Identifier"
+        html << "</label>"
+          html << "<div class='col-sm-9 label-only'>"
+            html << url.to_s
+          html << "</div>"
+        html << "</div>"
+  
+        html = html.html_safe
+      end
+
+      html
+    end
+
+    private
+
+      def get_ark_url
+        if obj["external_ark_url"]
+          return obj["external_ark_url"]
+        elsif obj["ark_identifier"] && obj["ark_identifier"]["id"]
+          return "#{AppConfig[:ark_url_prefix]}/ark:/#{AppConfig[:ark_naan]}/#{obj['ark_identifier']['id']}"
+        else
+          return nil
+        end
+      end
+
   end
 
   def merge_victim_view(hash, opts = {})

@@ -5,7 +5,9 @@
     "type" => "object",
     "uri" => "/ark:/:naan/:ark_id",
     "properties" => {
-      "external_id" => {"type" => "string", "required" => false}
+      "resource_id"       => {"type" => "integer", "required" => false},
+      "accession_id"      => {"type" => "integer", "required" => false},
+      "digital_object_id" => {"type" => "integer", "required" => false}
       }
   }
 }

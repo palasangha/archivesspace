@@ -44,6 +44,9 @@ class ArchivesSpaceService < Sinatra::Base
   do
     json = Accession.to_jsonmodel(params[:id])
 
+    ark = ARKIdentifier.first(:accession_id => params[:id])
+    json["ark_identifier"] = ARKIdentifier.to_jsonmodel(ark[:id])
+
     json_response(resolve_references(json, params[:resolve]))
   end
 
