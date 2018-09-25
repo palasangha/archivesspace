@@ -30,9 +30,47 @@ describe 'ARKIdentifier model' do
     accession.delete
   end
 
+  it "creates an ARKIdentifier to an archival object" do
+    ao = ArchivalObject.create_from_json(
+      build(
+        :json_archival_object,
+        :title => 'A new archival object'
+      ),
+      :repo_id => $repo_id)
+
+    ark = ARKIdentifier.where(:archival_object_id => ao[:id]).first
+
+    expect(ARKIdentifier[ark[:id]].archival_object_id).to eq(ao[:id])
+
+    ao.delete
+  end
+
+
+describe "rightnow" do
+  it "creates an ARKIdentifier to a digital_object_component" do
+    json = build(:json_digital_object)
+    digital_object = DigitalObject.create_from_json(json)
+
+    doc = create(:json_digital_object_component,
+                   :digital_object => {:ref => digital_object.uri})
+
+    puts "++++++++++++++++++++++++++++"
+    puts doc.inspect
+    puts doc[:id]
+    ark = ARKIdentifier.where(:digital_object_component_id => doc[:id]).first
+
+    expect(ARKIdentifier[ark[:id]].digital_object_component_id).to eq(doc[:id])
+
+    doc.delete
+    digital_object.delete
+  end
+end
+
+
   it "must specify at least one of resource, accession or digital object" do
     expect{ ark = ARKIdentifier.create }.to raise_error(Sequel::ValidationFailed)
   end
+
 
   it "cannot link to more than one type of resource" do
     resource = create_resource(:title => generate(:generic_title))
@@ -40,24 +78,41 @@ describe 'ARKIdentifier model' do
     json = build(:json_digital_object)
     digital_object = DigitalObject.create_from_json(json)
 
+    ao = ArchivalObject.create_from_json(
+      build(
+           :json_archival_object,
+           :title => 'A new archival object'
+           ),
+     :repo_id => $repo_id)   
+
+    doc = create(:json_digital_object_component)
+
     # delete the auto created ARKIdentifiers for text
     ARKIdentifier.where(:resource_id => resource.id).delete
     ARKIdentifier.where(:digital_object_id => digital_object.id).delete
     ARKIdentifier.where(:accession_id => accession.id).delete
+    ARKIdentifier.where(:archival_object_id => ao.id).delete
+    ARKIdentifier.where(:digital_object_component_id => doc.id).delete
 
 
     expect{ ark = ARKIdentifier.create(:accession_id => accession[:id],
-                                      :resource_id => resource[:id]) }.to raise_error(Sequel::ValidationFailed)
+                                       :resource_id => resource[:id]) }.to raise_error(Sequel::ValidationFailed)
 
     expect{ ark = ARKIdentifier.create(:accession_id => accession[:id],
-                                      :digital_object_id => digital_object[:id]) }.to raise_error(Sequel::ValidationFailed)
+                                       :digital_object_id => digital_object[:id]) }.to raise_error(Sequel::ValidationFailed)
 
     expect{ ark = ARKIdentifier.create(:digital_object_id => digital_object[:id],
-                                      :resource_id => resource[:id]) }.to raise_error(Sequel::ValidationFailed)
+                                       :resource_id => resource[:id]) }.to raise_error(Sequel::ValidationFailed)
 
     expect{ ark = ARKIdentifier.create(:digital_object_id => digital_object[:id],
-                                      :accession_id => accession[:id],
-                                      :resource_id => resource[:id]) }.to raise_error(Sequel::ValidationFailed)   
+                                       :accession_id => accession[:id],
+                                       :resource_id => resource[:id]) }.to raise_error(Sequel::ValidationFailed)   
+
+    expect{ ark = ARKIdentifier.create(:digital_object_id => digital_object[:id],
+                                       :archival_object_id => ao[:id] )}.to raise_error(Sequel::ValidationFailed)
+
+    expect{ ark = ARKIdentifier.create(:digital_object_id => digital_object[:id],
+                                       :digital_object_component_id => 42)}.to raise_error(Sequel::ValidationFailed)
   end
 
   it "must link to a unique resource" do

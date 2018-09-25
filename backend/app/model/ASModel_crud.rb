@@ -337,6 +337,14 @@ module ASModel
       if self.class == Accession
         ARKIdentifier.create_from_accession(self)
       end
+
+      if self.class == ArchivalObject
+        ARKIdentifier.create_from_archival_object(self)
+      end
+
+      if self.class == DigitalObjectComponent
+        ARKIdentifier.create_from_digital_object_component(self)
+      end
     end
 
     def delete_ark_identifier
@@ -350,6 +358,14 @@ module ASModel
 
       if self.class == Accession
         ARKIdentifier.first(:accession_id => self.id).delete
+      end
+
+      if self.class == ArchivalObject
+        ARKIdentifier.first(:archival_object_id => self.id).delete
+      end
+
+      if self.class == DigitalObjectComponent
+        ARKIdentifier.first(:digital_object_component_id => self.id).delete
       end
     end
 

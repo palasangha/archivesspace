@@ -13,6 +13,8 @@
 
       "level" => {"type" => "string", "ifmissing" => "error", "dynamic_enum" => "archival_record_level"},
       "other_level" => {"type" => "string", "maxLength" => 255},
+      
+      "external_ark_url" => {"type" => "string", "required" => false},
 
       "title" => {"type" => "string", "maxLength" => 8192, "ifmissing" => nil},
 

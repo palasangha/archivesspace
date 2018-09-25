@@ -18,6 +18,8 @@ class ARKIdentifier < Sequel::Model(:ark_identifier)
     validates_unique(:resource_id, :message => "ARK must point to a unique Resource")
     validates_unique(:accession_id, :message => "ARK must point to a unique Accession")
     validates_unique(:digital_object_id, :message => "ARK must point to a unique Digital Object")
+    validates_unique(:archival_object_id, :message => "ARK must point to a unique Archival Object")
+    validates_unique(:digital_object_component_id, :message => "ARK must point to a unique Digital Object Component")
     super
   end
 
@@ -26,9 +28,11 @@ class ARKIdentifier < Sequel::Model(:ark_identifier)
     resources_defined += 1 unless self.resource_id.nil?
     resources_defined += 1 unless self.accession_id.nil?
     resources_defined += 1 unless self.digital_object_id.nil?
+    resources_defined += 1 unless self.archival_object_id.nil?
+    resources_defined += 1 unless self.digital_object_component_id.nil?
 
     unless resources_defined == 1
-      errors.add(:base, 'Exactly one of [resource_id, digital_object_id, accession_id] must be defined.') 
+      errors.add(:base, 'Exactly one of [resource_id, digital_object_id, accession_id, archival_object_id, digital_object_component_id] must be defined.') 
     end
   end
 
@@ -61,6 +65,27 @@ class ARKIdentifier < Sequel::Model(:ark_identifier)
                 :user_mtime        => Time.now,
                 :lock_version      => 0)
   end
+
+  def self.create_from_archival_object(archival_object)
+    self.insert(:archival_object_id => archival_object.id,
+                :created_by         => 'admin',
+                :last_modified_by   => 'admin',
+                :create_time        => Time.now,
+                :system_mtime       => Time.now,
+                :user_mtime         => Time.now,
+                :lock_version       => 0)
+  end
+
+  def self.create_from_digital_object_component(digital_object)
+    self.insert(:digital_object_component_id => digital_object.id,
+                :created_by                  => 'admin',
+                :last_modified_by            => 'admin',
+                :create_time                 => Time.now,
+                :system_mtime                => Time.now,
+                :user_mtime                  => Time.now,
+                :lock_version                => 0)
+  end
+
   
   def self.get_ark_url(id, type)
     case type
@@ -73,6 +98,12 @@ class ARKIdentifier < Sequel::Model(:ark_identifier)
     when :accession
       id_field = :accession_id
       klass_sym = :accession
+    when :archival_object
+      id_field = :archival_object_id
+      klass_sym = :archival_object
+    when :digital_object_component
+      id_field = :digital_object_component_id
+      klass_sym = :digital_object_component
     else
       return nil
     end
@@ -111,6 +142,13 @@ class ARKIdentifier < Sequel::Model(:ark_identifier)
       klass = Accession
     when :resource
       klass = Resource
+      table = "resource"
+    when :archival_object
+      klass = ArchivalObject
+      table = "archival_object"
+    when :digital_object_component
+      klass = DigitalObjectComponent
+      table = "digital_object_component"
     else
       return nil
     end
