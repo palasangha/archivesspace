@@ -43,6 +43,23 @@ describe  ArkIdentifierController, type: :controller do
     expect(response.location).to match(/\/repositories\/5\/digital_objects\/4/)
   end
 
+  it "should redirect to the correct URL for an archival object" do
+    HTTP.stub(:get_response) { ArkQueryResponseMock.new("ArchivalObject", "4", "5") }
+
+    response = get :show, params: {:id => "1", :naan => "f00001", :ark_tag => "ark:"}
+
+    expect(response.location).to match(/\/repositories\/5\/archival_objects\/4/)
+  end
+
+  it "should redirect to the correct URL for a digital object component" do
+    HTTP.stub(:get_response) { ArkQueryResponseMock.new("DigitalObjectComponent", "4", "5") }
+
+    response = get :show, params: {:id => "1", :naan => "f00001", :ark_tag => "ark:"}
+
+    expect(response.location).to match(/\/repositories\/5\/digital_object_components\/4/)
+  end
+
+
   it "should redirect external ark URL" do
     HTTP.stub(:get_response) { ArkQueryResponseMock.new("external", "4", "5", "http://google.com") }
 

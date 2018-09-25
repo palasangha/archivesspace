@@ -24,6 +24,12 @@ class ArchivesSpaceService < Sinatra::Base
     elsif ark.accession_id
       klass = Accession
       id = ark.accession_id
+    elsif ark.archival_object_id
+      klass = ArchivalObject
+      id = ark.archival_object_id
+    elsif ark.digital_object_component_id
+      klass = DigitalObjectComponent
+      id = ark.digital_object_component_id
     end
 
     rh = if entity = klass.any_repo.filter(:id => id).first

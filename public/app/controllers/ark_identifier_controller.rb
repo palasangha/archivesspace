@@ -37,6 +37,10 @@ class ArkIdentifierController <  ApplicationController
         redirect_to "/repositories/" + json_response["repo_id"].to_s + "/accessions/" + json_response["id"].to_s
       when "DigitalObject"
         redirect_to "/repositories/" + json_response["repo_id"].to_s + "/digital_objects/" + json_response["id"].to_s
+      when "ArchivalObject"
+        redirect_to "/repositories/" + json_response["repo_id"].to_s + "/archival_objects/" + json_response["id"].to_s
+      when "DigitalObjectComponent"
+        redirect_to "/repositories/" + json_response["repo_id"].to_s + "/digital_object_components/" + json_response["id"].to_s
       else
         render '/shared/not_found'
       end
