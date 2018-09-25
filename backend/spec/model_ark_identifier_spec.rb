@@ -54,10 +54,8 @@ describe "rightnow" do
     doc = create(:json_digital_object_component,
                    :digital_object => {:ref => digital_object.uri})
 
-    puts "++++++++++++++++++++++++++++"
-    puts doc.inspect
-    puts doc[:id]
-    ark = ARKIdentifier.where(:digital_object_component_id => doc[:id]).first
+    puts doc[:component_id]
+    ark = ARKIdentifier.where(:digital_object_component_id => doc[:component_id]).first
 
     expect(ARKIdentifier[ark[:id]].digital_object_component_id).to eq(doc[:id])
 
