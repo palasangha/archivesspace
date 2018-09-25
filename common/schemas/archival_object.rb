@@ -97,6 +97,12 @@
       "representative_image" => {
         "type" => "JSONModel(:file_version) object",
         "readonly" => true
+      },
+
+      "ark_identifier" => {
+        "type" => "JSONModel(:ark_identifier) object",
+        "readonly" => true,
+        "required" => false
       }
 
     },

@@ -158,4 +158,17 @@ describe 'Digital Object Component controller' do
     expect(children[1]["parent"]["ref"]).to eq(parent_component.uri)
     expect(children[1]["digital_object"]["ref"]).to eq(digital_object.uri)
   end
+
+
+  it "includes the ARK identifier in the digital_object_components JSON" do
+    doc = create(:json_digital_object_component)
+    uri = JSONModel(:digital_object_component).uri_for(doc.id)
+
+    json = JSONModel::HTTP.get_json(uri)
+
+    expect(json['ark_identifier']).to_not be_nil
+    expect(json['ark_identifier']['id']).to_not be_nil
+  end
+
+
 end

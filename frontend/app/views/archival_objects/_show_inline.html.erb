@@ -13,8 +13,9 @@
           <%= readonly.label_and_textarea "title" , :field_opts => { :clean => true, :escape => false } %>
           <%= readonly.label_with_field "ref_id", "<div class='identifier-display'><div class='identifier-display-part'>#{readonly["ref_id"]}</div></div>" %>
           <%= readonly.label_and_textfield "component_id" %>
-
           <%= render_aspace_partial :partial => "shared/public_url", :locals => {:form_object => readonly} if AppConfig[:use_human_readable_urls] %>
+
+          <%= readonly.ark_url_field if AppConfig[:ark_ids_enabled] %>
 
           <%= readonly.label_and_select "level", readonly.possible_options_for("level", true) %>
           <%= readonly.label_and_textfield "other_level" %>

@@ -510,6 +510,7 @@ en:
         save: Save Software
 
   archival_object:
+    external_ark_url: External ARK URL
     _frontend:
       messages:
         created: Archival Object <strong>%{archival_object.display_string}</strong> on Resource <strong>%{resource.title}</strong> created
@@ -623,6 +624,7 @@ en:
     external_ark_url: External ARK URL
 
   digital_object_component:
+    external_ark_url: External ARK URL
     _frontend:
       messages:
         created_with_parent: Digital Object Component <strong>%{digital_object_component.display_string}</strong> created as child of <strong>%{parent.display_string}</strong> on Digital Object <strong>%{digital_object.title}</strong>

@@ -19,6 +19,8 @@
 
           <%= readonly.label_with_field "public_url", readonly.slug_url_field("slug", session[:repo_slug], AppConfig[:repo_name_in_slugs]) if AppConfig[:use_human_readable_urls] %>
 
+          <%= readonly.ark_url_field if AppConfig[:ark_ids_enabled] %>
+
           <%= readonly.label_and_boolean "publish" %>
           <%= readonly.label_and_boolean "has_unpublished_ancestor" %>
           <%= readonly.label_and_select "language", readonly.possible_options_for("language") %>

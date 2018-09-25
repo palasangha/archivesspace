@@ -52,6 +52,10 @@ class ArchivesSpaceService < Sinatra::Base
              [404, "Not found"]) \
   do
     json = ArchivalObject.to_jsonmodel(params[:id])
+
+    ark = ARKIdentifier.first(:archival_object_id => params[:id])
+    json["ark_identifier"] = ARKIdentifier.to_jsonmodel(ark[:id])
+    
     json_response(resolve_references(json, params[:resolve]))
   end
 

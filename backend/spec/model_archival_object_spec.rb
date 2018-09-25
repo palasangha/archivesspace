@@ -418,6 +418,36 @@ describe 'ArchivalObject model' do
         expect(archival_object2[:slug]).to eq("foo_1")
       end
     end
+
+
+  it "creates an ARK identifier with archival object" do
+    ao = ArchivalObject.create_from_json(
+                                          build(
+                                                :json_archival_object,
+                                                :title => 'A new archival object'
+                                                ),
+                                          :repo_id => $repo_id)
+
+
+    expect(ARKIdentifier.first(:archival_object_id => ao.id)).to_not be_nil
+
+    ao.delete
+  end
+
+  it "deletes ARK Identifier when resource is deleted" do
+    ao = ArchivalObject.create_from_json(
+                                          build(
+                                                :json_archival_object,
+                                                :title => 'A new archival object'
+                                                ),
+                                          :repo_id => $repo_id)
+
+
+    expect(ARKIdentifier.first(:archival_object_id => ao[:id])).to_not be_nil
+
+    ao.delete
+    expect(ARKIdentifier.first(:archival_object_id => ao[:id])).to be_nil
+
   end
 
 end
