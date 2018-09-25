@@ -46,26 +46,21 @@ describe 'ARKIdentifier model' do
   end
 
 
-describe "rightnow" do
   it "creates an ARKIdentifier to a digital_object_component" do
-    json = build(:json_digital_object)
-    digital_object = DigitalObject.create_from_json(json)
+    doc = create(:json_digital_object_component)
+    doc_row = DigitalObjectComponent.first
 
-    doc = create(:json_digital_object_component,
-                   :digital_object => {:ref => digital_object.uri})
+    ark = ARKIdentifier.where(:digital_object_component_id => doc_row[:id]).first
 
-    puts doc[:component_id]
-    ark = ARKIdentifier.where(:digital_object_component_id => doc[:component_id]).first
 
-    expect(ARKIdentifier[ark[:id]].digital_object_component_id).to eq(doc[:id])
+    expect(ARKIdentifier[ark[:id]].digital_object_component_id).to eq(doc_row[:id])
+    expect(doc_row[:id]).to_not be_nil
 
     doc.delete
-    digital_object.delete
   end
-end
 
 
-  it "must specify at least one of resource, accession or digital object" do
+  it "must specify at least one of resource, accession, digital object, archival object, or digital object component" do
     expect{ ark = ARKIdentifier.create }.to raise_error(Sequel::ValidationFailed)
   end
 
@@ -84,13 +79,14 @@ end
      :repo_id => $repo_id)   
 
     doc = create(:json_digital_object_component)
+    doc_row = DigitalObjectComponent.last
 
     # delete the auto created ARKIdentifiers for text
     ARKIdentifier.where(:resource_id => resource.id).delete
     ARKIdentifier.where(:digital_object_id => digital_object.id).delete
     ARKIdentifier.where(:accession_id => accession.id).delete
     ARKIdentifier.where(:archival_object_id => ao.id).delete
-    ARKIdentifier.where(:digital_object_component_id => doc.id).delete
+    ARKIdentifier.where(:digital_object_component_id => doc_row[:id]).delete
 
 
     expect{ ark = ARKIdentifier.create(:accession_id => accession[:id],
@@ -110,7 +106,7 @@ end
                                        :archival_object_id => ao[:id] )}.to raise_error(Sequel::ValidationFailed)
 
     expect{ ark = ARKIdentifier.create(:digital_object_id => digital_object[:id],
-                                       :digital_object_component_id => 42)}.to raise_error(Sequel::ValidationFailed)
+                                       :digital_object_component_id => doc_row[:id])}.to raise_error(Sequel::ValidationFailed)
   end
 
   it "must link to a unique resource" do
@@ -144,6 +140,35 @@ end
     digital_object.delete
   end
 
+
+  it "must link to a unique archival_object" do
+    # ARK is created with archival_object
+    ao = ArchivalObject.create_from_json(
+      build(
+           :json_archival_object,
+           :title => 'A new archival object'
+           ),
+     :repo_id => $repo_id)   
+
+
+    # duplicate raises validation exception
+    expect{ ARKIdentifier.create(:archival_object_id => ao[:id]) }.to raise_error(Sequel::ValidationFailed)
+
+    ao.delete
+  end
+
+  it "must link to a unique digital_object_component" do
+    # ARK is created with digital_object_component
+    doc = create(:json_digital_object_component)
+    doc_row = DigitalObjectComponent.last
+
+    # duplicate raises validation exception
+    expect{ ARKIdentifier.create(:digital_object_component_id => doc_row[:id]) }.to raise_error(Sequel::ValidationFailed)
+
+    doc.delete
+  end
+
+
   it "creates an ARK url for digital_object" do
     json = build(:json_digital_object)
     digital_object = DigitalObject.create_from_json(json, :repo_id => $repo_id)
@@ -172,6 +197,34 @@ end
 
     resource.delete
   end
+
+
+  it "creates an ARK url for archival_object" do
+    ao = ArchivalObject.create_from_json(
+      build(
+        :json_archival_object,
+        :title => 'A new archival object'
+      ),
+      :repo_id => $repo_id)
+
+    ark = ARKIdentifier.first(:archival_object_id => ao.id)
+
+    expect(ARKIdentifier::get_ark_url(ao.id, :archival_object)).to eq("#{AppConfig[:ark_url_prefix]}/ark:/#{AppConfig[:ark_naan]}/#{ark.id}")
+
+    ao.delete
+  end
+
+  it "creates an ARK url for digital_object_component" do
+    doc = create(:json_digital_object_component)
+    doc_row = DigitalObjectComponent.first
+
+    ark = ARKIdentifier.first(:digital_object_component_id => doc_row[:id])
+
+    expect(ARKIdentifier::get_ark_url(doc_row[:id], :digital_object_component)).to eq("#{AppConfig[:ark_url_prefix]}/ark:/#{AppConfig[:ark_naan]}/#{ark.id}")
+
+    doc.delete
+  end
+
 
   it "get_ark_url returns external_ark_url if defined on the resource" do
     external_ark_url = "http://foo.bar/ark:/123/123"
@@ -208,4 +261,39 @@ end
 
     digital_object.delete
   end
+
+
+  it "get_ark_url returns external_ark_url if defined on the archival object" do
+    external_ark_url = "http://foo.bar/ark:/123/123"
+
+    ao = ArchivalObject.create_from_json(
+      build(
+        :json_archival_object,
+        :title => 'A new archival object',
+        :external_ark_url => external_ark_url
+      ),
+      :repo_id => $repo_id)
+
+    ark = ARKIdentifier.first(:archival_object_id => ao.id)
+
+    expect(ARKIdentifier::get_ark_url(ao.id, :archival_object)).to eq("http://foo.bar/ark:/123/123")
+
+    ao.delete
+  end
+
+
+  it "get_ark_url returns external_ark_url if defined on the digital_object_component" do
+    external_ark_url = "http://foo.bar/ark:/123/123"
+
+    doc = create(:json_digital_object_component, 
+        {:external_ark_url => external_ark_url})
+    doc_row = DigitalObjectComponent.first
+
+    ark = ARKIdentifier.first(:digital_object_component_id => doc_row[:id])
+
+    expect(ARKIdentifier::get_ark_url(doc_row[:id], :digital_object_component)).to eq("http://foo.bar/ark:/123/123")
+
+    doc.delete
+  end
+
 end

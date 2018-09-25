@@ -76,8 +76,8 @@ class ARKIdentifier < Sequel::Model(:ark_identifier)
                 :lock_version       => 0)
   end
 
-  def self.create_from_digital_object_component(digital_object)
-    self.insert(:digital_object_component_id => digital_object.component_id,
+  def self.create_from_digital_object_component(digital_object_component)
+    self.insert(:digital_object_component_id => digital_object_component.id,
                 :created_by                  => 'admin',
                 :last_modified_by            => 'admin',
                 :create_time                 => Time.now,

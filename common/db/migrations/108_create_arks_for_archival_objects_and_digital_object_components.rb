@@ -16,8 +16,8 @@ Sequel.migration do
     end
 
     # digital_object_components
-    self[:digital_object_component].select(:component_id).each do |r|
-      self[:ark_identifier].insert(:digital_object_component_id => r[:component_id],
+    self[:digital_object_component].select(:id).each do |r|
+      self[:ark_identifier].insert(:digital_object_component_id => r[:id],
                                    :created_by                  => 'admin',
                                    :last_modified_by            => 'admin',
                                    :create_time                 => Time.now,
