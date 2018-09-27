@@ -7,8 +7,8 @@ Sequel.migration do
       add_column(:archival_object_id, Integer)
       add_column(:digital_object_component_id, Integer)
 
-      add_foreign_key([:archival_object_id], :archival_object, :key => :id)
-      add_foreign_key([:digital_object_component_id], :digital_object_component, :key => :id)
+      add_index :archival_object_id
+      add_index :digital_object_component_id
     end
 
     alter_table(:archival_object) do
