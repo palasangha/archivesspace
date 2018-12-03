@@ -332,6 +332,7 @@ class Solr
   def self.search(query)
 
     url = query.to_solr_url
+    Log.debug("Solr URL: #{url.inspect}")
 
     Log.debug("Solr URL: #{url.inspect}")
 

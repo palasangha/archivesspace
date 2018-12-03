@@ -9,7 +9,7 @@ module Searchable
   class NoResultsError < StandardError; end
 
 
-  def set_up_search(default_types = [],default_facets=[],default_search_opts={}, params={}, q='')
+  def set_up_search(default_types = [],default_facets=[],default_opts={}, params={}, q='')
     params = sanitize_params(params)
     @search = Search.new(params)
     limit = params.fetch(:limit,'')
@@ -78,7 +78,7 @@ module Searchable
     end
   end
 
-  def set_up_advanced_search(default_types = [],default_facets=[],default_search_opts={}, params={})
+  def set_up_advanced_search(default_types = [],default_facets=[],default_opts={}, params={})
     params = sanitize_params(params)
     @search = Search.new(params)
     unless @search[:limit].blank?

@@ -19,6 +19,7 @@ describe 'Search', js: true do
       expect(page.all("div[class='recordrow']").length).to eq 10
     end
   end
+  
   it 'should default search operator to AND' do
     visit('/search')
     fill_in('q0', with: "Processed Accession")
