@@ -108,12 +108,7 @@
               <%= form.hidden_input :report_type, report['code'] %>
               <% report_params = report["params"].reject{|p| ["format", "repo_id"].include?(p[0])} %>
 
-              <% if report['code'] == 'custom_report' && false %>
-                <hr/>
-                <div class="form-group">
-                  <%= render_aspace_partial :partial => "jobs/report_partials/customfields", :locals => {:object => @job, :form => form, :custom_data => report_params[0][3]} %>
-                </div>
-              <% elsif report_params.length > 0 %>
+              <% if report_params.length > 0 %>
                 <hr/>
                  <% report_params.each do | param | %>
                   <div class="form-group">
