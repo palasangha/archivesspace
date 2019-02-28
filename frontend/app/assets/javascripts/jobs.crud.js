@@ -50,16 +50,6 @@ var init = function() {
             $('#location_report_type').trigger('change');
         };
 
-        var initCustomReportSubForm = function() {
-            $(document).on('change', '#custom_record_type', function() {
-                var selected_record_type = $(this).val();
-
-                $('.record_type').hide();
-                $('.record_type.' + selected_record_type).show();
-            });
-            $('#custom_record_type').trigger('change');
-        };
-
         var initFormatReportSubForm = function() {
             $(document).on('change', "#job_format_", function() {
 
@@ -72,7 +62,6 @@ var init = function() {
         };
 
         initLocationReportSubForm();
-        initCustomReportSubForm();
         initFormatReportSubForm();
     };
 
