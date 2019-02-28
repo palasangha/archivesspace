@@ -611,6 +611,26 @@ en:
     ext_tooltip: |
         <p>Telephone number extension for the contact person.</p>
 
+  telephone_merge: &telephone
+    _plural: Telephone Numbers
+    number_type: Number Type
+    number: Number
+    number_tooltip: |
+        <p>Telephone number for the contact person.</p>
+    ext: Telephone Extension
+    ext_tooltip: |
+        <p>Telephone number extension for the contact person.</p>
+
+  telephone_merge_target: &telephone
+    _plural: Telephone Numbers
+    number_type: Number Type
+    number: Number
+    number_tooltip: |
+        <p>Telephone number for the contact person.</p>
+    ext: Telephone Extension
+    ext_tooltip: |
+        <p>Telephone number extension for the contact person.</p>
+
   note_attributes: &note_attributes
     label: Label
     label_tooltip: |
@@ -1674,7 +1694,7 @@ en:
   user:
     username: Username
     username_tooltip: |
-        <p>REQUIRED FIELD. The username for the account that the user will use to authenticate to the application.</P>
+        <p>REQUIRED FIELD. The username for the account that the user will use to authenticate to the application. Permitted characters include a-z, A-Z, @, numbers, hyphen, dash, and dot.</P>
     name: Full name
     name_tooltip: |
         <p>REQUIRED FIELD. The full name of the user designated by the username.</p>
@@ -1885,6 +1905,7 @@ en:
       csv: CSV
       pdf: PDF
       html: HTML
+      rtf: RTF
 
   validation_errors:
     agent_must_be_unique: Agent records cannot be identical
@@ -1939,18 +1960,28 @@ en:
     short_name_already_in_use: The repository short name must be unique within this ArchivesSpace
     custom_report_template_name_not_unique: The custom report template's name must be unique.
     custom_report_must_include_field_or_subreport: The custom report template must include at least one field or subreport.
-    missing_filter_values: Selected to filter results by field but no value(s) given 
+    missing_filter_values: Selected to filter results by field but no value(s) given
+    must_be_a_valid_email_address: Email address field must contain a valid address
+    repo_set_desc_required: Repository set description is required for creating an OAI repository set
+    repo_set_name_required: Repository set name is required for creating an OAI repository set
+    is_not_present: Required field missing
+    must_be_a_valid_email_address: Must contain a valid address
+    sponsor_set_desc_required: Sponsor set description is required for creating an OAI sponsor set
+    sponsor_set_name_required: Sponsor set name is required for creating an OAI sponsor set
+    invalid_characters: Contains invalid characters
+
 
   job:
     _singular: Background Job
     _plural: Background Jobs
     job_type: Job Type
     types:
-      print_to_pdf_job: Print To PDF
+      print_to_pdf_job: Generate PDF
       import_job: Import Data
       find_and_replace_job: Batch Find and Replace (Beta)
-      report_job: Reports
-      container_conversion_job: Reports
+      report_job: Create Report
+      container_conversion_job: Create Report
+      generate_slugs_job: Generate Slugs for Entities
       unknown_job_type: Unknown job type
     status: Status
     status_completed: Completed
@@ -1988,9 +2019,11 @@ en:
     jsonmodel_type: Record or subrecord type
     record_type: Record or subrecord type
     property: Target property
+    base_record_uri: Base Record URI
 
   print_to_pdf_job:
     include_unpublished: Include Unpublished
+    source: Source
 
   advanced_search:
     type:
@@ -2151,7 +2184,7 @@ en:
       "Physical Access (arrangement)": Physical Access (arrangement)
       "Physical Access (arrangement)_tooltip": <p>A rating from 1 to 5 that applies to a collection’s physical arrangement, taking into account the complexity and size of collection. For example, a small, relatively homogenous collection in rough order is generally more physically accessible than a large, heterogeneous collection in rough order, and the ratings will reflect that fact. (Note that arrangement to the item level may not be desirable for many collections; a rating of 4 may be the top rating that is desirable for a collection.)</p>
       "Intellectual Access (description)": Intellectual Access (description)
-      "Intellectual Access (description)_tooltip": <p>A rating from 1 to 5 that applies to a collection's intellectual description and the accessability of that description to users.</p>
+      "Intellectual Access (description)_tooltip": <p>A rating from 1 to 5 that applies to a collection's intellectual description and the accessibility of that description to users.</p>
       "Interest": Interest
       "Interest_tooltip": <p>A rating from 1 to 5 that indicates researcher, donor, or local interest in the materials. Interest + Documentation Quality create the "Research Value" score.</p>
       "Documentation Quality": Documentation Quality
@@ -2213,3 +2246,18 @@ en:
     field: Field
     _singular: Custom Report Template
     _plural: Custom Report Templates
+
+  repository_oai:
+    oai_is_disabled_tooltip: OAI is disabled tooltip
+    oai_sets_available_tooltip: OAI sets available tooltip
+
+  oai_config:
+    oai_record_prefix_tooltip: OAI Record Prefix Tooltip
+    oai_admin_email_tooltip: OAI Admin Email tooltip
+    oai_repository_name_tooltip: OAI Repository name tooltip
+    repo_set_name_tooltip: Repo Set name tooltip
+    repo_set_section_tooltip: Repo Set section tooltip
+    repo_set_description_tooltip: Repo set description tooltip
+    sponsor_set_name_tooltip: Sponsor set name tooltip
+    sponsor_set_names_tooltip: Sponsor set names tooltip
+    sponsor_set_description_tooltip: Sponsor set description tooltip

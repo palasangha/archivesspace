@@ -1,3 +1,5 @@
+# NOTE: Many of the translations in this file have been generated using
+# Google translate
 ja:
   states:
     suppressed: 抑制された
@@ -457,6 +459,22 @@ ja:
     ext_tooltip: "<p>連絡担当者の電話番号の内線番号。 </p>"
 
   telephone_required: &telephone
+    _plural: 電話番号
+    number_type: 番号タイプ
+    number: 数
+    number_tooltip: "<p>連絡先の電話番号。 </p>"
+    ext: 電話番号の延長
+    ext_tooltip: "<p>連絡担当者の電話番号の内線番号。 </p>"
+
+  telephone_merge: &telephone
+    _plural: 電話番号
+    number_type: 番号タイプ
+    number: 数
+    number_tooltip: "<p>連絡先の電話番号。 </p>"
+    ext: 電話番号の延長
+    ext_tooltip: "<p>連絡担当者の電話番号の内線番号。 </p>"
+
+  telephone_merge_target: &telephone
     _plural: 電話番号
     number_type: 番号タイプ
     number: 数
@@ -1242,7 +1260,7 @@ ja:
 
   user:
     username: ユーザー名
-    username_tooltip: "<p>必要なフィールド。ユーザーがアプリケーションの認証に使用するアカウントのユーザー名。 </P>"
+    username_tooltip: "<p>必要なフィールド。ユーザーがアプリケーションの認証に使用するアカウントのユーザー名。 許可される文字には、a〜z、A〜Z、@、数字、ハイフン、ダッシュ、およびドットが含まれます。</P>"
     name: フルネーム
     name_tooltip: "<p>必要なフィールド。ユーザー名で指定されたユーザーのフルネーム。 </p>"
     password: パスワード
@@ -1412,6 +1430,7 @@ ja:
       csv: CSV
       pdf: PDF
       html: HTML
+      rtf: RTF
 
   validation_errors:
     agent_must_be_unique: エージェントレコードは同一ではありません
@@ -1466,17 +1485,25 @@ ja:
     custom_report_template_name_not_unique: カスタムレポートテンプレートの名前は一意である必要があります。
     custom_report_must_include_field_or_subreport: カスタムレポートテンプレートには、少なくとも1つのフィールドまたはサブレポートが含まれている必要があります。
     missing_filter_values: フィールドで結果をフィルタリングするために選択された値は指定されていません
+    repo_set_desc_required: OAIリポジトリセットを作成するには、リポジトリセットの説明が必要です。
+    repo_set_name_required: OAIリポジトリセットを作成するにはリポジトリセット名が必要です
+    is_not_present: 必須フィールドがありません
+    must_be_a_valid_email_address: 有効な住所を含める必要があります
+    sponsor_set_desc_required: OAIスポンサーセットを作成するにはスポンサーセットの説明が必要です
+    sponsor_set_name_required: OAIスポンサーセットを作成するにはスポンサーセット名が必要です
+    invalid_characters: 無効な文字が含まれています
 
   job:
     _singular: バックグラウンドジョブ
     _plural: バックグラウンドジョブ
     job_type: ジョブの種類
     types:
-      print_to_pdf_job: PDFへの印刷
+      print_to_pdf_job: PDFを生成
       import_job: データのインポート
       find_and_replace_job: バッチの検索と置換（ベータ版）
-      report_job: レポート
-      container_conversion_job: レポート
+      report_job: レポートを作成
+      container_conversion_job: レポートを作成
+      generate_slugs_job: エンティティのスラッグを生成する
       unknown_job_type: 不明なジョブタイプ
     status: 状態
     status_completed: 完了しました
@@ -1514,9 +1541,11 @@ ja:
     jsonmodel_type: レコードまたはサブレコードタイプ
     record_type: レコードまたはサブレコードタイプ
     property: ターゲットプロパティ
+    base_record_uri: ベースレコードURI
 
   print_to_pdf_job:
     include_unpublished: 未公開を含める
+    source: ソース
 
   advanced_search:
     type:
@@ -1763,3 +1792,18 @@ ja:
     field: フィールド
     _singular: カスタムレポートテンプレート
     _plural: カスタムレポートテンプレート
+
+  repository_oai:
+    oai_is_disabled_tooltip: OAIは無効になっています
+    oai_sets_available_tooltip: OAIが利用可能なツールチップを設定
+
+  oai_config:
+    oai_record_prefix_tooltip: OAIレコードプレフィックスツールチップ
+    oai_admin_email_tooltip: OAI管理者メールツールチップ
+    oai_repository_name_tooltip: OAIリポジトリ名ツールチップ
+    repo_set_name_tooltip: リポジトリセット名のツールチップ
+    repo_set_section_tooltip: リポジトリセットセクションのツールチップ
+    repo_set_description_tooltip: リポジトリセット記述ツールチップ
+    sponsor_set_name_tooltip: スポンサーセット名ツールチップ
+    sponsor_set_names_tooltip: スポンサーセット名のツールチップ
+    sponsor_set_description_tooltip: スポンサーセットの説明のツールチップ

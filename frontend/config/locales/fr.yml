@@ -15,11 +15,13 @@ fr:
     cut: Couper
     defaults: Valeurs par défaut
     edit: Editer
+    edit_oai: Modifier les paramètres OAI
     edit_batch: Editer lot
     edit_groups: Editer groupes
     edit_default_values: Editer valeurs par défaut
     edit_default_archival_object_values: Editer composants par défaut
     edit_required_fields: Editer champs obligatoires
+    edit_global_oai: Afficher/modifier les paramètres globaux OAI
     required: Champs obligatoires
     export: Exporter
     view: Affichage
@@ -29,9 +31,14 @@ fr:
     more: Plus
     link_to: Lier à
     add_prefix: Ajouter
+    merge_replace: Remplacer
+    merge_add: Ajouter
     merge_confirm_title: Fusionner avec cette notice?
+    merge_agent_compare_agent_details: Comparer les agents
+    merge_from_browse_confirm_title: Fusionner les enregistrements sélectionnés?
     merge_subject_confirm_message: "Les notices sélectionnées seront fusionnées dans le sujet '%{source}'. Toutes les notices sélectionnées seront détruites et toute notice liée sera re-liée à ce sujet."
-    merge_agent_confirm_message: "Les notices sélectionnées seront fusionnées dans l'agent '%{source}'. Toutes les notices sélectionnées seront détruites et toute notice liée sera re-liée à cet agent."
+    merge_agent_confirm_message: "Les notices sélectionnées seront fusionnées dans l'agent '%{source}'. Toutes les notices sélectionnées seront détruites et toute notice liée sera re-liée à cet agent. En cliquant sur le bouton Comparer les agents, un écran apparaît vous proposant de choisir les champs et sous-enregistrements à conserver dans chaque enregistrement."
+    merge_agent_from_browse_confirm_message: "Les premiers éléments sélectionnés seront fusionnés avec le premier agent sélectionné. Tous les enregistrements sélectionnés ultérieurement seront supprimés et tous les enregistrements liés seront liés au premier agent sélectionné."
     merge_resource_confirm_message: "Les notices sélectionnées seront fusionnées dans la ressource '%{source}'. Toutes les notices sélectionnées seront détruites et toute notice liée sera réaffectée à cette ressource."
     move: Déplacer
     move_up_a_level: Un niveau plus haut
@@ -91,7 +98,7 @@ fr:
     publish_confirm_message: "<p>Effectuer cette opération publiera cette notice, toutes les éventuelles sous-notices (Documents externes, notes, etc.) et tous les composants de la hiérarchie.</p>"
     view_search_results: Aller aux résultats de la recherche
     view_published: Voir publiés
-    print_to_pdf: Imprimer ressource en PDF
+    print_to_pdf: Générer un PDF
     resource_to_pdf: Ressource à imprimer
     download_pdf: Télécharger PDF
     download_report: Télécharger rapport
@@ -293,6 +300,7 @@ fr:
     hide_advanced_search_button_title: Masquer Recherche avancée
     plugins: Plug-ins
     repositories_manage: Gérer services d'archives
+    oai_config: Gérer les paramètres OAI-PMH
     manage_groups: Gérer groupes
     manage_users: Gérer utilisateurs
     manage_container_profiles: Gérer profils de conditionnements
@@ -349,6 +357,11 @@ fr:
     body: Vous avez des modifications en cours.  Veuillez sauvegarder ou abandonner ces modifications pour continuer.
     save: Sauvegarder les modifications
     dismiss: Abandonner les modifications
+
+  slug: &slug_attributes
+    slug: URL sémantique
+    public_url: URL publique
+    is_slug_auto: Générer automatiquement une URL sémantique?
 
   linker:
     link_to_prefix: Lier à
@@ -424,9 +437,12 @@ fr:
     error_404_message: "La notice à laquelle vous avez tenté d'accéder n'existe plus, ou alors vous n'avez pas la permission de la voir."
     error_tree_pane_ajax: Une erreur s'est produite en chargeant ce formulaire.
     merge_conflict: "La fusion des agents n'a pas réussi: %{message}"
+    merge_too_many_victims: Un seul agent peut être sélectionné pour une fusion détaillée.
+    merge_different_types: Les agents sélectionnés pour la fusion détaillée doivent être du même type.
     linked_to_assessment: Notice impossible à supprimer, car liée à une évaluation
 
   accession:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: Entrée <strong>%{accession.display_string}</strong> créée
@@ -446,13 +462,14 @@ fr:
         save: Sauvegarder entrée
 
   agent: &agent_attributes
+    <<: *slug_attributes
     _frontend:
       messages:
         created: Agent créé
         updated: Agent sauvegardé
         deleted: Agent supprimé
         delete_conflict: "Impossible de supprimer l'agent: <pre>%{error}</pre>"
-        merge_description: Sélectionner ci-dessous les agents à fusionner
+        merge_description: Sélectionnez l'agent à fusionner
         merged: Agent(s) fusionné(s)
         please_select_a_agent_to_merge: Sélectionner un agent
       section:
@@ -462,8 +479,11 @@ fr:
         contacts: Détails de contact
         search_embedded: Notices liées
         linked_via_rights_statement: Notices liées via la mention de droits
+        target_record: Cet enregistrement sera mis à jour
+        victim_record: Cet enregistrement sera supprimé
       action:
         create: Créer agent
+        preview: Fusionner l'aperçu
 
   agent_contact:
     _frontend:
@@ -476,26 +496,31 @@ fr:
         add: Ajouter numéro de téléphone
 
   agent_corporate_entity:
+    <<: *slug_attributes
     _frontend:
       action:
         save: Sauvegarder personne morale
 
   agent_family:
+    <<: *slug_attributes
     _frontend:
       action:
         save: Sauvegarder famille
 
   agent_person:
+    <<: *slug_attributes
     _frontend:
       action:
         save: Sauvegarder personne physique
 
   agent_software:
+    <<: *slug_attributes
     _frontend:
       action:
         save: Sauvegarder logiciel
 
   archival_object:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: Document d'archives <strong>%{archival_object.display_string}</strong> de la ressource <strong>%{resource.title}</strong> créé
@@ -521,6 +546,7 @@ fr:
         new_record_title: Nouvel objet archivistique
 
   classification:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: "Classement <strong>%{classification.title}</strong> créé"
@@ -536,6 +562,7 @@ fr:
         add: Ajouter classement
 
   classification_term:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: "Terme de classement <strong>%{classification_term.title}</strong> créé"
@@ -585,6 +612,7 @@ fr:
         add: Ajouter aliénation
 
   digital_object:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: "Objet numérique <strong>%{digital_object.title}</strong> créé"
@@ -608,6 +636,7 @@ fr:
         save: Sauvegarder objet numérique
 
   digital_object_component:
+    <<: *slug_attributes
     _frontend:
       messages:
         created_with_parent: Composant d'objet numérique <strong>%{digital_object_component.display_string}</strong> créé comme fils de <strong>%{parent.display_string}</strong> sur l'objet numérique <strong>%{digital_object.title}</strong>
@@ -802,7 +831,12 @@ fr:
       action:
         add: Ajouter mention de révision
 
+  repository_oai:
+    oai_is_disabled: Récolte de l'OAI désactivée?
+    oai_sets_available: Ensembles inclus dans OAI
+
   repository:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: Service d'archives créé
@@ -820,14 +854,19 @@ fr:
         cannot_delete_nonempty: Suppression impossible - service d'archives non vide
       section:
         all_fields: Champs service d'archives
+        oai_fields: Paramètres de récolte OAI
         transfer: Transférer service d'archives
+        oai_settings: Paramètres OAI
       action:
         select: Sélectionner service d'archives
-        create: Créer service d'archives
         save: Sauvegarder service d'archives
         create: Créer service d'archives
+    _sidebar:
+      oai_settings:
+        _plural: Paramètres de récolte OAI
 
   resource:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: "Ressource <strong>%{resource.title}</strong> créée"
@@ -874,6 +913,7 @@ fr:
     ref: Service d'archives cible
 
   subject:
+    <<: *slug_attributes
     _frontend:
       messages:
         created: Mot-matière créé
@@ -1009,7 +1049,7 @@ fr:
       audit_data: Audit Data
       actions:
         create: Créer job
-        save: Mettre la tâche en file d'attente
+        save: Commencer tâche
         new: Nouvelle tâche d'arrière-plan
         cancel: Annuler tâche
         add_file: Ajouter fichier
@@ -1029,6 +1069,7 @@ fr:
         status_changed_canceled: La tâche a été annulée.
         no_active_jobs: Pas de tâche active.
         no_archived_jobs: Pas de tâches archivées.
+        uploading: Chargement de tâche...
         upload_successful: Téléversement réussi. Redirection vers la page de tâche...
         import_type_missing: Veuillez sélectionner un type d'import
         queue_position_next: Cet import est le prochain dans la queue.
@@ -1037,6 +1078,12 @@ fr:
         find_and_replace_warning: Chercher et remplacer des tâches provoquera de grands changements dans votre base de données. Nous vous recommandons <strong>fermement</strong> de sauvegarder votre base de données ET de lancer votre tâche dans une instance de test avant de procéder pour de bon. Il n'y a pas de "retour en arrière" possible.
         find_and_replace_instructions: Choisissez une notice de base pour délimiter cette opération chercher-remplacer. Choisissez alors un type de notices cible et une propriété de ce type. Cette opération s'effectuera dans toutes les notices cibles dans l'arborescence de la notice de base, ou dans la notice de base elle-même si le type cible est "Ressource".
         report_instructions: Choisissez un rapport à effectuer en utilisant le bouton <b>Sélectionner</b>.
+        slug_lost_warning: <b>WARNING! </b>Toute URL sémantique antérieurement créée sera perdue!
+        slug_generation: Cette tâche va générer une URL sémantique et permettre l'autogénération d'URL sémantiques pour toutes les <b>ressources</b>, <b>documents d'archive</b>, <b>objets numériques</b>, <b>composants d'objets numériques</b>, <b>entrées</b>, <b>classifications</b>, <b>Agents</b>, <b>sujets</b>, et <b>dépôts</b>.
+        slug_config_msg: <b>Basée sur les paramètres de configuration d'ArchivesSpace définis dans config.rb:</b>
+        slug_config_id: Des URL sémantiques vont être générées à partir de l'identifiant de l'entitée.
+        slug_config_title: Des URL sémantiques vont être générées à partir du nom ou de l'intitulé de l'entité.
+        slug_config_eadid: Des URL sémantiques pour <b>ressources</b> vont être générées à partir de l'identifiant EAD.
 
   shortcuts:
     quick_reference_window: "Référence rapide: raccourcis clavier"
@@ -1089,7 +1136,7 @@ fr:
       <p>Sert à enregistrer le code-barres identifiant de manière unique le conditionnement de plus haut niveau.</p>
     type: Type de conditionnement
     type_tooltip: |
-        <p>Le type de conditionnement de plus haut niveau.
+        <p>Le type de conditionnement de plus haut niveau.</p>
         <p>Les valeurs de cette liste contrôlée peuvent être modifiées.</p>
     ils_holding_id: ILS Holding ID
     ils_holding_id_tooltip: |
@@ -1301,7 +1348,6 @@ fr:
     message_total_containers: "Nombre total de conditionnements de ce type trouvés dans ces localisations: %{total_containers}"
     message_loading: Chargement en cours...
     count: Espace disponible (de type de conditionnement)
-    reason: Résultat du calcul
     calculate_space: Vérification de l'espace
     locations_without_space_details: Passer en revue les localisations sans espace
     by_locations: Par localisation(s)
@@ -1426,3 +1472,35 @@ fr:
       messages:
         created: Modèle de rapport personnalisé créé
         updated: Modèle de rapport personnalisé mis à jour
+
+  oai_config:
+    title: Paramètres OAI-PMH
+    title_repo_section: Paramètres OAI-PMH par référentiel
+    general_section: Réglages généraux
+    repo_set_section: Ensemble de référentiels
+    sponsor_set_section: Ensemble de sponsors
+    repo_set_desc: Outre les ensembles basés sur le niveau de description, vous pouvez définir un ensemble OAI basé sur des référentiels.
+    sponsor_set_desc: Outre les ensembles basés sur le niveau de description, vous pouvez définir un ensemble OAI basé sur les noms de sponsor.
+    oai_record_prefix: Préfixe d'enregistrement OAI
+    oai_admin_email: E-mail administrateur OAI
+    oai_repository_name: Nom du référentiel OAI
+    repo_set_name: Nom du jeu de référentiel
+    repo_set_codes: Dépôts dans l'ensemble
+    repo_set_description: Description du référentiel
+    sponsor_set_name: Nom du sponsor
+    sponsor_set_names: Noms de sponsors
+    sponsor_set_description: Description de l'ensemble de sponsors
+    oai_leave_repo_form: Ces options affectent OAI-PMH pour ce référentiel uniquement. Cliquez ci-dessous pour afficher / modifier les options globales OAI. Cela laissera le formulaire actuel sans enregistrer les modifications.
+    _frontend:
+      section:
+        basic_information: Réglages généraux
+      action:
+        create: Mettre à jour les paramètres OAI-PMH
+        updated: Paramètres OAI-PMH mis à jour avec succès!
+    _sidebar:
+      repo_set_section:
+        _plural: Ensembles de référentiels
+      sponsor_set_section:
+        _plural: Sets de sponsors
+      repo_settings:
+        _plural: Paramètres OAI-PMH par référentiel

@@ -3,6 +3,10 @@ class RepositoriesController < ApplicationController
   helper_method :process_repo_info
   skip_before_action  :verify_authenticity_token  
 
+  before_action(:only => [:show, :search]) {
+    process_slug_or_id(params)
+  }
+
   DEFAULT_SEARCH_FACET_TYPES = ['primary_type', 'subjects', 'published_agents']
   DEFAULT_REPO_SEARCH_OPTS = {
      'sort' => 'title_sort asc',
@@ -32,7 +36,7 @@ class RepositoriesController < ApplicationController
     if !@search_data['results'].blank?
       @pager =  Pager.new("/repositories?", @search_data['this_page'],@search_data['last_page'])
       @search_data['results'].each do |result| 
-        hash = JSON.parse(result['json']) || {}
+        hash = ASUtils.json_parse(result['json']) || {}
         id = hash['uri']
         if !facets[id].blank?
           hash['count'] = facets[id]
@@ -86,7 +90,7 @@ class RepositoriesController < ApplicationController
     @data =  archivesspace.search(query, 1, @criteria) || {}
     @result
     if !@data['results'].blank?
-      @result = JSON.parse(@data['results'][0]['json'])
+      @result = ASUtils.json_parse(@data['results'][0]['json'])
       @badges = Repository.badge_list(@result['repo_code'].downcase)
       # Pry::ColorPrinter.pp @badges
       # make the repository details easier to get at in the view

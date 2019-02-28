@@ -1,4 +1,5 @@
 require 'capybara/rails'
+require 'launchy'
 
 # Headless chrome
 Capybara.register_driver(:selenium_chrome) do |app|
@@ -23,10 +24,10 @@ if ENV['SELENIUM_CHROME']
   Capybara.javascript_driver = :selenium_chrome
 elsif ENV['SELENIUM_HEADY_CHROME']
   Capybara.javascript_driver = :chrome
-else
-  ENV['PATH'] = "#{File.join(ASUtils.find_base_directory,
-                             'selenium', 'bin', 'geckodriver',
-                             'linux')}:#{ENV['PATH']}"
+elsif java.lang.System.getProperty('os.name').downcase == 'linux'
+  ENV['PATH'] = "#{File.join(ASUtils.find_base_directory, 'common', 'selenium', 'bin', 'geckodriver', 'linux')}:#{ENV['PATH']}"
+else #osx
+  ENV['PATH'] = "#{File.join(ASUtils.find_base_directory, 'common', 'selenium', 'bin', 'geckodriver', 'osx')}:#{ENV['PATH']}"
 end
 
 # This should change once the app gets to a point where it's not just throwing
