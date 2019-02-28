@@ -21,7 +21,7 @@ var init = function() {
                 location_end_linker.show();
             }
 
-            $('.report_type').hide();        
+            $('.report_type').hide();
             $('.report_type.' + selected_report_type).show();
         };
 
@@ -36,22 +36,8 @@ var init = function() {
             }
         };
 
-        formatChange();
-        $(document).on('change', "#job_format_", formatChange);
-
-        var initListing = function(report) {
-            $("#report-fields").html(AS.renderTemplate(
-                "template_" + report,
-                {id_path: "job_job_params", path: "job[job_params]"}));
-            if (report == "location_holdings_report") {
-                locationReportSubFormChange();
-            }
-            $(document).triggerHandler("subrecordcreated.aspace", [report, $("#report-fields")]);
-        }
-
-        $(".unselect-report").hide();
-        $("#format").hide();
-        $('.btn-primary:submit').addClass('disabled');
+        var initFormatReportSubForm = function() {
+            $(document).on('change', "#job_format_", function() {
 
         $(".select-report, .report-title").click(function() {
             var code = $(this).attr("for");
@@ -79,6 +65,11 @@ var init = function() {
             $("#archivesSpaceSidebar li").toggle();
         });
 
+<<<<<<< HEAD
+=======
+        initLocationReportSubForm();
+        initFormatReportSubForm();
+>>>>>>> get rid of unneccesary code
     };
 
     var initPrintToPdfJobForm = function() {
@@ -293,8 +284,8 @@ var init = function() {
                 input.files = dt.files;
                 $form.append(input);
             });
-            
-            
+
+
             return true;
         });
 
@@ -369,7 +360,7 @@ var init = function() {
     };
 
     var type = $("#job_type").val();
-    
+
     $(".linker:not(.initialised)").linker();
 
     // these were added because it was neccesary to get translation
