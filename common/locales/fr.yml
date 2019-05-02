@@ -1119,6 +1119,7 @@ fr:
     user_defined:
       <<: *user_defined_attributes
     accession_date: Date d'entrée
+    accession_date_unknown: inconnu
     accession_date_inline_help: par ex. AAAA-MM-JJ
     accession_date_tooltip: |
         <p>CHAMP REQUIS. Date à laquelle l'entrée a eu lieu. N'est pas
@@ -1576,6 +1577,9 @@ fr:
     description: Description de la révision
     description_tooltip: |
         <p>Une description de la dernière révision de l'instrument de recherche.</p>
+    publish: Publier?
+    publish_tooltip: |
+        <p>Détermine si ce mention de révision sera publié sur les interfaces publiques.</p>
 
   related_resource:
     _singular: Ressource associée
@@ -1744,7 +1748,7 @@ fr:
         <p>Le temps que le service d'archives estime nécessaire pour traiter une unité de matériel archivistique (par ex. un mètre linéaire ou item dans le cas d'objets numériques).  L'estimation peut ou non prendre en compte la production d'instruments de recherche, d'enregistrements catalogue et d'autres produits d'accès.</p>
     processing_total_extent: Importance totale du matériel à traiter
     processing_total_extent_tooltip: |
-        <p>Une expression numérique pour l'importance totale (en mètres cubes, mètres linéaires, items, etc) du matériel à traiter.</p>
+        <p>Une expression numérique pour l'importance totale (en mètres cubes, mètres linéaires, items, etc) du matériel à traiter. Il faut utiliser une type d'importance avec ce champ.</p>
     processing_total_extent_type: Type d'importance
     processing_total_extent_type_tooltip: *extent_type_tooltip
     processing_total_extent_type_: --
@@ -1981,6 +1985,7 @@ fr:
       report_job: Creer un rapport
       container_conversion_job: Creer un rapport
       generate_slugs_job: Générer des URL sémantiques pour les entitées
+      trim_whitespace_job: Couper les espaces
       unknown_job_type: Type de tâche inconnu
     status: Statut
     status_completed: Effectuée
@@ -2007,6 +2012,7 @@ fr:
     import_type_accession_csv: Entrée CSV
     import_type_digital_object_csv: Objet numérique CSV
     import_type_eac_xml: EAC
+    import_type_location: Location CSV
     import_type_marcxml: MarcXML (Ressource)
     import_type_marcxml_accession: MarcXML (Entrée)
     import_type_marcxml_subjects_and_agents: MarcXML (sujets et agents uniquement)
@@ -2023,6 +2029,9 @@ fr:
   print_to_pdf_job:
     include_unpublished: Inclure ce qui n'est pas publié
     source: Source
+
+  trim_whitespace_job:
+    description: Supprime les espaces blancs de début et de fin des titres des ressources, entrées, objets numériques, objets d'archivage et composants d'objet numérique.
 
   advanced_search:
     type:

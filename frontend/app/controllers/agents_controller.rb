@@ -77,9 +77,20 @@ class AgentsController < ApplicationController
                   return render :action => :new
                 },
                 :on_valid => ->(id){
+                  success_msg = I18n.t("agent._frontend.messages.created")
+
+                  if @agent["is_slug_auto"] == false && 
+                     @agent["slug"] == nil &&
+                     params["agent"] &&
+                     params["agent"]["is_slug_auto"] == "1"
+                    success_msg << I18n.t("slug.autogen_disabled")
+                  end
+
+                  flash[:success] = success_msg
+
                   return render :json => @agent.to_hash if inline?
-                  return redirect_to({:controller => :agents, :action => :new, :agent_type => @agent_type}, :flash => {:success => I18n.t("agent._frontend.messages.created")}) if params.has_key?(:plus_one)
-                  redirect_to({:controller => :agents, :action => :edit, :id => id, :agent_type => @agent_type}, :flash => {:success => I18n.t("agent._frontend.messages.created")})
+                  return redirect_to({:controller => :agents, :action => :new, :agent_type => @agent_type}) if params.has_key?(:plus_one)
+                  redirect_to({:controller => :agents, :action => :edit, :id => id, :agent_type => @agent_type})
                 })
   end
 
@@ -88,7 +99,6 @@ class AgentsController < ApplicationController
                 :model => JSONModel(@agent_type),
                 :obj => JSONModel(@agent_type).find(params[:id], find_opts),
                 :on_invalid => ->(){
-
                   if @agent.names.empty?
                     @agent.names = [@name_type.new._always_valid!]
                   end
@@ -96,7 +106,15 @@ class AgentsController < ApplicationController
                   return render :action => :edit
                 },
                 :on_valid => ->(id){
-                  flash[:success] = I18n.t("agent._frontend.messages.updated")
+                  success_msg = I18n.t("agent._frontend.messages.updated")
+                  if @agent["is_slug_auto"] == false && 
+                     @agent["slug"] == nil &&
+                     params["agent"] &&
+                     params["agent"]["is_slug_auto"] == "1"
+                    success_msg << I18n.t("slug.autogen_disabled")
+                  end
+
+                  flash[:success] = success_msg
                   redirect_to :controller => :agents, :action => :edit, :id => id, :agent_type => @agent_type
                 })
   end

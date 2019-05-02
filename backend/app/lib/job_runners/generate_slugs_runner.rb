@@ -4,7 +4,20 @@ class GenerateSlugsRunner < JobRunner
                         {:create_permissions => :manage_repository,
                          :cancel_permissions => :manage_repository,
                          :allow_reregister => true})
-  
+
+   def generate_slug_for(thing)
+     json_like_hash = thing.values
+
+     # Repository always uses repo_code for slug
+     if thing.class == Repository
+       SlugHelpers.clean_slug(json_like_hash[:repo_code])
+     else
+       AppConfig[:auto_generate_slugs_with_id] ?
+         SlugHelpers.id_based_slug_for(json_like_hash, thing.class) :
+         SlugHelpers.name_based_slug_for(json_like_hash, thing.class)
+     end
+   end
+
   def run
     begin
       # REPOSITORIES
@@ -12,9 +25,21 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       Repository.each do |r|
-        @job.write_output("Generating slug for repository id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for repository id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for repository id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # RESOURCES
@@ -22,9 +47,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       Resource.any_repo.each do |r|
-        @job.write_output("Generating slug for resource id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for classification_term id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for classification_term id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # ACCESSIONS
@@ -32,9 +71,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       Accession.any_repo.each do |r|
-        @job.write_output("Generating slug for accession id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for accession id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for accession id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # DIGITAL OBJECTS
@@ -42,9 +95,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       DigitalObject.any_repo.each do |r|
-        @job.write_output("Generating slug for digital object id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for digital_object id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for digital_object id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # CLASSIFICATIONS
@@ -52,9 +119,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       Classification.any_repo.each do |r|
-        @job.write_output("Generating slug for classification id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for classification id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for classification id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # CLASSIFICATION TERMS
@@ -62,9 +143,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       ClassificationTerm.any_repo.each do |r|
-        @job.write_output("Generating slug for classification term id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for classification_term id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for classification_term id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # AGENT - CORPORATE
@@ -72,9 +167,34 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       AgentCorporateEntity.each do |r|
-        @job.write_output("Generating slug for agent_corporate_entity id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for agent_corporate_entity id: #{r[:id]}")
+          if AppConfig[:auto_generate_slugs_with_id]
+            authority_id = NameAuthorityId.find(:name_corporate_entity_id => r.id)
+            if !authority_id.nil?
+              cleaned_slug = SlugHelpers.clean_slug(authority_id.values[:authority_id])
+              slug = SlugHelpers.run_dedupe_slug(cleaned_slug)
+            else
+              slug = ''
+            end
+          else
+            agent_name = NameCorporateEntity.find(:agent_corporate_entity_id => r.id)
+            slug = generate_slug_for(agent_name)
+          end
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for agent_corporate_entity id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # AGENT - FAMILY
@@ -82,9 +202,33 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       AgentFamily.each do |r|
-        @job.write_output("Generating slug for agent_family id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+       next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for agent_family id: #{r[:id]}")
+          if AppConfig[:auto_generate_slugs_with_id]
+            authority_id = NameAuthorityId.find(:name_family_id => r.id)
+            if !authority_id.nil?
+              cleaned_slug = SlugHelpers.clean_slug(authority_id.values[:authority_id])
+              slug = SlugHelpers.run_dedupe_slug(cleaned_slug)
+            else
+              slug = ''
+            end
+          else
+            agent_name = NameFamily.find(:agent_family_id => r.id)
+            slug = generate_slug_for(agent_name)
+          end
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for agent_family id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # AGENT - Person
@@ -92,9 +236,34 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       AgentPerson.each do |r|
-        @job.write_output("Generating slug for agent_person id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for agent_person id: #{r[:id]}")
+          if AppConfig[:auto_generate_slugs_with_id]
+            authority_id = NameAuthorityId.find(:name_person_id => r.id)
+            if !authority_id.nil?
+              cleaned_slug = SlugHelpers.clean_slug(authority_id.values[:authority_id])
+              slug = SlugHelpers.run_dedupe_slug(cleaned_slug)
+            else
+              slug = ''
+            end
+          else
+            agent_name = NamePerson.find(:agent_person_id => r.id)
+            slug = generate_slug_for(agent_name)
+          end
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for agent_person id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # AGENT - Software
@@ -102,9 +271,34 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       AgentSoftware.each do |r|
-        @job.write_output("Generating slug for agent_software id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for agent_software id: #{r[:id]}")
+          if AppConfig[:auto_generate_slugs_with_id]
+            authority_id = NameAuthorityId.find(:name_software_id => r.id)
+            if !authority_id.nil?
+              cleaned_slug = SlugHelpers.clean_slug(authority_id.values[:authority_id])
+              slug = SlugHelpers.run_dedupe_slug(cleaned_slug)
+            else
+              slug = ''
+            end
+          else
+            agent_name = NameSoftware.find(:agent_software_id => r.id)
+            slug = generate_slug_for(agent_name)
+          end
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for agent_software id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # SUBJECT
@@ -112,9 +306,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       Subject.each do |r|
-        @job.write_output("Generating slug for subject id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for subject id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for subject id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # Archival Object
@@ -122,9 +330,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       ArchivalObject.any_repo.each do |r|
-        @job.write_output("Generating slug for archival_object id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for archival_object id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for archival_object id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       # Digital Object Component
@@ -132,9 +354,23 @@ class GenerateSlugsRunner < JobRunner
       @job.write_output("================================")
 
       DigitalObjectComponent.any_repo.each do |r|
-        @job.write_output("Generating slug for digital object component id: #{r[:id]}")
-        r.update(:is_slug_auto => 0, :slug => "")
-        r.update(:is_slug_auto => 1)
+        r[:slug] = "" if r[:slug].nil?
+
+        next if !r[:slug].empty? && r[:is_slug_auto] == 0
+        begin
+          @job.write_output("Generating slug for digital_object_component id: #{r[:id]}")
+          slug = generate_slug_for(r)
+
+          if slug && !slug.empty?
+            @job.write_output(" -> Slug for digital_object_component id: #{r[:id]} => #{slug}")
+            r.update(:is_slug_auto => 1, :slug => slug)
+          else
+            @job.write_output(" -> Generated empty slug for: #{r[:id]}")
+          end
+
+        rescue => e
+          @job.write_output(" -> Error generating slug for id: #{r[:id]} => #{e.message}")
+        end
       end
 
       self.success!

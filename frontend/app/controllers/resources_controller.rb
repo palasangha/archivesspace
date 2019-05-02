@@ -176,13 +176,23 @@ class ResourcesController < ApplicationController
                   render action: "new"
                 },
                 :on_valid => ->(id){
+                  success_msg = I18n.t("resource._frontend.messages.created", JSONModelI18nWrapper.new(:resource => @resource).enable_parse_mixed_content!(url_for(:root)))
+
+                  if @resource["is_slug_auto"] == false &&
+                     @resource["slug"] == nil &&
+                     params["resource"] &&
+                     params["resource"]["is_slug_auto"] == "1"
+                    success_msg << I18n.t("slug.autogen_disabled")
+                  end
+
+                  flash[:success] = success_msg
+
                   redirect_to({
                                 :controller => :resources,
                                 :action => :edit,
                                 :id => id
-                              },
-                              :flash => {:success => I18n.t("resource._frontend.messages.created", JSONModelI18nWrapper.new(:resource => @resource).enable_parse_mixed_content!(url_for(:root)))})
-                 })
+                             })
+                })
   end
 
 
@@ -193,7 +203,17 @@ class ResourcesController < ApplicationController
                   render_aspace_partial :partial => "edit_inline"
                 },
                 :on_valid => ->(id){
-                  flash.now[:success] = I18n.t("resource._frontend.messages.updated", JSONModelI18nWrapper.new(:resource => @resource).enable_parse_mixed_content!(url_for(:root)))
+
+                  success_msg = I18n.t("resource._frontend.messages.updated", JSONModelI18nWrapper.new(:resource => @resource).enable_parse_mixed_content!(url_for(:root)))
+
+                  if @resource["is_slug_auto"] == false &&
+                     @resource["slug"] == nil &&
+                     params["resource"] &&
+                     params["resource"]["is_slug_auto"] == "1"
+                    success_msg << I18n.t("slug.autogen_disabled")
+                  end
+
+                  flash.now[:success] = success_msg
                   render_aspace_partial :partial => "edit_inline"
                 })
   end

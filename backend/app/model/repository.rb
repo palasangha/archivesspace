@@ -1,9 +1,20 @@
 class Repository < Sequel::Model(:repository)
   include ASModel
   include Publishable
+  include AutoGenerator
 
   set_model_scope :global
   corresponds_to JSONModel(:repository)
+
+  auto_generate :property => :slug,
+                :generator => proc { |json|
+                  if json["is_slug_auto"]
+                    # Always use repo_code
+                    SlugHelpers.clean_slug(json["repo_code"])
+                  else
+                    json["slug"]
+                  end
+                }
 
   def validate
     super

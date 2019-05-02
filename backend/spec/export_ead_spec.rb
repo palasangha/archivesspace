@@ -604,7 +604,7 @@ describe "EAD export mappings" do
           else
             mt(nil, path, "id")
           end
-          
+
           mt(note['label'], path, "label") if note['label']
         end
       end
@@ -665,7 +665,6 @@ describe "EAD export mappings" do
 
       it "maps notes of type 'physfacet' to did/physdesc/physfacet" do
         notes.select {|n| n['type'] == 'physfacet'}.each_with_index do |note, i|
-          puts "LANEY note #{note.inspect} i #{i.inspect}"
           path = "#{desc_path}/did/physdesc[physfacet][#{i}]/physfacet"
           mt(note_content(note), path)
           if !note['persistent_id'].nil?
@@ -673,7 +672,7 @@ describe "EAD export mappings" do
           else
             mt(nil, path, "id")
           end
-          
+
           mt(note['label'], path, "label") if note['label']
         end
       end
@@ -1235,7 +1234,19 @@ describe "EAD export mappings" do
                                       :linked_agents => [{
                                         :ref => @unpublished_agent.uri,
                                         :role => 'creator'
-                                      }])
+                                      }],
+                                      :revision_statements => [
+                                        {
+                                          :date => 'some date',
+                                          :description => 'unpublished revision statement',
+                                          :publish => false
+                                        },
+                                        {
+                                          :date => 'some date',
+                                          :description => 'published revision statement',
+                                          :publish => true
+                                        }
+                                      ])
 
         @unpublished_resource_jsonmodel = JSONModel(:resource).find(unpublished_resource.id)
 
@@ -1286,6 +1297,34 @@ describe "EAD export mappings" do
     it "does not include the unpublished agent with audience internal when include_unpublished is false" do
       creators = @xml_not_including_unpublished.xpath('//origination')
       expect(creators.length).to eq(0)
+    end
+
+    it "include the unpublished revision statement with audience internal when include_unpublished is true" do
+      revision_statements = @xml_including_unpublished.xpath('//revisiondesc/change')
+      expect(revision_statements.length).to eq(2)
+      unpublished = revision_statements.first
+      expect(unpublished).to have_attribute('audience', 'internal')
+      items = @xml_including_unpublished.xpath('//revisiondesc/change/item')
+      expect(items.length).to eq(2)
+      expect(items.first).to have_inner_text('unpublished revision statement')
+    end
+
+    it "does not set <change> attribute audience 'internal' when revision statement is published" do
+      revision_statements = @xml_including_unpublished.xpath('//revisiondesc/change')
+      expect(revision_statements.length).to eq(2)
+      published = revision_statements[1]
+      expect(published).not_to have_attribute('audience', 'internal')
+      items = @xml_including_unpublished.xpath('//revisiondesc/change/item')
+      expect(items.length).to eq(2)
+      expect(items[1]).to have_inner_text('published revision statement')
+    end
+
+    it "includes only the published revision statement when include_unpublished is false" do
+      revision_statements = @xml_not_including_unpublished.xpath('//revisiondesc/change')
+      expect(revision_statements.length).to eq(1)
+      items = @xml_not_including_unpublished.xpath('//revisiondesc/change/item')
+      expect(items.length).to eq(1)
+      expect(items.first).to have_inner_text('published revision statement')
     end
   end
 
