@@ -241,25 +241,25 @@ FactoryBot.define do
     agent_type { 'agent_corporate_entity' }
     names { [build(:json_name_corporate_entity)] }
     agent_contacts { [build(:json_agent_contact)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
   end
 
   factory :json_agent_family, class: JSONModel(:agent_family) do
     agent_type { 'agent_family' }
     names { [build(:json_name_family)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
   end
 
   factory :json_agent_person, class: JSONModel(:agent_person) do
     agent_type { 'agent_person' }
     names { [build(:json_name_person)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
   end
 
   factory :json_agent_software, class: JSONModel(:agent_software) do
     agent_type { 'agent_software' }
     names { [build(:json_name_software)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
   end
 
   factory :json_archival_object, class: JSONModel(:archival_object) do
@@ -279,7 +279,7 @@ FactoryBot.define do
   factory :json_agent_person_full_subrec, class: JSONModel(:agent_person) do
     agent_type { 'agent_person' }
     names { [build(:json_name_person)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
     agent_record_controls { [build(:agent_record_control)] }
     agent_alternate_sets { [build(:agent_alternate_set)] }
     agent_conventions_declarations { [build(:agent_conventions_declaration)] }
@@ -293,7 +293,7 @@ FactoryBot.define do
     agent_type { 'agent_corporate_entity' }
     names { [build(:json_name_corporate_entity)] }
     agent_contacts { [build(:json_agent_contact)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
     agent_record_controls { [build(:agent_record_control)] }
     agent_alternate_sets { [build(:agent_alternate_set)] }
     agent_conventions_declarations { [build(:agent_conventions_declaration)] }
@@ -306,7 +306,7 @@ FactoryBot.define do
   factory :json_agent_software_full_subrec, class: JSONModel(:agent_software) do
     agent_type { 'agent_software' }
     names { [build(:json_name_software)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
     agent_record_controls { [build(:agent_record_control)] }
     agent_alternate_sets { [build(:agent_alternate_set)] }
     agent_conventions_declarations { [build(:agent_conventions_declaration)] }
@@ -319,7 +319,7 @@ FactoryBot.define do
   factory :json_agent_family_full_subrec, class: JSONModel(:agent_family) do
     agent_type { 'agent_family' }
     names { [build(:json_name_family)] }
-    dates_of_existence { [build(:json_date, :label => 'existence')] }
+    dates_of_existence { [build(:json_structured_date_label)] }
     agent_record_controls { [build(:agent_record_control)] }
     agent_alternate_sets { [build(:agent_alternate_set)] }
     agent_conventions_declarations { [build(:agent_conventions_declaration)] }
@@ -456,6 +456,21 @@ FactoryBot.define do
     indicator_3 { generate(:alphanumstr) }
   end
 
+  factory :json_structured_date_label, class: JSONModel(:structured_date_label) do
+    date_type_enum { "single" }
+    date_label { 'existence' }
+    structured_dates {[ build(:json_structured_date) ]}
+  end
+
+  factory :json_structured_date, class: JSONModel(:structured_date) do
+    date_role_enum  { "begin" }
+    date_expression { "Yesterday" }
+    date_standardized { "2019-06-01" }
+    date_standardized_type_enum { "standard" }
+    date_certainty { "approximate" }
+    date_era { "ce" }
+    date_calendar { "gregorian" }
+  end
 
   factory :json_date, class: JSONModel(:date) do
     date_type { generate(:date_type) }
