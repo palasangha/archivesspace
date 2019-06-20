@@ -655,5 +655,4 @@ AppConfig[:ark_naan] = "f00001"
 AppConfig[:ark_url_prefix] = proc { AppConfig[:public_proxy_url] }
 
 # Flag for turning ARK IDs in exports off and on
-AppConfig[:ark_ids_enabled] = true
-
+AppConfig[:ark_ids_enabled] = false
