@@ -1569,6 +1569,15 @@ en:
       dates: Dates
     _plural: Occupations
     text_note: Note
+    
+  agent_function:
+    _frontend:
+      action:
+        add: Add Function
+    section:
+      dates: Dates
+    _plural: Functions
+    text_note: Note
 
   place:
     _plural: Places
