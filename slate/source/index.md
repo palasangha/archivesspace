@@ -167,7 +167,7 @@ The JSON that is returned will have a session key, which can be stored and used
 for other requests. Sessions will expire after an hour, although you can change this in your config.rb file.
 
 # ArchivesSpace REST API
-As of 2019-08-28 09:46:31 -0700 the following REST endpoints exist in the master branch of the development repository:
+As of 2019-08-28 12:20:48 -0700 the following REST endpoints exist in the master branch of the development repository:
 
 
 ## Create a corporate entity agent
@@ -188,17 +188,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_corporate_entity",
 "agent_contacts":[{ "jsonmodel_type":"agent_contact",
 "telephones":[{ "jsonmodel_type":"telephone",
-"number_type":"cell",
-"number":"4232 7548 6531",
-"ext":"GS40VO"}],
-"name":"Name Number 689",
-"address_1":"SB478775788",
-"address_2":"909KBB363",
-"address_3":"EP469AF",
-"city":"1783R457D",
-"post_code":"HRNBT",
-"fax":"230X931DN",
-"email_signature":"S682A19781"}],
+"number_type":"home",
+"number":"8846 301 636 273 5655"}],
+"name":"Name Number 690",
+"address_1":"15ULTR",
+"region":"799NU679T",
+"email_signature":"77542PVN"}],
 "linked_agent_roles":[],
 "external_documents":[],
 "notes":[],
@@ -207,12 +202,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"single",
 "label":"existence",
-"begin":"2000-12-18",
-"end":"2000-12-18",
+"begin":"2006-11-24",
+"end":"2006-11-24",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"Q361T947D"}],
+"expression":"J607D45R"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_corporate_entity",
 "use_dates":[],
@@ -220,13 +215,13 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "is_display_name":false,
 "sort_name_auto_generate":true,
 "rules":"dacs",
-"primary_name":"Name Number 688",
-"subordinate_name_1":"I138Y226T",
-"subordinate_name_2":"RE970939522",
-"number":"424N230837M",
-"sort_name":"SORT o - 589",
-"dates":"908MBO964",
-"qualifier":"O390974906835",
+"primary_name":"Name Number 689",
+"subordinate_name_1":"DN62M579",
+"subordinate_name_2":"BWA407W",
+"number":"74YYAR",
+"sort_name":"SORT d - 589",
+"dates":"EAVHX",
+"qualifier":"17516036QA",
 "authority_id":"http://www.example-611.com",
 "source":"nad"}],
 "related_agents":[],
@@ -333,17 +328,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_corporate_entity",
 "agent_contacts":[{ "jsonmodel_type":"agent_contact",
 "telephones":[{ "jsonmodel_type":"telephone",
-"number_type":"cell",
-"number":"4232 7548 6531",
-"ext":"GS40VO"}],
-"name":"Name Number 689",
-"address_1":"SB478775788",
-"address_2":"909KBB363",
-"address_3":"EP469AF",
-"city":"1783R457D",
-"post_code":"HRNBT",
-"fax":"230X931DN",
-"email_signature":"S682A19781"}],
+"number_type":"home",
+"number":"8846 301 636 273 5655"}],
+"name":"Name Number 690",
+"address_1":"15ULTR",
+"region":"799NU679T",
+"email_signature":"77542PVN"}],
 "linked_agent_roles":[],
 "external_documents":[],
 "notes":[],
@@ -352,12 +342,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"single",
 "label":"existence",
-"begin":"2000-12-18",
-"end":"2000-12-18",
+"begin":"2006-11-24",
+"end":"2006-11-24",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"Q361T947D"}],
+"expression":"J607D45R"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_corporate_entity",
 "use_dates":[],
@@ -365,13 +355,13 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "is_display_name":false,
 "sort_name_auto_generate":true,
 "rules":"dacs",
-"primary_name":"Name Number 688",
-"subordinate_name_1":"I138Y226T",
-"subordinate_name_2":"RE970939522",
-"number":"424N230837M",
-"sort_name":"SORT o - 589",
-"dates":"908MBO964",
-"qualifier":"O390974906835",
+"primary_name":"Name Number 689",
+"subordinate_name_1":"DN62M579",
+"subordinate_name_2":"BWA407W",
+"number":"74YYAR",
+"sort_name":"SORT d - 589",
+"dates":"EAVHX",
+"qualifier":"17516036QA",
 "authority_id":"http://www.example-611.com",
 "source":"nad"}],
 "related_agents":[],
@@ -539,26 +529,26 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"bulk",
 "label":"existence",
-"begin":"1980-09-04",
-"end":"1980-09-04",
+"begin":"1980-05-02",
+"end":"1980-05-02",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"230224ELM"}],
+"expression":"N238S222Y"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_family",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"dacs",
-"family_name":"Name Number 690",
-"sort_name":"SORT o - 590",
-"dates":"I863489631P",
-"qualifier":"237DR283859",
-"prefix":"D410NMK",
+"rules":"local",
+"family_name":"Name Number 691",
+"sort_name":"SORT l - 590",
+"dates":"K684567XF",
+"qualifier":"MCM777739",
+"prefix":"LXS622521",
 "authority_id":"http://www.example-612.com",
-"source":"nad"}],
+"source":"ulan"}],
 "related_agents":[],
 "agent_type":"agent_family"}' \
   "http://localhost:8089/agents/families"
@@ -670,26 +660,26 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"bulk",
 "label":"existence",
-"begin":"1980-09-04",
-"end":"1980-09-04",
+"begin":"1980-05-02",
+"end":"1980-05-02",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"230224ELM"}],
+"expression":"N238S222Y"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_family",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"dacs",
-"family_name":"Name Number 690",
-"sort_name":"SORT o - 590",
-"dates":"I863489631P",
-"qualifier":"237DR283859",
-"prefix":"D410NMK",
+"rules":"local",
+"family_name":"Name Number 691",
+"sort_name":"SORT l - 590",
+"dates":"K684567XF",
+"qualifier":"MCM777739",
+"prefix":"LXS622521",
 "authority_id":"http://www.example-612.com",
-"source":"nad"}],
+"source":"ulan"}],
 "related_agents":[],
 "agent_type":"agent_family"}' \
   "http://localhost:8089/agents/families/1"
@@ -853,29 +843,32 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"bulk",
 "label":"existence",
-"begin":"2012-03-09",
-"end":"2012-03-09",
+"begin":"2004-01-11",
+"end":"2004-01-11",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"LLULW"}],
+"expression":"G582LEA"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_person",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"dacs",
+"rules":"aacr",
 "source":"nad",
-"primary_name":"Name Number 691",
-"sort_name":"SORT j - 591",
+"primary_name":"Name Number 692",
+"sort_name":"SORT q - 591",
 "name_order":"direct",
-"number":"QNYS587",
-"dates":"B559IW658",
-"qualifier":"620L799841754",
-"fuller_form":"U658385W277",
+"number":"ONXXA",
+"dates":"E770EJ124",
+"qualifier":"441MCSP",
+"fuller_form":"II574558W",
+"prefix":"566983JEV",
+"title":"XRSCC",
+"rest_of_name":"QE816GC",
 "authority_id":"http://www.example-613.com"}],
 "related_agents":[],
 "agent_type":"agent_person"}' \
@@ -986,29 +979,32 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"bulk",
 "label":"existence",
-"begin":"2012-03-09",
-"end":"2012-03-09",
+"begin":"2004-01-11",
+"end":"2004-01-11",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"LLULW"}],
+"expression":"G582LEA"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_person",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"dacs",
+"rules":"aacr",
 "source":"nad",
-"primary_name":"Name Number 691",
-"sort_name":"SORT j - 591",
+"primary_name":"Name Number 692",
+"sort_name":"SORT q - 591",
 "name_order":"direct",
-"number":"QNYS587",
-"dates":"B559IW658",
-"qualifier":"620L799841754",
-"fuller_form":"U658385W277",
+"number":"ONXXA",
+"dates":"E770EJ124",
+"qualifier":"441MCSP",
+"fuller_form":"II574558W",
+"prefix":"566983JEV",
+"title":"XRSCC",
+"rest_of_name":"QE816GC",
 "authority_id":"http://www.example-613.com"}],
 "related_agents":[],
 "agent_type":"agent_person"}' \
@@ -1175,12 +1171,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"inclusive",
 "label":"existence",
-"begin":"2011-02-05",
-"end":"2011-02-05",
+"begin":"2015-01-01",
+"end":"2015-01-01",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"X489880AF"}],
+"expression":"JY411HN"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_software",
 "use_dates":[],
@@ -1188,8 +1184,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "is_display_name":false,
 "sort_name_auto_generate":true,
 "rules":"dacs",
-"software_name":"Name Number 692",
-"sort_name":"SORT p - 592"}],
+"software_name":"Name Number 693",
+"sort_name":"SORT b - 592"}],
 "agent_type":"agent_software"}' \
   "http://localhost:8089/agents/software"
 
@@ -1300,12 +1296,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"inclusive",
 "label":"existence",
-"begin":"2011-02-05",
-"end":"2011-02-05",
+"begin":"2015-01-01",
+"end":"2015-01-01",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"X489880AF"}],
+"expression":"JY411HN"}],
 "is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_software",
 "use_dates":[],
@@ -1313,8 +1309,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "is_display_name":false,
 "sort_name_auto_generate":true,
 "rules":"dacs",
-"software_name":"Name Number 692",
-"sort_name":"SORT p - 592"}],
+"software_name":"Name Number 693",
+"sort_name":"SORT b - 592"}],
 "agent_type":"agent_software"}' \
   "http://localhost:8089/agents/software/1"
 
@@ -1478,7 +1474,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/batch_delete?record_uris=ON377IK"
+  "http://localhost:8089/batch_delete?record_uris=926R617541E"
 
 ```
 
@@ -1539,7 +1535,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/by-external-id?eid=QXW594O&type=525625501977A"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/by-external-id?eid=NBX201V&type=PQHMK"
 
 ```
 
@@ -2082,13 +2078,13 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"container_profile",
-"name":"C335GOW",
-"url":"586155UHF",
-"dimension_units":"millimeters",
-"extent_dimension":"depth",
-"depth":"7",
-"height":"91",
-"width":"10"}' \
+"name":"Y588G25451",
+"url":"TEMPQ",
+"dimension_units":"feet",
+"extent_dimension":"height",
+"depth":"6",
+"height":"21",
+"width":"99"}' \
   "http://localhost:8089/container_profiles"
 
 ```
@@ -2187,13 +2183,13 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"container_profile",
-"name":"C335GOW",
-"url":"586155UHF",
-"dimension_units":"millimeters",
-"extent_dimension":"depth",
-"depth":"7",
-"height":"91",
-"width":"10"}' \
+"name":"Y588G25451",
+"url":"TEMPQ",
+"dimension_units":"feet",
+"extent_dimension":"height",
+"depth":"6",
+"height":"21",
+"width":"99"}' \
   "http://localhost:8089/container_profiles/1"
 
 ```
@@ -2393,7 +2389,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/date_calculator?record_uri=HC276EL&label=UD851480Q"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/date_calculator?record_uri=PKWOI&label=ASAHG"
 
 ```
 
@@ -2506,7 +2502,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/extent_calculator?record_uri=NEV121803&unit=ON950388535"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/extent_calculator?record_uri=Q95763704V&unit=U907905L702"
 
 ```
 
@@ -2587,11 +2583,11 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location_profile",
-"name":"XKEN74",
-"dimension_units":"inches",
-"depth":"10",
-"height":"82",
-"width":"63"}' \
+"name":"RU288252N",
+"dimension_units":"feet",
+"depth":"29",
+"height":"12",
+"width":"10"}' \
   "http://localhost:8089/location_profiles"
 
 ```
@@ -2690,11 +2686,11 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location_profile",
-"name":"XKEN74",
-"dimension_units":"inches",
-"depth":"10",
-"height":"82",
-"width":"63"}' \
+"name":"RU288252N",
+"dimension_units":"feet",
+"depth":"29",
+"height":"12",
+"width":"10"}' \
   "http://localhost:8089/location_profiles/1"
 
 ```
@@ -2847,11 +2843,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location",
 "external_ids":[],
 "functions":[],
-"building":"125 E 9th Street",
+"building":"26 E 4th Street",
 "floor":"8",
-"room":"3",
+"room":"2",
 "area":"Front",
-"barcode":"00111000010111001000",
+"barcode":"11011011111110001110",
 "temporary":"reading_room"}' \
   "http://localhost:8089/locations"
 
@@ -2953,11 +2949,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location",
 "external_ids":[],
 "functions":[],
-"building":"125 E 9th Street",
+"building":"26 E 4th Street",
 "floor":"8",
-"room":"3",
+"room":"2",
 "area":"Front",
-"barcode":"00111000010111001000",
+"barcode":"11011011111110001110",
 "temporary":"reading_room"}' \
   "http://localhost:8089/locations/1"
 
@@ -3600,7 +3596,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/permissions?level=AKKT421"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/permissions?level=LV223482772"
 
 ```
 
@@ -3684,7 +3680,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/reports/static/*?splat=QAU313933"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/reports/static/*?splat=D343VMH"
 
 ```
 
@@ -4000,7 +3996,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "external_ids":[],
 "is_slug_auto":true,
 "related_accessions":[],
-"accession_date":"2013-11-16",
+"accession_date":"2011-09-16",
 "classifications":[],
 "subjects":[],
 "linked_events":[],
@@ -4015,10 +4011,10 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "use_restrictions":false,
 "linked_agents":[],
 "instances":[],
-"id_0":"P717433CW",
-"id_1":"FX506NN",
-"id_2":"446YB991296",
-"id_3":"JP249T374",
+"id_0":"869CQMM",
+"id_1":"LH564MK",
+"id_2":"F693TG965",
+"id_3":"781FS345S",
 "title":"Accession Title: 459",
 "content_description":"Description: 357",
 "condition_description":"Description: 358"}' \
@@ -4149,7 +4145,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "external_ids":[],
 "is_slug_auto":true,
 "related_accessions":[],
-"accession_date":"2013-11-16",
+"accession_date":"2011-09-16",
 "classifications":[],
 "subjects":[],
 "linked_events":[],
@@ -4164,10 +4160,10 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "use_restrictions":false,
 "linked_agents":[],
 "instances":[],
-"id_0":"P717433CW",
-"id_1":"FX506NN",
-"id_2":"446YB991296",
-"id_3":"JP249T374",
+"id_0":"869CQMM",
+"id_1":"LH564MK",
+"id_2":"F693TG965",
+"id_3":"781FS345S",
 "title":"Accession Title: 459",
 "content_description":"Description: 357",
 "condition_description":"Description: 358"}' \
@@ -4522,7 +4518,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/accessions/1/transfer?target_repo=MXW791802"
+  "http://localhost:8089/repositories/2/accessions/1/transfer?target_repo=U255JEF"
 
 ```
 
@@ -5018,8 +5014,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "ancestors":[],
 "instances":[],
 "notes":[],
-"ref_id":"547X929I158",
-"level":"item",
+"ref_id":"VQKTG",
+"level":"subseries",
 "title":"Archival Object Title: 460",
 "resource":{ "ref":"/repositories/2/resources/186"}}' \
   "http://localhost:8089/repositories/2/archival_objects"
@@ -5161,8 +5157,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "ancestors":[],
 "instances":[],
 "notes":[],
-"ref_id":"547X929I158",
-"level":"item",
+"ref_id":"VQKTG",
+"level":"subseries",
 "title":"Archival Object Title: 460",
 "resource":{ "ref":"/repositories/2/resources/186"}}' \
   "http://localhost:8089/repositories/2/archival_objects/1"
@@ -5384,7 +5380,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/archival_objects/1/accept_children?children=NXAKW&position=1"
+  "http://localhost:8089/repositories/2/archival_objects/1/accept_children?children=424F237JG&position=1"
 
 ```
 
@@ -6252,7 +6248,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"body_stream"' \
-  "http://localhost:8089/repositories/2/batch_imports?migration=BQEFE&skip_results=true"
+  "http://localhost:8089/repositories/2/batch_imports?migration=BS966GD&skip_results=true"
 
 ```
 
@@ -6330,7 +6326,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "path_from_root":[],
 "linked_records":[],
 "is_slug_auto":true,
-"identifier":"WQXGQ",
+"identifier":"R581MVN",
 "title":"Classification Title: 462",
 "description":"Description: 360",
 "classification":{ "ref":"/repositories/2/classifications/44"}}' \
@@ -6464,7 +6460,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "path_from_root":[],
 "linked_records":[],
 "is_slug_auto":true,
-"identifier":"WQXGQ",
+"identifier":"R581MVN",
 "title":"Classification Title: 462",
 "description":"Description: 360",
 "classification":{ "ref":"/repositories/2/classifications/44"}}' \
@@ -6687,7 +6683,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/classification_terms/1/accept_children?children=523MR233R&position=1"
+  "http://localhost:8089/repositories/2/classification_terms/1/accept_children?children=26935BAN&position=1"
 
 ```
 
@@ -6914,7 +6910,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "path_from_root":[],
 "linked_records":[],
 "is_slug_auto":true,
-"identifier":"F129T308P",
+"identifier":"F365R445J",
 "title":"Classification Title: 461",
 "description":"Description: 359"}' \
   "http://localhost:8089/repositories/2/classifications"
@@ -7120,7 +7116,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "path_from_root":[],
 "linked_records":[],
 "is_slug_auto":true,
-"identifier":"F129T308P",
+"identifier":"F365R445J",
 "title":"Classification Title: 461",
 "description":"Description: 359"}' \
   "http://localhost:8089/repositories/2/classifications/1"
@@ -7267,7 +7263,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/classifications/1/accept_children?children=U240FTI&position=1"
+  "http://localhost:8089/repositories/2/classifications/1/accept_children?children=X861TNA&position=1"
 
 ```
 
@@ -7414,7 +7410,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/node?node_uri=502HB17581&published_only=true"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/node?node_uri=C106L278537&published_only=true"
 
 ```
 
@@ -7713,7 +7709,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/waypoint?offset=1&parent_node=C99412G434&published_only=true"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/waypoint?offset=1&parent_node=J608YNF&published_only=true"
 
 ```
 
@@ -7887,7 +7883,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/component_transfers?target_resource=585912444651Q&component=749L197B721"
+  "http://localhost:8089/repositories/2/component_transfers?target_resource=8057VC797&component=388815HTK"
 
 ```
 
@@ -8131,10 +8127,10 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "file_versions":[],
 "is_slug_auto":true,
 "notes":[],
-"component_id":"YV699637323",
+"component_id":"230XDOA",
 "title":"Digital Object Component Title: 465",
 "digital_object":{ "ref":"/repositories/2/digital_objects/64"},
-"position":6,
+"position":3,
 "has_unpublished_ancestor":false}' \
   "http://localhost:8089/repositories/2/digital_object_components"
 
@@ -8273,10 +8269,10 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "file_versions":[],
 "is_slug_auto":true,
 "notes":[],
-"component_id":"YV699637323",
+"component_id":"230XDOA",
 "title":"Digital Object Component Title: 465",
 "digital_object":{ "ref":"/repositories/2/digital_objects/64"},
-"position":6,
+"position":3,
 "has_unpublished_ancestor":false}' \
   "http://localhost:8089/repositories/2/digital_object_components/1"
 
@@ -8497,7 +8493,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/digital_object_components/1/accept_children?children=F519K76V&position=1"
+  "http://localhost:8089/repositories/2/digital_object_components/1/accept_children?children=SYG774J&position=1"
 
 ```
 
@@ -8871,19 +8867,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
 "portion":"whole",
-"number":"5",
-"extent_type":"photographic_prints",
-"dimensions":"94V802381456",
-"physical_details":"CMG253942"}],
-"dates":[{ "jsonmodel_type":"date",
-"date_type":"range",
-"label":"creation",
-"begin":"1981-10-14",
-"end":"1981-10-14",
-"certainty":"inferred",
-"era":"ce",
-"calendar":"gregorian",
-"expression":"340432Q991U"}],
+"number":"47",
+"extent_type":"megabytes",
+"dimensions":"LQ218737Y",
+"physical_details":"P84CSU"}],
+"dates":[],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
@@ -8893,8 +8881,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "notes":[],
 "linked_instances":[],
 "title":"Digital Object Title: 464",
-"language":"lin",
-"digital_object_id":"245V858RJ"}' \
+"language":"phn",
+"digital_object_id":"868XOAA"}' \
   "http://localhost:8089/repositories/2/digital_objects"
 
 ```
@@ -9099,19 +9087,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
 "portion":"whole",
-"number":"5",
-"extent_type":"photographic_prints",
-"dimensions":"94V802381456",
-"physical_details":"CMG253942"}],
-"dates":[{ "jsonmodel_type":"date",
-"date_type":"range",
-"label":"creation",
-"begin":"1981-10-14",
-"end":"1981-10-14",
-"certainty":"inferred",
-"era":"ce",
-"calendar":"gregorian",
-"expression":"340432Q991U"}],
+"number":"47",
+"extent_type":"megabytes",
+"dimensions":"LQ218737Y",
+"physical_details":"P84CSU"}],
+"dates":[],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
@@ -9121,8 +9101,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "notes":[],
 "linked_instances":[],
 "title":"Digital Object Title: 464",
-"language":"lin",
-"digital_object_id":"245V858RJ"}' \
+"language":"phn",
+"digital_object_id":"868XOAA"}' \
   "http://localhost:8089/repositories/2/digital_objects/1"
 
 ```
@@ -9267,7 +9247,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/digital_objects/1/accept_children?children=OWCIK&position=1"
+  "http://localhost:8089/repositories/2/digital_objects/1/accept_children?children=SXS248X&position=1"
 
 ```
 
@@ -9554,7 +9534,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/digital_objects/1/transfer?target_repo=KAFXA"
+  "http://localhost:8089/repositories/2/digital_objects/1/transfer?target_repo=264278IN908"
 
 ```
 
@@ -9690,7 +9670,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/node?node_uri=AMG668824&published_only=true"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/node?node_uri=OVIYW&published_only=true"
 
 ```
 
@@ -9989,7 +9969,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/waypoint?offset=1&parent_node=F38SI954&published_only=true"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/waypoint?offset=1&parent_node=199355IQ878&published_only=true"
 
 ```
 
@@ -10241,7 +10221,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mets/1.xml?dmd=830GWWO"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mets/1.xml?dmd=789MT81149"
 
 ```
 
@@ -10412,20 +10392,20 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"event",
 "external_ids":[],
 "external_documents":[],
-"linked_agents":[{ "ref":"/agents/people/370",
+"linked_agents":[{ "ref":"/agents/people/371",
 "role":"transmitter"}],
 "linked_records":[{ "ref":"/repositories/2/accessions/119",
-"role":"requested"}],
+"role":"source"}],
 "date":{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"bulk",
 "label":"creation",
-"begin":"1993-05-04",
-"end":"1993-05-04",
+"begin":"1999-07-03",
+"end":"1999-07-03",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"673784377I209"},
-"event_type":"accession"}' \
+"expression":"802XN887E"},
+"event_type":"accumulation"}' \
   "http://localhost:8089/repositories/2/events"
 
 ```
@@ -10554,20 +10534,20 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"event",
 "external_ids":[],
 "external_documents":[],
-"linked_agents":[{ "ref":"/agents/people/370",
+"linked_agents":[{ "ref":"/agents/people/371",
 "role":"transmitter"}],
 "linked_records":[{ "ref":"/repositories/2/accessions/119",
-"role":"requested"}],
+"role":"source"}],
 "date":{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"bulk",
 "label":"creation",
-"begin":"1993-05-04",
-"end":"1993-05-04",
+"begin":"1999-07-03",
+"end":"1999-07-03",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"673784377I209"},
-"event_type":"accession"}' \
+"expression":"802XN887E"},
+"event_type":"accumulation"}' \
   "http://localhost:8089/repositories/2/events/1"
 
 ```
@@ -10860,7 +10840,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/archival_objects?ref_id=656564103770J&component_id=R300EON&resolve[]=[record_types, to_resolve]"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/archival_objects?ref_id=NL220HA&component_id=364Q870V875&resolve[]=[record_types, to_resolve]"
 
 ```
 
@@ -10950,7 +10930,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_object_components?component_id=EXDM939&resolve[]=[record_types, to_resolve]"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_object_components?component_id=Y619O311X&resolve[]=[record_types, to_resolve]"
 
 ```
 
@@ -11033,7 +11013,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_objects?digital_object_id=76152997NS&resolve[]=[record_types, to_resolve]"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_objects?digital_object_id=YAOGD&resolve[]=[record_types, to_resolve]"
 
 ```
 
@@ -11116,7 +11096,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/resources?identifier=967626U422393&resolve[]=[record_types, to_resolve]"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/resources?identifier=624259V590268&resolve[]=[record_types, to_resolve]"
 
 ```
 
@@ -11186,7 +11166,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "description":"Description: 365",
 "member_usernames":[],
 "grants_permissions":[],
-"group_code":"EL702491708"}' \
+"group_code":"682EDLA"}' \
   "http://localhost:8089/repositories/2/groups"
 
 ```
@@ -11257,7 +11237,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/groups?group_code=7H743CV"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/groups?group_code=T843782MO"
 
 ```
 
@@ -11341,7 +11321,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "description":"Description: 365",
 "member_usernames":[],
 "grants_permissions":[],
-"group_code":"EL702491708"}' \
+"group_code":"682EDLA"}' \
   "http://localhost:8089/repositories/2/groups/1?with_members=true"
 
 ```
@@ -11550,11 +11530,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"job",
 "status":"queued",
 "job":{ "jsonmodel_type":"import_job",
-"filenames":["UDYNC",
-"B142XIH",
-"VQDNS",
-"F455540543G"],
-"import_type":"ead_xml"}}' \
+"filenames":["U371448PA",
+"QLIV41",
+"VE329O37",
+"222134E439K"],
+"import_type":"eac_xml"}}' \
   "http://localhost:8089/repositories/2/jobs"
 
 ```
@@ -12310,7 +12290,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/jobs_with_files?job={"jsonmodel_type"=>"job", "status"=>"queued", "job"=>{"jsonmodel_type"=>"import_job", "filenames"=>["UDYNC", "B142XIH", "VQDNS", "F455540543G"], "import_type"=>"ead_xml"}}&files=UploadFile"
+  "http://localhost:8089/repositories/2/jobs_with_files?job={"jsonmodel_type"=>"job", "status"=>"queued", "job"=>{"jsonmodel_type"=>"import_job", "filenames"=>["U371448PA", "QLIV41", "VE329O37", "222134E439K"], "import_type"=>"eac_xml"}}&files=UploadFile"
 
 ```
 
@@ -12690,7 +12670,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/preferences/defaults?username=LO109Q408"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/preferences/defaults?username=WYB193717"
 
 ```
 
@@ -13100,7 +13080,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_descriptions/1.:fmt/metadata?fmt=CR109866T"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_descriptions/1.:fmt/metadata?fmt=210505I415263"
 
 ```
 
@@ -13576,60 +13556,60 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
 "portion":"whole",
-"number":"68",
-"extent_type":"terabytes",
-"dimensions":"AI18423V",
-"physical_details":"U504OXH"}],
+"number":"62",
+"extent_type":"cassettes",
+"dimensions":"V349AM690",
+"physical_details":"VDX501M"}],
 "dates":[{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"range",
 "label":"creation",
-"begin":"2015-03-27",
-"end":"2015-03-27",
+"begin":"1984-05-12",
+"end":"1984-05-12",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"UUGCV"},
+"expression":"NOFK80"},
 { "jsonmodel_type":"date",
 "date_type":"single",
 "label":"creation",
-"begin":"2007-08-24",
+"begin":"1980-07-10",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"MWG467273"}],
+"expression":"O375269H722"}],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
 "is_slug_auto":true,
 "restrictions":false,
 "revision_statements":[{ "jsonmodel_type":"revision_statement",
-"date":"A471227KD",
-"description":"ANDRN"}],
+"date":"NROW926",
+"description":"W774788283387"}],
 "instances":[{ "jsonmodel_type":"instance",
 "is_representative":false,
-"instance_type":"audio",
+"instance_type":"accession",
 "sub_container":{ "jsonmodel_type":"sub_container",
 "top_container":{ "ref":"/repositories/2/top_containers/211"},
-"type_2":"object",
-"indicator_2":"Q82UD63",
+"type_2":"case",
+"indicator_2":"DQI397W",
 "type_3":"box",
-"indicator_3":"64YE8E"}}],
+"indicator_3":"M698806O851"}}],
 "deaccessions":[],
 "related_accessions":[],
 "classifications":[],
 "notes":[],
 "title":"Resource Title: <emph render='italic'>163</emph>",
-"id_0":"D587VTJ",
-"level":"class",
-"language":"men",
-"ead_id":"179LC382C",
-"finding_aid_date":"H467N736655",
-"finding_aid_series_statement":"EC120RS",
-"finding_aid_language":"peo",
-"finding_aid_script":"Loma",
-"finding_aid_language_note":"JWT893C",
-"finding_aid_note":"Q287926577L",
-"ead_location":"TNMFI"}' \
+"id_0":"817C370F551",
+"level":"subseries",
+"language":"hrv",
+"ead_id":"US274591723",
+"finding_aid_date":"XKABB",
+"finding_aid_series_statement":"U548BCW",
+"finding_aid_language":"nyn",
+"finding_aid_script":"Qabx",
+"finding_aid_language_note":"B85174457946",
+"finding_aid_note":"727487P696G",
+"ead_location":"587FLE75"}' \
   "http://localhost:8089/repositories/2/resources"
 
 ```
@@ -13834,60 +13814,60 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
 "portion":"whole",
-"number":"68",
-"extent_type":"terabytes",
-"dimensions":"AI18423V",
-"physical_details":"U504OXH"}],
+"number":"62",
+"extent_type":"cassettes",
+"dimensions":"V349AM690",
+"physical_details":"VDX501M"}],
 "dates":[{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"range",
 "label":"creation",
-"begin":"2015-03-27",
-"end":"2015-03-27",
+"begin":"1984-05-12",
+"end":"1984-05-12",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"UUGCV"},
+"expression":"NOFK80"},
 { "jsonmodel_type":"date",
 "date_type":"single",
 "label":"creation",
-"begin":"2007-08-24",
+"begin":"1980-07-10",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"MWG467273"}],
+"expression":"O375269H722"}],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
 "is_slug_auto":true,
 "restrictions":false,
 "revision_statements":[{ "jsonmodel_type":"revision_statement",
-"date":"A471227KD",
-"description":"ANDRN"}],
+"date":"NROW926",
+"description":"W774788283387"}],
 "instances":[{ "jsonmodel_type":"instance",
 "is_representative":false,
-"instance_type":"audio",
+"instance_type":"accession",
 "sub_container":{ "jsonmodel_type":"sub_container",
 "top_container":{ "ref":"/repositories/2/top_containers/211"},
-"type_2":"object",
-"indicator_2":"Q82UD63",
+"type_2":"case",
+"indicator_2":"DQI397W",
 "type_3":"box",
-"indicator_3":"64YE8E"}}],
+"indicator_3":"M698806O851"}}],
 "deaccessions":[],
 "related_accessions":[],
 "classifications":[],
 "notes":[],
 "title":"Resource Title: <emph render='italic'>163</emph>",
-"id_0":"D587VTJ",
-"level":"class",
-"language":"men",
-"ead_id":"179LC382C",
-"finding_aid_date":"H467N736655",
-"finding_aid_series_statement":"EC120RS",
-"finding_aid_language":"peo",
-"finding_aid_script":"Loma",
-"finding_aid_language_note":"JWT893C",
-"finding_aid_note":"Q287926577L",
-"ead_location":"TNMFI"}' \
+"id_0":"817C370F551",
+"level":"subseries",
+"language":"hrv",
+"ead_id":"US274591723",
+"finding_aid_date":"XKABB",
+"finding_aid_series_statement":"U548BCW",
+"finding_aid_language":"nyn",
+"finding_aid_script":"Qabx",
+"finding_aid_language_note":"B85174457946",
+"finding_aid_note":"727487P696G",
+"ead_location":"587FLE75"}' \
   "http://localhost:8089/repositories/2/resources/1"
 
 ```
@@ -14032,7 +14012,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/resources/1/accept_children?children=654Y956FQ&position=1"
+  "http://localhost:8089/repositories/2/resources/1/accept_children?children=354IAEU&position=1"
 
 ```
 
@@ -14500,7 +14480,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/resources/1/transfer?target_repo=OQ505WH"
+  "http://localhost:8089/repositories/2/resources/1/transfer?target_repo=N317430VD"
 
 ```
 
@@ -14571,7 +14551,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree?limit_to=BWTP546"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree?limit_to=IXA432313"
 
 ```
 
@@ -14658,7 +14638,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/node?node_uri=477MSPP&published_only=true"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/node?node_uri=VMOAK&published_only=true"
 
 ```
 
@@ -14957,7 +14937,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/waypoint?offset=1&parent_node=194503BXK&published_only=true"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/waypoint?offset=1&parent_node=I674D640V&published_only=true"
 
 ```
 
@@ -15247,7 +15227,7 @@ __Returns__
 ```shell
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"296K547T55"' \
+  -d '"MAWJB"' \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -15255,15 +15235,15 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"410WYAC"' \
+  -d '"262DXWC"' \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"419D493C848"' \
+  -d '"GI622HO"' \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"BR154889W"' \
+  -d '"X168X824S"' \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -15275,7 +15255,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"OBWV538"' \
+  -d '"865356573LJ"' \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -15283,11 +15263,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"R483992AR"' \
+  -d '"FP971R491"' \
   "http://localhost:8089/repositories/2/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"288DYEM"' \
+  -d '"903P729SG"' \
   "http://localhost:8089/repositories/2/search"
   
 
@@ -15432,12 +15412,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "container_locations":[],
 "series":[],
 "collection":[],
-"indicator":"ROX955F",
+"indicator":"OFJ626P",
 "type":"box",
-"barcode":"2d8bb42bb31e4dc8d0bd0406534bfc7f",
-"ils_holding_id":"JXG519N",
-"ils_item_id":"603203HCY",
-"exported_to_ils":"2019-08-28T09:20:33-07:00"}' \
+"barcode":"acc5dd7147547cdd8b9420b5736eeb64",
+"ils_holding_id":"OVF860922",
+"ils_item_id":"JOOXE",
+"exported_to_ils":"2019-08-28T11:15:07-07:00"}' \
   "http://localhost:8089/repositories/2/top_containers"
 
 ```
@@ -15566,12 +15546,12 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "container_locations":[],
 "series":[],
 "collection":[],
-"indicator":"ROX955F",
+"indicator":"OFJ626P",
 "type":"box",
-"barcode":"2d8bb42bb31e4dc8d0bd0406534bfc7f",
-"ils_holding_id":"JXG519N",
-"ils_item_id":"603203HCY",
-"exported_to_ils":"2019-08-28T09:20:33-07:00"}' \
+"barcode":"acc5dd7147547cdd8b9420b5736eeb64",
+"ils_holding_id":"OVF860922",
+"ils_item_id":"JOOXE",
+"exported_to_ils":"2019-08-28T11:15:07-07:00"}' \
   "http://localhost:8089/repositories/2/top_containers/1"
 
 ```
@@ -15781,7 +15761,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/top_containers/batch/container_profile?ids=1&container_profile_uri=690IX225L"
+  "http://localhost:8089/repositories/2/top_containers/batch/container_profile?ids=1&container_profile_uri=940R309G711"
 
 ```
 
@@ -15860,7 +15840,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/top_containers/batch/ils_holding_id?ids=1&ils_holding_id=PO58QB"
+  "http://localhost:8089/repositories/2/top_containers/batch/ils_holding_id?ids=1&ils_holding_id=C30AAK"
 
 ```
 
@@ -16008,7 +15988,7 @@ __Returns__
   
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"EKS478B"' \
+  -d '"OQFTX"' \
   "http://localhost:8089/repositories/2/top_containers/bulk/barcodes"
 
 ```
@@ -16068,7 +16048,7 @@ __Returns__
   
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"341R16MD"' \
+  -d '"KTCIP"' \
   "http://localhost:8089/repositories/2/top_containers/bulk/locations"
 
 ```
@@ -16255,7 +16235,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers/search?q=G859Q92569&aq=["Example Missing"]&type=506Q468Q942&sort=M751887WD&facet=U409DHW&facet_mincount=1&filter=["Example Missing"]&exclude=W188D440N&hl=true&root_record=B704344O289&dt=757IJ452L"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers/search?q=DIX292923&aq=["Example Missing"]&type=V549G644W&sort=907YA594V&facet=MXY617B&facet_mincount=1&filter=["Example Missing"]&exclude=CWOV324&hl=true&root_record=921963613KS&dt=766490LIW"
 
 ```
 
@@ -16393,7 +16373,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/transfer?target_repo=874IQL169"
+  "http://localhost:8089/repositories/2/transfer?target_repo=XAB400S"
 
 ```
 
@@ -16777,7 +16757,7 @@ __Returns__
 ```shell
   
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"U468DNR"' \
+  -d '"53OELC"' \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -16785,15 +16765,15 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"G119R588V"' \
+  -d '"AR50X553"' \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"N548D5798"' \
+  -d '"X854BRV"' \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"IEGFG"' \
+  -d '"GFVKG"' \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -16805,7 +16785,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"RPA664273"' \
+  -d '"JDFLO"' \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -16813,11 +16793,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"CY145QW"' \
+  -d '"PI813XL"' \
   "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"M124UNJ"' \
+  -d '"MRCVC"' \
   "http://localhost:8089/search"
   
 
@@ -17139,7 +17119,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/published_tree?node_uri=E987Y312Q"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/published_tree?node_uri=DD13RN"
 
 ```
 
@@ -17204,12 +17184,12 @@ __Returns__
 ```shell
   
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"597WFR761"' \
-  "http://localhost:8089/search/record_types_by_repository?record_types=597WFR761&repo_uri=402H673QW"
+  -d '"583A61714449"' \
+  "http://localhost:8089/search/record_types_by_repository?record_types=583A61714449&repo_uri=164198RSR"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"402H673QW"' \
-  "http://localhost:8089/search/record_types_by_repository?record_types=597WFR761&repo_uri=402H673QW"
+  -d '"164198RSR"' \
+  "http://localhost:8089/search/record_types_by_repository?record_types=583A61714449&repo_uri=164198RSR"
   
 
 ```
@@ -17278,12 +17258,12 @@ __Returns__
 ```shell
   
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"Y219903D283"' \
-  "http://localhost:8089/search/records?uri=Y219903D283&resolve[]=[record_types, to_resolve]"
+  -d '"361996R382J"' \
+  "http://localhost:8089/search/records?uri=361996R382J&resolve[]=[record_types, to_resolve]"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"QORYC"' \
-  "http://localhost:8089/search/records?uri=Y219903D283&resolve[]=[record_types, to_resolve]"
+  -d '"XEBJ262"' \
+  "http://localhost:8089/search/records?uri=361996R382J&resolve[]=[record_types, to_resolve]"
   
 
 ```
@@ -17393,7 +17373,7 @@ __Returns__
 ```shell
   
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"824ACLS"' \
+  -d '"RIPOC"' \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -17401,15 +17381,15 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"967P185AS"' \
+  -d '"DK810Y550"' \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"559HUKG"' \
+  -d '"YAO463N"' \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"527961K407R"' \
+  -d '"B34034MB"' \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -17421,7 +17401,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"MIX783128"' \
+  -d '"595IIPF"' \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -17429,11 +17409,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"M591EJV"' \
+  -d '"32V846S627"' \
   "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"36397YQG"' \
+  -d '"IB864LJ"' \
   "http://localhost:8089/search/repositories"
   
 
@@ -17620,7 +17600,7 @@ __Returns__
 ```shell
   
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"ERINX"' \
+  -d '"ABI815796"' \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -17628,15 +17608,15 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"JW25I256"' \
+  -d '"DMM344R"' \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"429922737B119"' \
+  -d '"590XMWR"' \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"609USBW"' \
+  -d '"8767624GD"' \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -17648,7 +17628,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"TUYEV"' \
+  -d '"NYTRL"' \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
@@ -17656,11 +17636,11 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"849553354ET"' \
+  -d '"905NS202324"' \
   "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"HCP557H"' \
+  -d '"LTBY806"' \
   "http://localhost:8089/search/subjects"
   
 
@@ -17953,7 +17933,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_building?container_profile_uri=161286F56417&building=973355678CL&floor=IXOEA&room=F642QRM&area=JR945541T"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_building?container_profile_uri=BS108U877&building=549A116KX&floor=L648BE510&room=453JET102&area=ECDIC"
 
 ```
 
@@ -18038,7 +18018,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_location?container_profile_uri=324C513SJ&location_uris=CYKYL"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_location?container_profile_uri=665F63VH&location_uris=LONPC"
 
 ```
 
@@ -18091,13 +18071,13 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_published_repositories":[],
 "terms":[{ "jsonmodel_type":"term",
 "term":"Term 135",
-"term_type":"function",
+"term_type":"topical",
 "vocabulary":"/vocabularies/162"}],
 "external_documents":[],
 "vocabulary":"/vocabularies/163",
 "authority_id":"http://www.example-620.com",
-"scope_note":"619GJ441174",
-"source":"rbgenr"}' \
+"scope_note":"STJGB",
+"source":"gmgpc"}' \
   "http://localhost:8089/subjects"
 
 ```
@@ -18203,13 +18183,13 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_published_repositories":[],
 "terms":[{ "jsonmodel_type":"term",
 "term":"Term 135",
-"term_type":"function",
+"term_type":"topical",
 "vocabulary":"/vocabularies/162"}],
 "external_documents":[],
 "vocabulary":"/vocabularies/163",
 "authority_id":"http://www.example-620.com",
-"scope_note":"619GJ441174",
-"source":"rbgenr"}' \
+"scope_note":"STJGB",
+"source":"gmgpc"}' \
   "http://localhost:8089/subjects/1"
 
 ```
@@ -18346,7 +18326,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/terms?q=HGKGH"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/terms?q=WKOWT"
 
 ```
 
@@ -18536,8 +18516,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "groups":[],
 "is_admin":false,
 "username":"username_22",
-"name":"Name Number 698"}' \
-  "http://localhost:8089/users?password=FR749HV&groups=998GY233A"
+"name":"Name Number 699"}' \
+  "http://localhost:8089/users?password=HWRQM&groups=U11545563207"
 
 ```
 
@@ -18705,8 +18685,8 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "groups":[],
 "is_admin":false,
 "username":"username_22",
-"name":"Name Number 698"}' \
-  "http://localhost:8089/users/1?password=905938BHY"
+"name":"Name Number 699"}' \
+  "http://localhost:8089/users/1?password=O445865IQ"
 
 ```
 
@@ -18837,7 +18817,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/users/1/groups?groups=E188W19244&remove_groups=true"
+  "http://localhost:8089/users/1/groups?groups=ON109QN&remove_groups=true"
 
 ```
 
@@ -18965,7 +18945,7 @@ __Returns__
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/users/1/login?password=KF216511Q&expiring=true"
+  "http://localhost:8089/users/1/login?password=YN4230820&expiring=true"
 
 ```
 
@@ -19028,7 +19008,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users/complete?query=HT20F201"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users/complete?query=123PA193949"
 
 ```
 
@@ -19188,7 +19168,7 @@ __Returns__
   
   
 ```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/vocabularies?ref_id=Y38VSI"
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/vocabularies?ref_id=NUK502166"
 
 ```
 
