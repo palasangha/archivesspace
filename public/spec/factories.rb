@@ -90,6 +90,8 @@ module AspaceFactories
       sequence(:xlink_show_attribute) {  ["new", "replace", "embed", "other", "none"].sample }
       sequence(:file_format) { %w[aiff avi gif jpeg mp3 pdf tiff txt].sample }
 
+      sequence(:finding_aid_language) { sample(JSONModel(:resource).schema['properties']['finding_aid_language']) }
+      sequence(:finding_aid_script) { sample(JSONModel(:resource).schema['properties']['finding_aid_script']) }
 
       sequence(:name_rule) {  ["local", "aacr", "dacs", "rda"].sample }
       sequence(:name_source) { ["local", "naf", "nad", "ulan"].sample }
@@ -174,6 +176,21 @@ module AspaceFactories
         dates { [build(:date)] }
         level { "collection" }
         language { "eng" }
+        finding_aid_language {  [generate(:finding_aid_language)].sample  }
+        finding_aid_script {  [generate(:finding_aid_script)].sample  }
+        finding_aid_language_note { nil_or_whatever }
+      end
+
+      factory :resource_with_scope, class: JSONModel(:resource) do
+        title { generate :resource_title }
+        id_0 { generate :id_0 }
+        extents { [build(:extent)] }
+        dates { [build(:date)] }
+        level { "collection" }
+        language { "eng" }
+        finding_aid_language {  [generate(:finding_aid_language)].sample  }
+        finding_aid_script {  [generate(:finding_aid_script)].sample  }
+        notes { [build(:json_note_multipart)] }
       end
 
       factory :archival_object, class: JSONModel(:archival_object) do
@@ -238,6 +255,16 @@ module AspaceFactories
           "colTitle" => "DEFAULT TITLE",
           "colLevel" => "item"
         } }
+      end
+
+      factory :json_note_multipart, class: JSONModel(:note_multipart) do
+        type { 'scopecontent' }
+        subnotes { [ build(:json_note_text, :publish => true) ] }
+        publish { true } 
+      end
+
+      factory :json_note_text, class: JSONModel(:note_text) do
+        content { generate(:alphanumstr) }
       end
 
       factory :name_person, class: JSONModel(:name_person) do

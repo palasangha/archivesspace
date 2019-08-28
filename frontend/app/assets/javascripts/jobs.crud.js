@@ -72,7 +72,7 @@ var init = function() {
 >>>>>>> get rid of unneccesary code
     };
 
-    var initPrintToPdfJobForm = function() {
+    var initSourceJobForm = function() {
         $("#job_ref_").attr("name", "job[source]").attr("id", "job_source_");
     };
 
@@ -290,8 +290,13 @@ var init = function() {
         });
 
         ua = navigator.userAgent;
-        if (ua.indexOf("MSIE") > -1 || ua.indexOf("Trident") > -1 || ua.indexOf("Edge") > -1) {
-            console.log("Using IE");
+        if (ua.indexOf("MSIE") > -1 || ua.indexOf("Trident") > -1 || ua.indexOf("Edge") > -1 || (ua.indexOf('Safari') != -1 && ua.indexOf('Chrome') == -1)) {
+          if (ua.indexOf('Safari') != -1 && ua.indexOf('Chrome') == -1) {
+             console.log("Using Safari");
+             $form[0].setAttribute("onsubmit", "return false");
+          } else {
+             console.log("Using IE");
+          }
             $(".btn:submit").click(function(event) {
                 $form.ajaxSubmit({
                     type: "POST",
@@ -368,8 +373,10 @@ var init = function() {
 
     if (type == "report_job") {
         initReportJobForm();
+    } else if (type == "container_labels_job") {
+        initSourceJobForm();
     } else if (type == "print_to_pdf_job") {
-        initPrintToPdfJobForm();
+        initSourceJobForm();
     } else if (type == "find_and_replace_job") {
         initFindAndReplaceJobForm();
     } else if (type == "import_job") {

@@ -591,7 +591,9 @@ FactoryBot.define do
     ead_id { nil_or_whatever }
     finding_aid_date { generate(:alphanumstr) }
     finding_aid_series_statement { generate(:alphanumstr) }
-    finding_aid_language { nil_or_whatever }
+    finding_aid_language {  [generate(:finding_aid_language)].sample  }
+    finding_aid_script {  [generate(:finding_aid_script)].sample  }
+    finding_aid_language_note { nil_or_whatever }
     finding_aid_note { generate(:alphanumstr) }
     ead_location { generate(:alphanumstr) }
     instances { [ build(:json_instance) ] }
@@ -609,7 +611,9 @@ FactoryBot.define do
     ead_id { nil_or_whatever }
     finding_aid_date { generate(:alphanumstr) }
     finding_aid_series_statement { generate(:alphanumstr) }
-    finding_aid_language { nil_or_whatever }
+    finding_aid_language {  [generate(:finding_aid_language)].sample  }
+    finding_aid_script {  [generate(:finding_aid_script)].sample  }
+    finding_aid_language_note { nil_or_whatever }
     finding_aid_note { generate(:alphanumstr) }
     ead_location { generate(:alphanumstr) }
     instances { [ build(:json_instance) ] }
@@ -731,6 +735,10 @@ FactoryBot.define do
   factory :json_import_job, class: JSONModel(:import_job) do
     import_type { ['marcxml', 'ead_xml', 'eac_xml'].sample }
     filenames { (0..3).map { generate(:alphanumstr) } }
+  end
+
+  factory :json_container_labels_job, class: JSONModel(:container_labels_job) do
+    source  { create(:json_resource).uri }
   end
 
   factory :json_print_to_pdf_job, class: JSONModel(:print_to_pdf_job) do

@@ -168,7 +168,7 @@ Set to true if you have enabled MySQL binary logging.
 Set Solr back up schedule. By default, Solr backups will run at midnight.  See https://crontab.guru/ for
  information about the schedule syntax.
 
-`AppConfig[:solr_backup_schedule] = "0 * * * *"`
+`AppConfig[:solr_backup_schedule] = "0 0 * * *"`
 
 
 #### `AppConfig[:solr_backup_number_to_keep]`
@@ -1121,7 +1121,7 @@ AppConfig[:pui_hide][:search_tab] = false
 
 The following determine globally whether the various "badges" appear on the Repository page
 can be overriden at repository level below (e.g.:
-`AppConfig[:pui_repos][{repo_code}][:hide][:counts] = true`
+`AppConfig[:repos][{repo_code}][:hide][:counts] = true`
 
 ```
 AppConfig[:pui_hide][:resource_badge] = false

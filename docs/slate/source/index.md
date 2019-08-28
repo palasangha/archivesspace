@@ -1,9 +1,11 @@
 ---
+
+
 title: API Reference
 
 language_tabs:
   - shell
-
+  - python
 toc_footers:
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
@@ -165,66 +167,74 @@ The JSON that is returned will have a session key, which can be stored and used
 for other requests. Sessions will expire after an hour, although you can change this in your config.rb file.
 
 # ArchivesSpace REST API
-As of 2019-01-14 08:02:07 -0800 the following REST endpoints exist in the master branch of the development repository:
+As of 2019-05-29 15:58:37 -0700 the following REST endpoints exist in the master branch of the development repository:
 
 
 ## Create a corporate entity agent
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_corporate_entity",
 "agent_contacts":[{ "jsonmodel_type":"agent_contact",
 "telephones":[{ "jsonmodel_type":"telephone",
-"number_type":"business",
-"number":"5876 0048 068",
-"ext":"254CWR583"}],
-"name":"Name Number 599",
-"address_2":"428GB682817",
-"address_3":"235GKJ13",
-"city":"J251I602552",
-"region":"745WQQE",
-"email":"YDR330V",
-"note":"YT861534Y"}],
+"number_type":"fax",
+"number":"546 546 2178 065"}],
+"name":"Name Number 684",
+"address_1":"VOKBB",
+"address_2":"I186TUU",
+"city":"713717CRA",
+"region":"847700C859L",
+"country":"41RYIG",
+"post_code":"J113WUE",
+"email":"E318Y415I",
+"note":"GNJDA"}],
 "linked_agent_roles":[],
 "external_documents":[],
 "notes":[],
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"single",
 "label":"existence",
-"begin":"1996-04-07",
-"end":"1996-04-07",
+"begin":"2015-12-17",
+"end":"2015-12-17",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"K205WUC"}],
+"expression":"THN219B"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_corporate_entity",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"local",
-"primary_name":"Name Number 598",
-"subordinate_name_1":"617OSTQ",
-"subordinate_name_2":"Y101S991J",
-"number":"740516MJ498",
-"sort_name":"SORT j - 516",
-"dates":"SFTX846",
-"qualifier":"UKDQG",
-"authority_id":"http://www.example-563.com",
-"source":"naf"}],
+"rules":"dacs",
+"primary_name":"Name Number 683",
+"subordinate_name_1":"324483BYA",
+"subordinate_name_2":"O795MB953",
+"number":"EFU672V",
+"sort_name":"SORT y - 585",
+"dates":"A980FCF",
+"qualifier":"Q832HI831",
+"authority_id":"http://www.example-607.com",
+"source":"nad"}],
 "related_agents":[],
 "agent_type":"agent_corporate_entity"}' \
   "http://localhost:8089/agents/corporate_entities"
 
 ```
+
 
 __Endpoint__
 
@@ -234,9 +244,15 @@ __Description__
 
 Create a corporate entity agent
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:agent_corporate_entity) <request body> -- The record to create
 
 __Returns__
@@ -254,18 +270,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/corporate_entities?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/corporate_entities?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/corporate_entities?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -275,6 +289,7 @@ __Description__
 
 List all corporate entity agents
 
+
 __Parameters__
 
 <aside class="notice">
@@ -282,7 +297,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -298,59 +313,73 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_corporate_entity",
 "agent_contacts":[{ "jsonmodel_type":"agent_contact",
 "telephones":[{ "jsonmodel_type":"telephone",
-"number_type":"business",
-"number":"5876 0048 068",
-"ext":"254CWR583"}],
-"name":"Name Number 599",
-"address_2":"428GB682817",
-"address_3":"235GKJ13",
-"city":"J251I602552",
-"region":"745WQQE",
-"email":"YDR330V",
-"note":"YT861534Y"}],
+"number_type":"fax",
+"number":"546 546 2178 065"}],
+"name":"Name Number 684",
+"address_1":"VOKBB",
+"address_2":"I186TUU",
+"city":"713717CRA",
+"region":"847700C859L",
+"country":"41RYIG",
+"post_code":"J113WUE",
+"email":"E318Y415I",
+"note":"GNJDA"}],
 "linked_agent_roles":[],
 "external_documents":[],
 "notes":[],
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"inclusive",
+"date_type":"single",
 "label":"existence",
-"begin":"1996-04-07",
-"end":"1996-04-07",
+"begin":"2015-12-17",
+"end":"2015-12-17",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"K205WUC"}],
+"expression":"THN219B"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_corporate_entity",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"local",
-"primary_name":"Name Number 598",
-"subordinate_name_1":"617OSTQ",
-"subordinate_name_2":"Y101S991J",
-"number":"740516MJ498",
-"sort_name":"SORT j - 516",
-"dates":"SFTX846",
-"qualifier":"UKDQG",
-"authority_id":"http://www.example-563.com",
-"source":"naf"}],
+"rules":"dacs",
+"primary_name":"Name Number 683",
+"subordinate_name_1":"324483BYA",
+"subordinate_name_2":"O795MB953",
+"number":"EFU672V",
+"sort_name":"SORT y - 585",
+"dates":"A980FCF",
+"qualifier":"Q832HI831",
+"authority_id":"http://www.example-607.com",
+"source":"nad"}],
 "related_agents":[],
 "agent_type":"agent_corporate_entity"}' \
   "http://localhost:8089/agents/corporate_entities/1"
 
 ```
+
 
 __Endpoint__
 
@@ -360,11 +389,18 @@ __Description__
 
 Update a corporate entity agent
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:agent_corporate_entity) <request body> -- The updated record
 
 __Returns__
@@ -381,6 +417,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -389,13 +431,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/corporate_entities/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -405,11 +451,18 @@ __Description__
 
 Get a corporate entity by ID
 
+
 __Parameters__
 
-
-	Integer id -- ID of the corporate entity agent
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -425,13 +478,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/agents/corporate_entities/1"
 
 ```
+
 
 __Endpoint__
 
@@ -441,11 +500,13 @@ __Description__
 
 Delete a corporate entity agent
 
+
 __Parameters__
 
-
-	Integer id -- ID of the corporate entity agent
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -457,10 +518,15 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_family",
@@ -471,32 +537,34 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"bulk",
+"date_type":"inclusive",
 "label":"existence",
-"begin":"2005-07-11",
-"end":"2005-07-11",
+"begin":"1987-04-18",
+"end":"1987-04-18",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"MF772233T"}],
+"expression":"F100Q919963"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_family",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"aacr",
-"family_name":"Name Number 600",
-"sort_name":"SORT d - 517",
-"dates":"CXHJC",
-"qualifier":"90UQS649",
-"prefix":"41012LNO",
-"authority_id":"http://www.example-564.com",
+"rules":"rda",
+"family_name":"Name Number 685",
+"sort_name":"SORT k - 586",
+"dates":"V969CIO",
+"qualifier":"708105HQQ",
+"prefix":"204DK459Y",
+"authority_id":"http://www.example-608.com",
 "source":"naf"}],
 "related_agents":[],
 "agent_type":"agent_family"}' \
   "http://localhost:8089/agents/families"
 
 ```
+
 
 __Endpoint__
 
@@ -506,9 +574,15 @@ __Description__
 
 Create a family agent
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:agent_family) <request body> -- The record to create
 
 __Returns__
@@ -526,18 +600,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/families?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/families?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/families?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -547,6 +619,7 @@ __Description__
 
 List all family agents
 
+
 __Parameters__
 
 <aside class="notice">
@@ -554,7 +627,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -570,10 +643,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_family",
@@ -584,32 +668,34 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"bulk",
+"date_type":"inclusive",
 "label":"existence",
-"begin":"2005-07-11",
-"end":"2005-07-11",
+"begin":"1987-04-18",
+"end":"1987-04-18",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"MF772233T"}],
+"expression":"F100Q919963"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_family",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"aacr",
-"family_name":"Name Number 600",
-"sort_name":"SORT d - 517",
-"dates":"CXHJC",
-"qualifier":"90UQS649",
-"prefix":"41012LNO",
-"authority_id":"http://www.example-564.com",
+"rules":"rda",
+"family_name":"Name Number 685",
+"sort_name":"SORT k - 586",
+"dates":"V969CIO",
+"qualifier":"708105HQQ",
+"prefix":"204DK459Y",
+"authority_id":"http://www.example-608.com",
 "source":"naf"}],
 "related_agents":[],
 "agent_type":"agent_family"}' \
   "http://localhost:8089/agents/families/1"
 
 ```
+
 
 __Endpoint__
 
@@ -619,11 +705,18 @@ __Description__
 
 Update a family agent
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:agent_family) <request body> -- The updated record
 
 __Returns__
@@ -640,6 +733,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -648,13 +747,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/families/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -664,11 +767,18 @@ __Description__
 
 Get a family by ID
 
+
 __Parameters__
 
-
-	Integer id -- ID of the family agent
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -684,13 +794,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/agents/families/1"
 
 ```
+
 
 __Endpoint__
 
@@ -700,11 +816,13 @@ __Description__
 
 Delete an agent family
 
+
 __Parameters__
 
-
-	Integer id -- ID of the family agent
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -716,10 +834,15 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_person",
@@ -730,38 +853,39 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"bulk",
+"date_type":"inclusive",
 "label":"existence",
-"begin":"2000-05-02",
-"end":"2000-05-02",
+"begin":"1971-11-28",
+"end":"1971-11-28",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"MWVWF"}],
+"expression":"V269B526K"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_person",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"local",
-"source":"nad",
-"primary_name":"Name Number 601",
-"sort_name":"SORT c - 518",
-"name_order":"direct",
-"number":"332PR682K",
-"dates":"FOQ456V",
-"qualifier":"KD319DV",
-"fuller_form":"WJBHR",
-"prefix":"KFOSQ",
-"title":"986836QX382",
-"suffix":"HQGR648",
-"rest_of_name":"U512154PG",
-"authority_id":"http://www.example-565.com"}],
+"rules":"aacr",
+"source":"local",
+"primary_name":"Name Number 686",
+"sort_name":"SORT c - 587",
+"name_order":"inverted",
+"number":"X270248FE",
+"dates":"UMLJG",
+"qualifier":"D256VJ704",
+"fuller_form":"401122ORP",
+"prefix":"X577798FV",
+"suffix":"AOUXH",
+"rest_of_name":"447Y495K399",
+"authority_id":"http://www.example-609.com"}],
 "related_agents":[],
 "agent_type":"agent_person"}' \
   "http://localhost:8089/agents/people"
 
 ```
+
 
 __Endpoint__
 
@@ -771,9 +895,15 @@ __Description__
 
 Create a person agent
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:agent_person) <request body> -- The record to create
 
 __Returns__
@@ -791,18 +921,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/people?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/people?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/people?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -812,6 +940,7 @@ __Description__
 
 List all person agents
 
+
 __Parameters__
 
 <aside class="notice">
@@ -819,7 +948,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -835,10 +964,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_person",
@@ -849,38 +989,39 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "dates_of_existence":[{ "jsonmodel_type":"date",
-"date_type":"bulk",
+"date_type":"inclusive",
 "label":"existence",
-"begin":"2000-05-02",
-"end":"2000-05-02",
+"begin":"1971-11-28",
+"end":"1971-11-28",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"MWVWF"}],
+"expression":"V269B526K"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_person",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"local",
-"source":"nad",
-"primary_name":"Name Number 601",
-"sort_name":"SORT c - 518",
-"name_order":"direct",
-"number":"332PR682K",
-"dates":"FOQ456V",
-"qualifier":"KD319DV",
-"fuller_form":"WJBHR",
-"prefix":"KFOSQ",
-"title":"986836QX382",
-"suffix":"HQGR648",
-"rest_of_name":"U512154PG",
-"authority_id":"http://www.example-565.com"}],
+"rules":"aacr",
+"source":"local",
+"primary_name":"Name Number 686",
+"sort_name":"SORT c - 587",
+"name_order":"inverted",
+"number":"X270248FE",
+"dates":"UMLJG",
+"qualifier":"D256VJ704",
+"fuller_form":"401122ORP",
+"prefix":"X577798FV",
+"suffix":"AOUXH",
+"rest_of_name":"447Y495K399",
+"authority_id":"http://www.example-609.com"}],
 "related_agents":[],
 "agent_type":"agent_person"}' \
   "http://localhost:8089/agents/people/1"
 
 ```
+
 
 __Endpoint__
 
@@ -890,11 +1031,18 @@ __Description__
 
 Update a person agent
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:agent_person) <request body> -- The updated record
 
 __Returns__
@@ -911,6 +1059,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -919,13 +1073,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/people/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -935,11 +1093,18 @@ __Description__
 
 Get a person by ID
 
+
 __Parameters__
 
-
-	Integer id -- ID of the person agent
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -955,13 +1120,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/agents/people/1"
 
 ```
+
 
 __Endpoint__
 
@@ -971,11 +1142,13 @@ __Description__
 
 Delete an agent person
 
+
 __Parameters__
 
-
-	Integer id -- ID of the person agent
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -987,10 +1160,15 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_software",
@@ -1003,24 +1181,26 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"range",
 "label":"existence",
-"begin":"2006-09-17",
-"end":"2006-09-17",
+"begin":"2014-04-01",
+"end":"2014-04-01",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"T888GFE"}],
+"expression":"298HSQV"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_software",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"dacs",
-"software_name":"Name Number 602",
-"sort_name":"SORT y - 519"}],
+"rules":"local",
+"software_name":"Name Number 687",
+"sort_name":"SORT r - 588"}],
 "agent_type":"agent_software"}' \
   "http://localhost:8089/agents/software"
 
 ```
+
 
 __Endpoint__
 
@@ -1030,9 +1210,15 @@ __Description__
 
 Create a software agent
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:agent_software) <request body> -- The record to create
 
 __Returns__
@@ -1050,18 +1236,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/software?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/software?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/software?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1071,6 +1255,7 @@ __Description__
 
 List all software agents
 
+
 __Parameters__
 
 <aside class="notice">
@@ -1078,7 +1263,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -1094,10 +1279,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"agent_software",
@@ -1110,24 +1306,26 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "dates_of_existence":[{ "jsonmodel_type":"date",
 "date_type":"range",
 "label":"existence",
-"begin":"2006-09-17",
-"end":"2006-09-17",
+"begin":"2014-04-01",
+"end":"2014-04-01",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"T888GFE"}],
+"expression":"298HSQV"}],
+"is_slug_auto":true,
 "names":[{ "jsonmodel_type":"name_software",
 "use_dates":[],
 "authorized":false,
 "is_display_name":false,
 "sort_name_auto_generate":true,
-"rules":"dacs",
-"software_name":"Name Number 602",
-"sort_name":"SORT y - 519"}],
+"rules":"local",
+"software_name":"Name Number 687",
+"sort_name":"SORT r - 588"}],
 "agent_type":"agent_software"}' \
   "http://localhost:8089/agents/software/1"
 
 ```
+
 
 __Endpoint__
 
@@ -1137,11 +1335,18 @@ __Description__
 
 Update a software agent
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:agent_software) <request body> -- The updated record
 
 __Returns__
@@ -1158,6 +1363,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -1166,13 +1377,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/agents/software/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1182,11 +1397,18 @@ __Description__
 
 Get a software agent by ID
 
+
 __Parameters__
 
-
-	Integer id -- ID of the software agent
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -1202,13 +1424,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/agents/software/1"
 
 ```
+
 
 __Endpoint__
 
@@ -1218,11 +1446,13 @@ __Description__
 
 Delete a software agent
 
+
 __Parameters__
 
-
-	Integer id -- ID of the software agent
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -1235,23 +1465,29 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/batch_delete?record_uris=A854IWH"
+  "http://localhost:8089/batch_delete?record_uris=RFG566U"
 
 ```
+
 
 __Endpoint__
 
@@ -1261,11 +1497,13 @@ __Description__
 
 Carry out delete requests against a list of records
 
+
 __Parameters__
 
-
-	[String] record_uris -- A list of record uris
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -1278,29 +1516,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/by-external-id?eid=551429GM673&type=850186XFP"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/by-external-id?eid=628Y668SW&type=Y6513088N"
 
 ```
+
 
 __Endpoint__
 
@@ -1310,11 +1558,18 @@ __Description__
 
 List records by their external ID(s)
 
+
 __Parameters__
 
-
-	String eid -- An external ID to find
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (useful if IDs may be shared between different types)
 
 __Returns__
@@ -1332,15 +1587,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/config/enumeration_values/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1350,11 +1609,13 @@ __Description__
 
 Get an Enumeration Value
 
+
 __Parameters__
 
-
-	Integer enum_val_id -- The ID of the enumeration value to retrieve
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- (:enumeration_value)
@@ -1366,16 +1627,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/config/enumeration_values/1"
 
 ```
+
 
 __Endpoint__
 
@@ -1385,11 +1658,18 @@ __Description__
 
 Update an enumeration value
 
+
 __Parameters__
 
-
-	Integer enum_val_id -- The ID of the enumeration value to update
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:enumeration_value) <request body> -- The enumeration value to update
 
 __Returns__
@@ -1406,23 +1686,35 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/config/enumeration_values/1/position?position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -1432,13 +1724,16 @@ __Description__
 
 Update the position of an ennumeration value
 
+
 __Parameters__
 
-
-	Integer enum_val_id -- The ID of the enumeration value to update
-
-	Integer position -- The target position in the value list
-
+  
+    
+  
+    
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Updated", :id => (id of updated object)}
@@ -1453,23 +1748,35 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/config/enumeration_values/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -1479,13 +1786,16 @@ __Description__
 
 Suppress this value
 
+
 __Parameters__
 
-
-	Integer enum_val_id -- The ID of the enumeration value to update
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Suppressed", :id => (id of updated object), :suppressed_state => (true|false)}
@@ -1501,13 +1811,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/config/enumerations"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1516,6 +1824,7 @@ __Endpoint__
 __Description__
 
 List all defined enumerations
+
 
 __Parameters__
 
@@ -1531,16 +1840,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/config/enumerations"
 
 ```
+
 
 __Endpoint__
 
@@ -1550,9 +1865,15 @@ __Description__
 
 Create an enumeration
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:enumeration) <request body> -- The record to create
 
 __Returns__
@@ -1568,16 +1889,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/config/enumerations/1"
 
 ```
+
 
 __Endpoint__
 
@@ -1587,11 +1920,18 @@ __Description__
 
 Update an enumeration
 
+
 __Parameters__
 
-
-	Integer enum_id -- The ID of the enumeration to update
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:enumeration) <request body> -- The enumeration to update
 
 __Returns__
@@ -1607,15 +1947,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/config/enumerations/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1625,11 +1969,13 @@ __Description__
 
 Get an Enumeration
 
+
 __Parameters__
 
-
-	Integer enum_id -- The ID of the enumeration to retrieve
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- (:enumeration)
@@ -1641,16 +1987,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/config/enumerations/migration"
 
 ```
+
 
 __Endpoint__
 
@@ -1660,9 +2012,15 @@ __Description__
 
 Migrate all records from using one value to another
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:enumeration_migration) <request body> -- The migration request
 
 __Returns__
@@ -1678,15 +2036,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/config/enumerations/names/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1696,11 +2058,13 @@ __Description__
 
 Get an Enumeration by Name
 
+
 __Parameters__
 
-
-	String enum_name -- The name of the enumeration to retrieve
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- (:enumeration)
@@ -1712,23 +2076,29 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"container_profile",
-"name":"FJX425D",
-"url":"AM99XS",
-"dimension_units":"meters",
-"extent_dimension":"height",
-"depth":"28",
-"height":"35",
-"width":"87"}' \
+"name":"VX668325F",
+"url":"I19842X217",
+"dimension_units":"millimeters",
+"extent_dimension":"width",
+"depth":"63",
+"height":"92",
+"width":"38"}' \
   "http://localhost:8089/container_profiles"
 
 ```
+
 
 __Endpoint__
 
@@ -1738,9 +2108,15 @@ __Description__
 
 Create a Container_Profile
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:container_profile) <request body> -- The record to create
 
 __Returns__
@@ -1756,18 +2132,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/container_profiles?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/container_profiles?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/container_profiles?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1777,6 +2151,7 @@ __Description__
 
 Get a list of Container Profiles
 
+
 __Parameters__
 
 <aside class="notice">
@@ -1784,7 +2159,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -1800,23 +2175,35 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"container_profile",
-"name":"FJX425D",
-"url":"AM99XS",
-"dimension_units":"meters",
-"extent_dimension":"height",
-"depth":"28",
-"height":"35",
-"width":"87"}' \
+"name":"VX668325F",
+"url":"I19842X217",
+"dimension_units":"millimeters",
+"extent_dimension":"width",
+"depth":"63",
+"height":"92",
+"width":"38"}' \
   "http://localhost:8089/container_profiles/1"
 
 ```
+
 
 __Endpoint__
 
@@ -1826,11 +2213,18 @@ __Description__
 
 Update a Container Profile
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:container_profile) <request body> -- The updated record
 
 __Returns__
@@ -1845,6 +2239,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -1853,13 +2253,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/container_profiles/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1869,11 +2273,18 @@ __Description__
 
 Get a Container Profile by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -1887,13 +2298,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/container_profiles/1"
 
 ```
+
 
 __Endpoint__
 
@@ -1903,11 +2320,13 @@ __Description__
 
 Delete an Container Profile
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -1921,13 +2340,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/current_global_preferences"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -1936,6 +2353,7 @@ __Endpoint__
 __Description__
 
 Get the global Preferences records for the current user.
+
 
 __Parameters__
 
@@ -1952,29 +2370,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/date_calculator?record_uri=519E807837R&label=22328E669Y"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/date_calculator?record_uri=KL776H882&label=2431LDR"
 
 ```
+
 
 __Endpoint__
 
@@ -1984,11 +2412,18 @@ __Description__
 
 Calculate the dates of an archival object tree
 
+
 __Parameters__
 
-
-	String record_uri -- The uri of the object
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String label (Optional) -- The date label to filter on
 
 __Returns__
@@ -2004,18 +2439,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/delete-feed?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/delete-feed?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/delete-feed?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2025,6 +2458,7 @@ __Description__
 
 Get a stream of deleted records
 
+
 __Parameters__
 
 <aside class="notice">
@@ -2032,7 +2466,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -2049,29 +2483,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/extent_calculator?record_uri=X193KAB&unit=251351K465626"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/extent_calculator?record_uri=EYPEI&unit=CY155651H"
 
 ```
+
 
 __Endpoint__
 
@@ -2081,11 +2525,18 @@ __Description__
 
 Calculate the extent of an archival object tree
 
+
 __Parameters__
 
-
-	String record_uri -- The uri of the object
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String unit (Optional) -- The unit of measurement to use
 
 __Returns__
@@ -2101,13 +2552,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/job_types"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2116,6 +2565,7 @@ __Endpoint__
 __Description__
 
 List all supported job types
+
 
 __Parameters__
 
@@ -2131,21 +2581,27 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location_profile",
-"name":"152807202HA",
-"dimension_units":"yards",
-"depth":"50",
-"height":"57",
-"width":"2"}' \
+"name":"REWOY",
+"dimension_units":"centimeters",
+"depth":"40",
+"height":"47",
+"width":"18"}' \
   "http://localhost:8089/location_profiles"
 
 ```
+
 
 __Endpoint__
 
@@ -2155,9 +2611,15 @@ __Description__
 
 Create a Location_Profile
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:location_profile) <request body> -- The record to create
 
 __Returns__
@@ -2173,18 +2635,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/location_profiles?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/location_profiles?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/location_profiles?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2194,6 +2654,7 @@ __Description__
 
 Get a list of Location Profiles
 
+
 __Parameters__
 
 <aside class="notice">
@@ -2201,7 +2662,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -2217,21 +2678,33 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location_profile",
-"name":"152807202HA",
-"dimension_units":"yards",
-"depth":"50",
-"height":"57",
-"width":"2"}' \
+"name":"REWOY",
+"dimension_units":"centimeters",
+"depth":"40",
+"height":"47",
+"width":"18"}' \
   "http://localhost:8089/location_profiles/1"
 
 ```
+
 
 __Endpoint__
 
@@ -2241,11 +2714,18 @@ __Description__
 
 Update a Location Profile
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:location_profile) <request body> -- The updated record
 
 __Returns__
@@ -2260,6 +2740,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -2268,13 +2754,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/location_profiles/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2284,11 +2774,18 @@ __Description__
 
 Get a Location Profile by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -2302,13 +2799,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/location_profiles/1"
 
 ```
+
 
 __Endpoint__
 
@@ -2318,11 +2821,13 @@ __Description__
 
 Delete an Location Profile
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -2334,24 +2839,30 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location",
 "external_ids":[],
 "functions":[],
-"building":"147 W 4th Street",
+"building":"67 E 9th Street",
 "floor":"8",
-"room":"15",
+"room":"8",
 "area":"Front",
-"barcode":"01011001011100111100",
-"temporary":"exhibit"}' \
+"barcode":"00101101101110101100",
+"temporary":"loan"}' \
   "http://localhost:8089/locations"
 
 ```
+
 
 __Endpoint__
 
@@ -2361,9 +2872,15 @@ __Description__
 
 Create a Location
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:location) <request body> -- The record to create
 
 __Returns__
@@ -2379,18 +2896,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/locations?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/locations?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/locations?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2400,6 +2915,7 @@ __Description__
 
 Get a list of locations
 
+
 __Parameters__
 
 <aside class="notice">
@@ -2407,7 +2923,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -2423,24 +2939,36 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"location",
 "external_ids":[],
 "functions":[],
-"building":"147 W 4th Street",
+"building":"67 E 9th Street",
 "floor":"8",
-"room":"15",
+"room":"8",
 "area":"Front",
-"barcode":"01011001011100111100",
-"temporary":"exhibit"}' \
+"barcode":"00101101101110101100",
+"temporary":"loan"}' \
   "http://localhost:8089/locations/1"
 
 ```
+
 
 __Endpoint__
 
@@ -2450,11 +2978,18 @@ __Description__
 
 Update a Location
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:location) <request body> -- The updated record
 
 __Returns__
@@ -2469,6 +3004,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -2477,13 +3018,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/locations/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2493,11 +3038,18 @@ __Description__
 
 Get a Location by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -2511,13 +3063,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/locations/1"
 
 ```
+
 
 __Endpoint__
 
@@ -2527,11 +3085,13 @@ __Description__
 
 Delete a Location
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -2544,24 +3104,36 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
   
-
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/locations/batch?dry_run=true"
 
 ```
+
 
 __Endpoint__
 
@@ -2571,11 +3143,22 @@ __Description__
 
 Create a Batch of Locations
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam dry_run (Optional) -- If true, don't create the locations, just list them
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:location_batch) <request body> -- The location batch data to generate all locations
 
 __Returns__
@@ -2589,16 +3172,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/locations/batch_update"
 
 ```
+
 
 __Endpoint__
 
@@ -2608,9 +3197,15 @@ __Description__
 
 Update a Location
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:location_batch_update) <request body> -- The location batch data to update all locations
 
 __Returns__
@@ -2626,13 +3221,13 @@ __Returns__
 
 
   
-
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/logout"
 
 ```
+
 
 __Endpoint__
 
@@ -2641,6 +3236,7 @@ __Endpoint__
 __Description__
 
 Log out the current session
+
 
 __Parameters__
 
@@ -2656,16 +3252,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/merge_requests/agent"
 
 ```
+
 
 __Endpoint__
 
@@ -2675,9 +3277,15 @@ __Description__
 
 Carry out a merge request against Agent records
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:merge_request) <request body> -- A merge request
 
 __Returns__
@@ -2692,24 +3300,36 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
   
-
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/merge_requests/agent_detail?dry_run=true"
 
 ```
+
 
 __Endpoint__
 
@@ -2719,11 +3339,22 @@ __Description__
 
 Carry out a detailed merge request against Agent records
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam dry_run (Optional) -- If true, don't process the merge, just display the merged record
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:merge_request_detail) <request body> -- A detailed merge request
 
 __Returns__
@@ -2737,16 +3368,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/merge_requests/digital_object"
 
 ```
+
 
 __Endpoint__
 
@@ -2756,11 +3399,22 @@ __Description__
 
 Carry out a merge request against Digital_Object records
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:merge_request) <request body> -- A merge request
 
 __Returns__
@@ -2774,16 +3428,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/merge_requests/resource"
 
 ```
+
 
 __Endpoint__
 
@@ -2793,11 +3459,22 @@ __Description__
 
 Carry out a merge request against Resource records
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:merge_request) <request body> -- A merge request
 
 __Returns__
@@ -2811,16 +3488,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/merge_requests/subject"
 
 ```
+
 
 __Endpoint__
 
@@ -2830,9 +3513,15 @@ __Description__
 
 Carry out a merge request against Subject records
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:merge_request) <request body> -- A merge request
 
 __Returns__
@@ -2847,23 +3536,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/notifications?last_sequence=1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2873,9 +3566,15 @@ __Description__
 
 Get a stream of notifications
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer last_sequence (Optional) -- The last sequence number seen
 
 __Returns__
@@ -2890,23 +3589,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/permissions?level=NQ445E221"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/permissions?level=901I106NE"
 
 ```
+
 
 __Endpoint__
 
@@ -2916,9 +3619,15 @@ __Description__
 
 Get a list of Permissions
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	String level -- The permission level to get (one of: repository, global, all) -- Must be one of repository, global, all
 
 __Returns__
@@ -2934,13 +3643,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/reports"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -2949,6 +3656,7 @@ __Endpoint__
 __Description__
 
 List all reports
+
 
 __Parameters__
 
@@ -2965,23 +3673,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/reports/static/*?splat=458RJ128693"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/reports/static/*?splat=413FR208M"
 
 ```
+
 
 __Endpoint__
 
@@ -2991,11 +3703,13 @@ __Description__
 
 Get a static asset for a report
 
+
 __Parameters__
 
-
-	String splat -- The requested asset
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- the asset
@@ -3007,16 +3721,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories"
 
 ```
+
 
 __Endpoint__
 
@@ -3026,9 +3746,15 @@ __Description__
 
 Create a Repository
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:repository) <request body> -- The record to create
 
 __Returns__
@@ -3047,6 +3773,9 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
@@ -3055,13 +3784,14 @@ __Returns__
   
 
   
-
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3071,9 +3801,15 @@ __Description__
 
 Get a list of Repositories
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -3087,16 +3823,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/1"
 
 ```
+
 
 __Endpoint__
 
@@ -3106,11 +3854,18 @@ __Description__
 
 Update a repository
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:repository) <request body> -- The updated record
 
 __Returns__
@@ -3125,6 +3880,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -3133,13 +3894,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3149,11 +3914,18 @@ __Description__
 
 Get a Repository by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -3169,13 +3941,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2"
 
 ```
+
 
 __Endpoint__
 
@@ -3185,9 +3963,15 @@ __Description__
 
 Delete a Repository
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3201,15 +3985,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"accession",
 "external_ids":[],
+"is_slug_auto":true,
 "related_accessions":[],
+"accession_date":"1985-03-18",
 "classifications":[],
 "subjects":[],
 "linked_events":[],
@@ -3224,17 +4021,17 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "use_restrictions":false,
 "linked_agents":[],
 "instances":[],
-"id_0":"349K102402T",
-"id_1":"233EIWA",
-"id_2":"A214994P652",
-"id_3":"G94B60508",
-"title":"Accession Title: 375",
-"content_description":"Description: 274",
-"condition_description":"Description: 275",
-"accession_date":"1989-07-08"}' \
+"id_0":"WTBXL",
+"id_1":"PK583R368",
+"id_2":"OTFR294",
+"id_3":"HEKS549",
+"title":"Accession Title: 456",
+"content_description":"Description: 357",
+"condition_description":"Description: 358"}' \
   "http://localhost:8089/repositories/2/accessions"
 
 ```
+
 
 __Endpoint__
 
@@ -3244,11 +4041,22 @@ __Description__
 
 Create an Accession
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:accession) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3262,20 +4070,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/accessions?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/accessions?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/accessions?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3285,6 +4097,7 @@ __Description__
 
 Get a list of Accessions for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -3292,11 +4105,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3310,15 +4128,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"accession",
 "external_ids":[],
+"is_slug_auto":true,
 "related_accessions":[],
+"accession_date":"1985-03-18",
 "classifications":[],
 "subjects":[],
 "linked_events":[],
@@ -3333,17 +4170,17 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "use_restrictions":false,
 "linked_agents":[],
 "instances":[],
-"id_0":"349K102402T",
-"id_1":"233EIWA",
-"id_2":"A214994P652",
-"id_3":"G94B60508",
-"title":"Accession Title: 375",
-"content_description":"Description: 274",
-"condition_description":"Description: 275",
-"accession_date":"1989-07-08"}' \
+"id_0":"WTBXL",
+"id_1":"PK583R368",
+"id_2":"OTFR294",
+"id_3":"HEKS549",
+"title":"Accession Title: 456",
+"content_description":"Description: 357",
+"condition_description":"Description: 358"}' \
   "http://localhost:8089/repositories/2/accessions/1"
 
 ```
+
 
 __Endpoint__
 
@@ -3353,13 +4190,25 @@ __Description__
 
 Update an Accession
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:accession) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3374,6 +4223,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -3382,13 +4240,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/accessions/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3398,13 +4263,25 @@ __Description__
 
 Get an Accession by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -3418,13 +4295,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/accessions/1"
 
 ```
+
 
 __Endpoint__
 
@@ -3434,11 +4323,18 @@ __Description__
 
 Delete an Accession
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3453,23 +4349,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/accessions/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -3479,13 +4393,21 @@ __Description__
 
 Suppress this record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3500,6 +4422,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -3508,13 +4439,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/accessions/1/top_containers?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3524,13 +4462,25 @@ __Description__
 
 Get Top Containers linked to an Accession
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -3547,23 +4497,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/accessions/1/transfer?target_repo=L107874212O"
+  "http://localhost:8089/repositories/2/accessions/1/transfer?target_repo=KQ857799U"
 
 ```
+
 
 __Endpoint__
 
@@ -3573,13 +4541,21 @@ __Description__
 
 Transfer this record to a different repository
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	String target_repo -- The URI of the target repository
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3593,15 +4569,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/corporate_entities/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3611,11 +4597,18 @@ __Description__
 
 Get metadata for an EAC-CPF export of a corporate entity
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3629,15 +4622,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/corporate_entities/1.xml"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3647,11 +4650,18 @@ __Description__
 
 Get an EAC-CPF representation of a Corporate Entity
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3665,15 +4675,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/families/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3683,11 +4703,18 @@ __Description__
 
 Get metadata for an EAC-CPF export of a family
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3701,15 +4728,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/families/1.xml"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3719,11 +4756,18 @@ __Description__
 
 Get an EAC-CPF representation of a Family
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3737,15 +4781,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/people/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3755,11 +4809,18 @@ __Description__
 
 Get metadata for an EAC-CPF export of a person
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3773,15 +4834,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/people/1.xml"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3791,11 +4862,18 @@ __Description__
 
 Get an EAC-CPF representation of an Agent
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3809,15 +4887,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/softwares/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3827,11 +4915,18 @@ __Description__
 
 Get metadata for an EAC-CPF export of a software
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3845,15 +4940,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_contexts/softwares/1.xml"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3863,11 +4968,18 @@ __Description__
 
 Get an EAC-CPF representation of a Software agent
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3881,10 +4993,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"archival_object",
@@ -3896,17 +5019,19 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
+"is_slug_auto":true,
 "restrictions_apply":false,
 "ancestors":[],
 "instances":[],
 "notes":[],
-"ref_id":"XVB593V",
-"level":"subseries",
-"title":"Archival Object Title: 376",
-"resource":{ "ref":"/repositories/2/resources/161"}}' \
+"ref_id":"J74125653G",
+"level":"series",
+"title":"Archival Object Title: 457",
+"resource":{ "ref":"/repositories/2/resources/183"}}' \
   "http://localhost:8089/repositories/2/archival_objects"
 
 ```
+
 
 __Endpoint__
 
@@ -3916,11 +5041,22 @@ __Description__
 
 Create an Archival Object
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:archival_object) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3936,20 +5072,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_objects?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_objects?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_objects?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -3959,6 +5099,7 @@ __Description__
 
 Get a list of Archival Objects for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -3966,11 +5107,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -3984,10 +5130,27 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"archival_object",
@@ -3999,17 +5162,19 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
+"is_slug_auto":true,
 "restrictions_apply":false,
 "ancestors":[],
 "instances":[],
 "notes":[],
-"ref_id":"XVB593V",
-"level":"subseries",
-"title":"Archival Object Title: 376",
-"resource":{ "ref":"/repositories/2/resources/161"}}' \
+"ref_id":"J74125653G",
+"level":"series",
+"title":"Archival Object Title: 457",
+"resource":{ "ref":"/repositories/2/resources/183"}}' \
   "http://localhost:8089/repositories/2/archival_objects/1"
 
 ```
+
 
 __Endpoint__
 
@@ -4019,13 +5184,25 @@ __Description__
 
 Update an Archival Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:archival_object) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4042,6 +5219,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -4050,13 +5236,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_objects/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4066,13 +5259,25 @@ __Description__
 
 Get an Archival Object by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -4088,13 +5293,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/archival_objects/1"
 
 ```
+
 
 __Endpoint__
 
@@ -4104,11 +5321,18 @@ __Description__
 
 Delete an Archival Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4123,29 +5347,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/archival_objects/1/accept_children?children=YP623200R&position=1"
+  "http://localhost:8089/repositories/2/archival_objects/1/accept_children?children=SV515562105&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -4155,15 +5403,28 @@ __Description__
 
 Move existing Archival Objects to become children of an Archival Object
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] children (Optional) -- The children to move to the Archival Object
-
-	Integer id -- The ID of the Archival Object to move children to
-
-	Integer position -- The index for the first child to be moved to
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4181,15 +5442,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_objects/1/children"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4199,11 +5470,18 @@ __Description__
 
 Get the children of an Archival Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4219,16 +5497,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/archival_objects/1/children"
 
 ```
+
 
 __Endpoint__
 
@@ -4238,13 +5534,25 @@ __Description__
 
 Batch create several Archival Objects as children of an existing Archival Object
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:archival_record_children) <request body> -- The children to add to the archival object
-
-	Integer id -- The ID of the archival object to add children to
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4263,29 +5571,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/archival_objects/1/parent?parent=1&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -4295,15 +5627,32 @@ __Description__
 
 Set the parent/position of an Archival Object in a tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer parent (Optional) -- The parent of this node in the tree
-
+  
+    
+  
+  
+    
+    
 	Integer position (Optional) -- The position of this node in the tree
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4319,15 +5668,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/archival_objects/1/previous"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4337,11 +5696,18 @@ __Description__
 
 Get the previous record in the tree for an Archival Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4358,23 +5724,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/archival_objects/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -4384,13 +5768,21 @@ __Description__
 
 Suppress this record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4404,16 +5796,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/assessment_attribute_definitions"
 
 ```
+
 
 __Endpoint__
 
@@ -4423,11 +5827,22 @@ __Description__
 
 Update this repository's assessment attribute definitions
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:assessment_attribute_definitions) <request body> -- The assessment attribute definitions
 
 __Returns__
@@ -4441,15 +5856,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/assessment_attribute_definitions"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4459,9 +5878,15 @@ __Description__
 
 Get this repository's assessment attribute definitions
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4475,16 +5900,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/assessments"
 
 ```
+
 
 __Endpoint__
 
@@ -4494,11 +5931,22 @@ __Description__
 
 Create an Assessment
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:assessment) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4512,20 +5960,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/assessments?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/assessments?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/assessments?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4535,6 +5987,7 @@ __Description__
 
 Get a list of Assessments for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -4542,11 +5995,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4560,16 +6018,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/assessments/1"
 
 ```
+
 
 __Endpoint__
 
@@ -4579,13 +6055,25 @@ __Description__
 
 Update an Assessment
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:assessment) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4600,6 +6088,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -4608,13 +6105,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/assessments/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4624,13 +6128,25 @@ __Description__
 
 Get an Assessment by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -4644,13 +6160,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/assessments/1"
 
 ```
+
 
 __Endpoint__
 
@@ -4660,11 +6188,18 @@ __Description__
 
 Delete an Assessment
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4679,30 +6214,54 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
   
-
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"body_stream"' \
-  "http://localhost:8089/repositories/2/batch_imports?migration=JYQYW&skip_results=true"
+  "http://localhost:8089/repositories/2/batch_imports?migration=CTH85846&skip_results=true"
 
 ```
+
 
 __Endpoint__
 
@@ -4712,15 +6271,32 @@ __Description__
 
 Import a batch of records
 
+
 __Parameters__
 
-
-	body_stream batch_import -- The batch of records
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String migration (Optional) -- Param to indicate we are using a migrator
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam skip_results (Optional) -- If true, don't return the list of created record URIs
 
 __Returns__
@@ -4738,23 +6314,36 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"classification_term",
 "publish":true,
 "path_from_root":[],
 "linked_records":[],
-"identifier":"HCH700A",
-"title":"Classification Title: 378",
-"description":"Description: 277",
-"classification":{ "ref":"/repositories/2/classifications/12"}}' \
+"is_slug_auto":true,
+"identifier":"M84913CQ",
+"title":"Classification Title: 459",
+"description":"Description: 360",
+"classification":{ "ref":"/repositories/2/classifications/44"}}' \
   "http://localhost:8089/repositories/2/classification_terms"
 
 ```
+
 
 __Endpoint__
 
@@ -4764,11 +6353,22 @@ __Description__
 
 Create a Classification Term
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:classification_term) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4784,20 +6384,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classification_terms?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classification_terms?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classification_terms?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4807,6 +6411,7 @@ __Description__
 
 Get a list of Classification Terms for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -4814,11 +6419,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4832,23 +6442,42 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"classification_term",
 "publish":true,
 "path_from_root":[],
 "linked_records":[],
-"identifier":"HCH700A",
-"title":"Classification Title: 378",
-"description":"Description: 277",
-"classification":{ "ref":"/repositories/2/classifications/12"}}' \
+"is_slug_auto":true,
+"identifier":"M84913CQ",
+"title":"Classification Title: 459",
+"description":"Description: 360",
+"classification":{ "ref":"/repositories/2/classifications/44"}}' \
   "http://localhost:8089/repositories/2/classification_terms/1"
 
 ```
+
 
 __Endpoint__
 
@@ -4858,13 +6487,25 @@ __Description__
 
 Update a Classification Term
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:classification_term) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4881,6 +6522,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -4889,13 +6539,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classification_terms/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -4905,13 +6562,25 @@ __Description__
 
 Get a Classification Term by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -4927,13 +6596,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/classification_terms/1"
 
 ```
+
 
 __Endpoint__
 
@@ -4943,11 +6624,18 @@ __Description__
 
 Delete a Classification Term
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -4962,29 +6650,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/classification_terms/1/accept_children?children=GOR855W&position=1"
+  "http://localhost:8089/repositories/2/classification_terms/1/accept_children?children=416R571BB&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -4994,15 +6706,28 @@ __Description__
 
 Move existing Classification Terms to become children of another Classification Term
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] children (Optional) -- The children to move to the Classification Term
-
-	Integer id -- The ID of the Classification Term to move children to
-
-	Integer position -- The index for the first child to be moved to
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5020,15 +6745,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classification_terms/1/children"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5038,11 +6773,18 @@ __Description__
 
 Get the children of a Classification Term
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5059,29 +6801,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/classification_terms/1/parent?parent=1&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -5091,15 +6857,32 @@ __Description__
 
 Set the parent/position of a Classification Term in a tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer parent (Optional) -- The parent of this node in the tree
-
+  
+    
+  
+  
+    
+    
 	Integer position (Optional) -- The position of this node in the tree
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5115,22 +6898,35 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"classification",
 "publish":true,
 "path_from_root":[],
 "linked_records":[],
-"identifier":"H639OXW",
-"title":"Classification Title: 377",
-"description":"Description: 276"}' \
+"is_slug_auto":true,
+"identifier":"403RYII",
+"title":"Classification Title: 458",
+"description":"Description: 359"}' \
   "http://localhost:8089/repositories/2/classifications"
 
 ```
+
 
 __Endpoint__
 
@@ -5140,11 +6936,22 @@ __Description__
 
 Create a Classification
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:classification) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5160,20 +6967,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5183,6 +6994,7 @@ __Description__
 
 Get a list of Classifications for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -5190,11 +7002,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5209,6 +7026,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -5217,13 +7043,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5233,13 +7066,25 @@ __Description__
 
 Get a Classification
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -5253,22 +7098,41 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"classification",
 "publish":true,
 "path_from_root":[],
 "linked_records":[],
-"identifier":"H639OXW",
-"title":"Classification Title: 377",
-"description":"Description: 276"}' \
+"is_slug_auto":true,
+"identifier":"403RYII",
+"title":"Classification Title: 458",
+"description":"Description: 359"}' \
   "http://localhost:8089/repositories/2/classifications/1"
 
 ```
+
 
 __Endpoint__
 
@@ -5278,13 +7142,25 @@ __Description__
 
 Update a Classification
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:classification) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5300,13 +7176,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/classifications/1"
 
 ```
+
 
 __Endpoint__
 
@@ -5316,11 +7204,18 @@ __Description__
 
 Delete a Classification
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5335,29 +7230,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/classifications/1/accept_children?children=GL531LH&position=1"
+  "http://localhost:8089/repositories/2/classifications/1/accept_children?children=X684585YN&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -5367,15 +7286,28 @@ __Description__
 
 Move existing Classification Terms to become children of a Classification
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] children (Optional) -- The children to move to the Classification
-
-	Integer id -- The ID of the Classification to move children to
-
-	Integer position -- The index for the first child to be moved to
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5393,15 +7325,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5411,11 +7353,18 @@ __Description__
 
 Get a Classification tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5430,29 +7379,51 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/node?node_uri=ML225OL&published_only=true"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/node?node_uri=309C539VH&published_only=true"
 
 ```
+
 
 __Endpoint__
 
@@ -5462,15 +7433,28 @@ __Description__
 
 Fetch tree information for an Classification Term record within a tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String node_uri -- The URI of the Classification Term record of interest
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -5502,29 +7486,51 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/node_from_root?node_ids=1&published_only=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5534,15 +7540,28 @@ __Description__
 
 Fetch tree path from the root record to Classification Terms
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	[Integer] node_ids -- The IDs of the Classification Term records of interest
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -5562,23 +7581,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/root?published_only=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5588,13 +7623,25 @@ __Description__
 
 Fetch tree information for the top-level classification record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -5619,35 +7666,63 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/waypoint?offset=1&parent_node=PJN100L&published_only=true"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/classifications/1/tree/waypoint?offset=1&parent_node=561MP578F&published_only=true"
 
 ```
+
 
 __Endpoint__
 
@@ -5657,17 +7732,35 @@ __Description__
 
 Fetch the record slice for a given tree waypoint
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	Integer offset -- The page of records to return
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String parent_node (Optional) -- The URI of the parent of this waypoint (none for the root record)
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -5690,6 +7783,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -5698,13 +7800,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/collection_management/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5714,13 +7823,25 @@ __Description__
 
 Get a Collection Management Record by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -5735,29 +7856,47 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/component_transfers?target_resource=BH598M761&component=RV192841Q"
+  "http://localhost:8089/repositories/2/component_transfers?target_resource=371G820575522&component=WDLHX"
 
 ```
+
 
 __Endpoint__
 
@@ -5767,13 +7906,21 @@ __Description__
 
 Transfer components from one resource to another
 
+
 __Parameters__
 
-
-	String target_resource -- The URI of the resource to transfer into
-
-	String component -- The URI of the archival object to transfer
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5791,15 +7938,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/current_preferences"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5809,9 +7960,15 @@ __Description__
 
 Get the Preferences records for the current repository and user.
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5825,16 +7982,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/default_values/1"
 
 ```
+
 
 __Endpoint__
 
@@ -5844,15 +8019,27 @@ __Description__
 
 Save defaults for a record type
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:default_values) <request body> -- The default values set
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String record_type -- 
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Created", :id => (id of created object), :warnings => {(warnings)}}
@@ -5866,15 +8053,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/default_values/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5884,13 +8081,20 @@ __Description__
 
 Get default values for a record type
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String record_type -- 
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Created", :id => (id of created object), :warnings => {(warnings)}}
@@ -5904,10 +8108,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"digital_object_component",
@@ -5920,15 +8135,17 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "rights_statements":[],
 "linked_agents":[],
 "file_versions":[],
+"is_slug_auto":true,
 "notes":[],
-"component_id":"284128333EQ",
-"title":"Digital Object Component Title: 381",
-"digital_object":{ "ref":"/repositories/2/digital_objects/58"},
-"position":5,
-"has_unpublished_ancestor":true}' \
+"component_id":"V254FL21",
+"title":"Digital Object Component Title: 462",
+"digital_object":{ "ref":"/repositories/2/digital_objects/64"},
+"position":3,
+"has_unpublished_ancestor":false}' \
   "http://localhost:8089/repositories/2/digital_object_components"
 
 ```
+
 
 __Endpoint__
 
@@ -5938,11 +8155,22 @@ __Description__
 
 Create an Digital Object Component
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:digital_object_component) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -5958,20 +8186,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_object_components?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_object_components?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_object_components?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -5981,6 +8213,7 @@ __Description__
 
 Get a list of Digital Object Components for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -5988,11 +8221,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6006,10 +8244,27 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"digital_object_component",
@@ -6022,15 +8277,17 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "rights_statements":[],
 "linked_agents":[],
 "file_versions":[],
+"is_slug_auto":true,
 "notes":[],
-"component_id":"284128333EQ",
-"title":"Digital Object Component Title: 381",
-"digital_object":{ "ref":"/repositories/2/digital_objects/58"},
-"position":5,
-"has_unpublished_ancestor":true}' \
+"component_id":"V254FL21",
+"title":"Digital Object Component Title: 462",
+"digital_object":{ "ref":"/repositories/2/digital_objects/64"},
+"position":3,
+"has_unpublished_ancestor":false}' \
   "http://localhost:8089/repositories/2/digital_object_components/1"
 
 ```
+
 
 __Endpoint__
 
@@ -6040,13 +8297,25 @@ __Description__
 
 Update an Digital Object Component
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:digital_object_component) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6063,6 +8332,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -6071,13 +8349,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_object_components/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -6087,13 +8372,25 @@ __Description__
 
 Get an Digital Object Component by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -6109,13 +8406,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/digital_object_components/1"
 
 ```
+
 
 __Endpoint__
 
@@ -6125,11 +8434,18 @@ __Description__
 
 Delete a Digital Object Component
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6144,29 +8460,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/digital_object_components/1/accept_children?children=TO237FQ&position=1"
+  "http://localhost:8089/repositories/2/digital_object_components/1/accept_children?children=672C305139309&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -6176,15 +8516,28 @@ __Description__
 
 Move existing Digital Object Components to become children of a Digital Object Component
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] children (Optional) -- The children to move to the Digital Object Component
-
-	Integer id -- The ID of the Digital Object Component to move children to
-
-	Integer position -- The index for the first child to be moved to
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6202,16 +8555,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/digital_object_components/1/children"
 
 ```
+
 
 __Endpoint__
 
@@ -6221,13 +8592,25 @@ __Description__
 
 Batch create several Digital Object Components as children of an existing Digital Object Component
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:digital_record_children) <request body> -- The children to add to the digital object component
-
-	Integer id -- The ID of the digital object component to add children to
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6245,15 +8628,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_object_components/1/children"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -6263,11 +8656,18 @@ __Description__
 
 Get the children of an Digital Object Component
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6284,29 +8684,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/digital_object_components/1/parent?parent=1&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -6316,15 +8740,32 @@ __Description__
 
 Set the parent/position of an Digital Object Component in a tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer parent (Optional) -- The parent of this node in the tree
-
+  
+    
+  
+  
+    
+    
 	Integer position (Optional) -- The position of this node in the tree
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6341,23 +8782,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/digital_object_components/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -6367,13 +8826,21 @@ __Description__
 
 Suppress this record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6387,10 +8854,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"digital_object",
@@ -6398,68 +8876,55 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "subjects":[],
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
-"portion":"part",
-"number":"82",
-"extent_type":"terabytes",
-"dimensions":"YCQKH",
-"physical_details":"G307903JO"}],
+"portion":"whole",
+"number":"85",
+"extent_type":"megabytes",
+"dimensions":"EVG714B",
+"physical_details":"EDU760511"}],
 "dates":[{ "jsonmodel_type":"date",
 "date_type":"bulk",
 "label":"creation",
-"begin":"2007-04-15",
-"end":"2007-04-15",
+"begin":"2000-05-07",
+"end":"2000-05-07",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"HJES310"}],
+"expression":"P33947G474"},
+{ "jsonmodel_type":"date",
+"date_type":"inclusive",
+"label":"creation",
+"begin":"2012-08-27",
+"end":"2012-08-27",
+"certainty":"inferred",
+"era":"ce",
+"calendar":"gregorian",
+"expression":"KX834QV"}],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
+"is_slug_auto":true,
 "file_versions":[{ "jsonmodel_type":"file_version",
 "is_representative":false,
-"file_uri":"X949O296130",
-"use_statement":"text-codebook",
-"xlink_actuate_attribute":"onRequest",
-"xlink_show_attribute":"none",
-"file_format_name":"gif",
-"file_format_version":"FESC308",
-"file_size_bytes":71,
-"checksum":"AFC624520",
-"checksum_method":"md5",
-"publish":true},
-{ "jsonmodel_type":"file_version",
-"is_representative":false,
-"file_uri":"Y83811KG",
-"use_statement":"image-service-edited",
+"file_uri":"FEONW",
+"use_statement":"text-data_definition",
 "xlink_actuate_attribute":"onLoad",
-"xlink_show_attribute":"none",
-"file_format_name":"mp3",
-"file_format_version":"G171IEG",
-"file_size_bytes":34,
-"checksum":"WUTSI",
-"checksum_method":"sha-256",
-"publish":true},
-{ "jsonmodel_type":"file_version",
-"is_representative":false,
-"file_uri":"QVY757412",
-"use_statement":"text-ocr-edited",
-"xlink_actuate_attribute":"none",
-"xlink_show_attribute":"replace",
-"file_format_name":"jpeg",
-"file_format_version":"D5JUM",
-"file_size_bytes":73,
-"checksum":"222QTAJ",
-"checksum_method":"sha-512",
+"xlink_show_attribute":"other",
+"file_format_name":"pdf",
+"file_format_version":"XGBMD",
+"file_size_bytes":63,
+"checksum":"K994J239B",
+"checksum_method":"md5",
 "publish":true}],
 "restrictions":false,
 "notes":[],
 "linked_instances":[],
-"title":"Digital Object Title: 380",
-"language":"fil",
-"digital_object_id":"P446HO680"}' \
+"title":"Digital Object Title: 461",
+"language":"nap",
+"digital_object_id":"M350JF40"}' \
   "http://localhost:8089/repositories/2/digital_objects"
 
 ```
+
 
 __Endpoint__
 
@@ -6469,11 +8934,22 @@ __Description__
 
 Create a Digital Object
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:digital_object) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6489,20 +8965,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -6512,6 +8992,7 @@ __Description__
 
 Get a list of Digital Objects for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -6519,11 +9000,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6538,6 +9024,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -6546,13 +9041,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -6562,13 +9064,25 @@ __Description__
 
 Get a Digital Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -6582,10 +9096,27 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"digital_object",
@@ -6593,68 +9124,55 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "subjects":[],
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
-"portion":"part",
-"number":"82",
-"extent_type":"terabytes",
-"dimensions":"YCQKH",
-"physical_details":"G307903JO"}],
+"portion":"whole",
+"number":"85",
+"extent_type":"megabytes",
+"dimensions":"EVG714B",
+"physical_details":"EDU760511"}],
 "dates":[{ "jsonmodel_type":"date",
 "date_type":"bulk",
 "label":"creation",
-"begin":"2007-04-15",
-"end":"2007-04-15",
+"begin":"2000-05-07",
+"end":"2000-05-07",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"HJES310"}],
+"expression":"P33947G474"},
+{ "jsonmodel_type":"date",
+"date_type":"inclusive",
+"label":"creation",
+"begin":"2012-08-27",
+"end":"2012-08-27",
+"certainty":"inferred",
+"era":"ce",
+"calendar":"gregorian",
+"expression":"KX834QV"}],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
+"is_slug_auto":true,
 "file_versions":[{ "jsonmodel_type":"file_version",
 "is_representative":false,
-"file_uri":"X949O296130",
-"use_statement":"text-codebook",
-"xlink_actuate_attribute":"onRequest",
-"xlink_show_attribute":"none",
-"file_format_name":"gif",
-"file_format_version":"FESC308",
-"file_size_bytes":71,
-"checksum":"AFC624520",
-"checksum_method":"md5",
-"publish":true},
-{ "jsonmodel_type":"file_version",
-"is_representative":false,
-"file_uri":"Y83811KG",
-"use_statement":"image-service-edited",
+"file_uri":"FEONW",
+"use_statement":"text-data_definition",
 "xlink_actuate_attribute":"onLoad",
-"xlink_show_attribute":"none",
-"file_format_name":"mp3",
-"file_format_version":"G171IEG",
-"file_size_bytes":34,
-"checksum":"WUTSI",
-"checksum_method":"sha-256",
-"publish":true},
-{ "jsonmodel_type":"file_version",
-"is_representative":false,
-"file_uri":"QVY757412",
-"use_statement":"text-ocr-edited",
-"xlink_actuate_attribute":"none",
-"xlink_show_attribute":"replace",
-"file_format_name":"jpeg",
-"file_format_version":"D5JUM",
-"file_size_bytes":73,
-"checksum":"222QTAJ",
-"checksum_method":"sha-512",
+"xlink_show_attribute":"other",
+"file_format_name":"pdf",
+"file_format_version":"XGBMD",
+"file_size_bytes":63,
+"checksum":"K994J239B",
+"checksum_method":"md5",
 "publish":true}],
 "restrictions":false,
 "notes":[],
 "linked_instances":[],
-"title":"Digital Object Title: 380",
-"language":"fil",
-"digital_object_id":"P446HO680"}' \
+"title":"Digital Object Title: 461",
+"language":"nap",
+"digital_object_id":"M350JF40"}' \
   "http://localhost:8089/repositories/2/digital_objects/1"
 
 ```
+
 
 __Endpoint__
 
@@ -6664,13 +9182,25 @@ __Description__
 
 Update a Digital Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:digital_object) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6686,13 +9216,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/digital_objects/1"
 
 ```
+
 
 __Endpoint__
 
@@ -6702,11 +9244,18 @@ __Description__
 
 Delete a Digital Object
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6721,29 +9270,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/digital_objects/1/accept_children?children=NQXRV&position=1"
+  "http://localhost:8089/repositories/2/digital_objects/1/accept_children?children=JMRDG&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -6753,15 +9326,28 @@ __Description__
 
 Move existing Digital Object components to become children of a Digital Object
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] children (Optional) -- The children to move to the Digital Object
-
-	Integer id -- The ID of the Digital Object to move children to
-
-	Integer position -- The index for the first child to be moved to
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6779,16 +9365,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/digital_objects/1/children"
 
 ```
+
 
 __Endpoint__
 
@@ -6798,13 +9402,25 @@ __Description__
 
 Batch create several Digital Object Components as children of an existing Digital Object
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:digital_record_children) <request body> -- The component children to add to the digital object
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6822,15 +9438,27 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/digital_objects/1/publish"
 
 ```
+
 
 __Endpoint__
 
@@ -6840,11 +9468,18 @@ __Description__
 
 Publish a digital object and all its sub-records and components
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6861,23 +9496,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/digital_objects/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -6887,13 +9540,21 @@ __Description__
 
 Suppress this record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6908,23 +9569,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/digital_objects/1/transfer?target_repo=125HWF29"
+  "http://localhost:8089/repositories/2/digital_objects/1/transfer?target_repo=J387189791281"
 
 ```
+
 
 __Endpoint__
 
@@ -6934,13 +9613,21 @@ __Description__
 
 Transfer this record to a different repository
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	String target_repo -- The URI of the target repository
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6954,15 +9641,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -6972,11 +9669,18 @@ __Description__
 
 Get a Digital Object tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -6991,29 +9695,51 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/node?node_uri=321UBX339&published_only=true"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/node?node_uri=WHOMO&published_only=true"
 
 ```
+
 
 __Endpoint__
 
@@ -7023,15 +9749,28 @@ __Description__
 
 Fetch tree information for an Digital Object Component record within a tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String node_uri -- The URI of the Digital Object Component record of interest
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -7063,29 +9802,51 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/node_from_root?node_ids=1&published_only=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7095,15 +9856,28 @@ __Description__
 
 Fetch tree paths from the root record to Digital Object Components
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	[Integer] node_ids -- The IDs of the Digital Object Component records of interest
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -7123,23 +9897,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/root?published_only=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7149,13 +9939,25 @@ __Description__
 
 Fetch tree information for the top-level digital object record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -7180,35 +9982,63 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/waypoint?offset=1&parent_node=C37218CW&published_only=true"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/1/tree/waypoint?offset=1&parent_node=C97IP947&published_only=true"
 
 ```
+
 
 __Endpoint__
 
@@ -7218,17 +10048,35 @@ __Description__
 
 Fetch the record slice for a given tree waypoint
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	Integer offset -- The page of records to return
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String parent_node (Optional) -- The URI of the parent of this waypoint (none for the root record)
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -7250,15 +10098,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/dublin_core/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7268,11 +10126,18 @@ __Description__
 
 Get metadata for a Dublin Core export
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7286,15 +10151,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/dublin_core/1.xml"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7304,11 +10179,18 @@ __Description__
 
 Get a Dublin Core representation of a Digital Object 
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7322,15 +10204,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mets/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7340,11 +10232,18 @@ __Description__
 
 Get metadata for a METS export
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7359,23 +10258,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mets/1.xml?dmd=IO681PH"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mets/1.xml?dmd=F780PMO"
 
 ```
+
 
 __Endpoint__
 
@@ -7385,13 +10300,25 @@ __Description__
 
 Get a METS representation of a Digital Object 
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String dmd (Optional) -- DMD Scheme to use
 
 __Returns__
@@ -7405,15 +10332,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mods/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7423,11 +10360,18 @@ __Description__
 
 Get metadata for a MODS export
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7441,15 +10385,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/digital_objects/mods/1.xml"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7459,11 +10413,18 @@ __Description__
 
 Get a MODS representation of a Digital Object 
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7477,32 +10438,44 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"event",
 "external_ids":[],
 "external_documents":[],
-"linked_agents":[{ "ref":"/agents/people/337",
-"role":"requester"}],
-"linked_records":[{ "ref":"/repositories/2/accessions/102",
-"role":"outcome"}],
+"linked_agents":[{ "ref":"/agents/people/368",
+"role":"validator"}],
+"linked_records":[{ "ref":"/repositories/2/accessions/119",
+"role":"requested"}],
 "date":{ "jsonmodel_type":"date",
-"date_type":"range",
+"date_type":"single",
 "label":"creation",
-"begin":"2018-11-17",
-"end":"2018-11-17",
+"begin":"1981-05-12",
+"end":"1981-05-12",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"E12264494954"},
-"event_type":"processing_in_progress"}' \
+"expression":"IOS902Q"},
+"event_type":"decompression"}' \
   "http://localhost:8089/repositories/2/events"
 
 ```
+
 
 __Endpoint__
 
@@ -7512,11 +10485,22 @@ __Description__
 
 Create an Event
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:event) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7532,20 +10516,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/events?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/events?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/events?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7555,6 +10543,7 @@ __Description__
 
 Get a list of Events for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -7562,11 +10551,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7580,32 +10574,50 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"event",
 "external_ids":[],
 "external_documents":[],
-"linked_agents":[{ "ref":"/agents/people/337",
-"role":"requester"}],
-"linked_records":[{ "ref":"/repositories/2/accessions/102",
-"role":"outcome"}],
+"linked_agents":[{ "ref":"/agents/people/368",
+"role":"validator"}],
+"linked_records":[{ "ref":"/repositories/2/accessions/119",
+"role":"requested"}],
 "date":{ "jsonmodel_type":"date",
-"date_type":"range",
+"date_type":"single",
 "label":"creation",
-"begin":"2018-11-17",
-"end":"2018-11-17",
+"begin":"1981-05-12",
+"end":"1981-05-12",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"E12264494954"},
-"event_type":"processing_in_progress"}' \
+"expression":"IOS902Q"},
+"event_type":"decompression"}' \
   "http://localhost:8089/repositories/2/events/1"
 
 ```
+
 
 __Endpoint__
 
@@ -7615,13 +10627,25 @@ __Description__
 
 Update an Event
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:event) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7636,6 +10660,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -7644,13 +10677,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/events/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -7660,13 +10700,25 @@ __Description__
 
 Get an Event by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -7682,13 +10734,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/events/1"
 
 ```
+
 
 __Endpoint__
 
@@ -7698,11 +10762,18 @@ __Description__
 
 Delete an event record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7717,23 +10788,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/events/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -7743,13 +10832,21 @@ __Description__
 
 Suppress this record from non-managers
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -7764,18 +10861,30 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
@@ -7784,13 +10893,23 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/archival_objects?ref_id=I306YFJ&component_id=AKTQA&resolve[]=[record_types, to_resolve]"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/archival_objects?ref_id=214267UFI&component_id=TAJ455R&resolve[]=[record_types, to_resolve]"
 
 ```
+
 
 __Endpoint__
 
@@ -7800,15 +10919,36 @@ __Description__
 
 Find Archival Objects by ref_id or component_id
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] ref_id (Optional) -- An archival object's Ref ID (param may be repeated)
-
+  
+    
+  
+  
+    
+    
 	[String] component_id (Optional) -- An archival object's component ID (param may be repeated)
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -7823,12 +10963,21 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
@@ -7837,13 +10986,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_object_components?component_id=H848GW181&resolve[]=[record_types, to_resolve]"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_object_components?component_id=L172RG800&resolve[]=[record_types, to_resolve]"
 
 ```
+
 
 __Endpoint__
 
@@ -7853,13 +11009,29 @@ __Description__
 
 Find Digital Object Components by component_id
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] component_id (Optional) -- A digital object component's component ID (param may be repeated)
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -7874,12 +11046,21 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
@@ -7888,13 +11069,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_objects?digital_object_id=UKPKL&resolve[]=[record_types, to_resolve]"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/digital_objects?digital_object_id=N668DS718&resolve[]=[record_types, to_resolve]"
 
 ```
+
 
 __Endpoint__
 
@@ -7904,13 +11092,29 @@ __Description__
 
 Find Digital Objects by digital_object_id
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] digital_object_id (Optional) -- A digital object's digital object ID (param may be repeated)
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -7925,12 +11129,21 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
@@ -7939,13 +11152,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/resources?identifier=759BC49X&resolve[]=[record_types, to_resolve]"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/find_by_id/resources?identifier=ABO802426&resolve[]=[record_types, to_resolve]"
 
 ```
+
 
 __Endpoint__
 
@@ -7955,13 +11175,29 @@ __Description__
 
 Find Resources by their identifiers
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] identifier (Optional) -- A 4-part identifier expressed as a JSON array (of up to 4 strings) comprised of the id_0 to id_3 fields (though empty fields will be handled if not provided)
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -7975,20 +11211,32 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"group",
-"description":"Description: 282",
+"description":"Description: 365",
 "member_usernames":[],
 "grants_permissions":[],
-"group_code":"276PVLR"}' \
+"group_code":"YDW587J"}' \
   "http://localhost:8089/repositories/2/groups"
 
 ```
+
 
 __Endpoint__
 
@@ -7998,11 +11246,22 @@ __Description__
 
 Create a group within a repository
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:group) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8021,23 +11280,33 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/groups?group_code=LIA191A"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/groups?group_code=TPS491G"
 
 ```
+
 
 __Endpoint__
 
@@ -8047,11 +11316,22 @@ __Description__
 
 Get a list of groups for a repository
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String group_code (Optional) -- Get groups by group code
 
 __Returns__
@@ -8066,28 +11346,52 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
   
-
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"group",
-"description":"Description: 282",
+"description":"Description: 365",
 "member_usernames":[],
 "grants_permissions":[],
-"group_code":"276PVLR"}' \
+"group_code":"YDW587J"}' \
   "http://localhost:8089/repositories/2/groups/1?with_members=true"
 
 ```
+
 
 __Endpoint__
 
@@ -8097,15 +11401,32 @@ __Description__
 
 Update a group
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:group) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam with_members -- If 'true' (the default) replace the membership list with the list provided
 
 __Returns__
@@ -8124,23 +11445,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/groups/1?with_members=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8150,13 +11487,25 @@ __Description__
 
 Get a group by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam with_members -- If 'true' (the default) return the list of members with the group
 
 __Returns__
@@ -8172,13 +11521,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/groups/1"
 
 ```
+
 
 __Endpoint__
 
@@ -8188,11 +11549,18 @@ __Description__
 
 Delete a group by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8208,23 +11576,35 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"job",
 "status":"queued",
 "job":{ "jsonmodel_type":"import_job",
-"filenames":["658E644117I",
-"656Y513JS",
-"11I894X562",
-"61324T726730"],
+"filenames":["HKD835U",
+"XU990707O",
+"DHQIR",
+"Y27Q383S"],
 "import_type":"eac_xml"}}' \
   "http://localhost:8089/repositories/2/jobs"
 
 ```
+
 
 __Endpoint__
 
@@ -8234,11 +11614,22 @@ __Description__
 
 Create a new job
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:job) <request body> -- The job object
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8252,20 +11643,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8275,6 +11670,7 @@ __Description__
 
 Get a list of Jobs for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -8282,11 +11678,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8300,13 +11701,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/jobs/1"
 
 ```
+
 
 __Endpoint__
 
@@ -8316,11 +11729,18 @@ __Description__
 
 Delete a Job
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8335,6 +11755,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -8343,13 +11772,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8359,13 +11795,25 @@ __Description__
 
 Get a Job by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8379,15 +11827,27 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/jobs/1/cancel"
 
 ```
+
 
 __Endpoint__
 
@@ -8397,11 +11857,18 @@ __Description__
 
 Cancel a Job
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8416,23 +11883,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1/log?offset=NonNegativeInteger"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8442,13 +11925,25 @@ __Description__
 
 Get a Job's log by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::NonNegativeInteger offset -- The byte offset of the log file to show
 
 __Returns__
@@ -8462,15 +11957,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1/output_files"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8480,11 +11985,18 @@ __Description__
 
 Get a list of Job's output files by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8498,15 +12010,31 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1/output_files/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8516,13 +12044,21 @@ __Description__
 
 Get a Job's output file by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	Integer file_id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8536,20 +12072,30 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1/records?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1/records?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/1/records?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8559,6 +12105,7 @@ __Description__
 
 Get a Job's list of created URIs
 
+
 __Parameters__
 
 <aside class="notice">
@@ -8566,13 +12113,19 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8587,6 +12140,12 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
@@ -8595,13 +12154,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/active?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8611,11 +12174,22 @@ __Description__
 
 Get a list of all active Jobs for a Repository
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8629,20 +12203,30 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/archived?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/archived?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/archived?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8652,6 +12236,7 @@ __Description__
 
 Get a list of all archived Jobs for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -8659,13 +12244,23 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8679,15 +12274,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/jobs/import_types"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8697,9 +12296,15 @@ __Description__
 
 List all supported import job types
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8714,29 +12319,47 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/jobs_with_files?job={"jsonmodel_type"=>"job", "status"=>"queued", "job"=>{"jsonmodel_type"=>"import_job", "filenames"=>["658E644117I", "656Y513JS", "11I894X562", "61324T726730"], "import_type"=>"eac_xml"}}&files=UploadFile"
+  "http://localhost:8089/repositories/2/jobs_with_files?job={"jsonmodel_type"=>"job", "status"=>"queued", "job"=>{"jsonmodel_type"=>"import_job", "filenames"=>["HKD835U", "XU990707O", "DHQIR", "Y27Q383S"], "import_type"=>"eac_xml"}}&files=UploadFile"
 
 ```
+
 
 __Endpoint__
 
@@ -8746,13 +12369,21 @@ __Description__
 
 Create a new job and post input files
 
+
 __Parameters__
 
-
-	JSONModel(:job) job -- 
-
-	[RESTHelpers::UploadFile] files -- 
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8766,10 +12397,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"preference",
@@ -8782,6 +12424,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 
 ```
 
+
 __Endpoint__
 
 ```[:POST] /repositories/:repo_id/preferences ```
@@ -8790,11 +12433,22 @@ __Description__
 
 Create a Preferences record
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:preference) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8811,23 +12465,33 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/preferences?user_id=1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8837,11 +12501,22 @@ __Description__
 
 Get a list of Preferences for a Repository and optionally a user
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	Integer user_id (Optional) -- The username to retrieve defaults for
 
 __Returns__
@@ -8855,15 +12530,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/preferences/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -8873,11 +12558,18 @@ __Description__
 
 Get a Preferences record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8891,10 +12583,27 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"preference",
@@ -8907,6 +12616,7 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 
 ```
 
+
 __Endpoint__
 
 ```[:POST] /repositories/:repo_id/preferences/:id ```
@@ -8915,13 +12625,25 @@ __Description__
 
 Update a Preferences record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:preference) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8937,13 +12659,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/preferences/1"
 
 ```
+
 
 __Endpoint__
 
@@ -8953,11 +12687,18 @@ __Description__
 
 Delete a Preferences record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -8972,23 +12713,33 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/preferences/defaults?username=RVH853706"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/preferences/defaults?username=GEH589E"
 
 ```
+
 
 __Endpoint__
 
@@ -8998,11 +12749,22 @@ __Description__
 
 Get the default set of Preferences for a Repository and optionally a user
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String username (Optional) -- The username to retrieve defaults for
 
 __Returns__
@@ -9016,16 +12778,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/rde_templates"
 
 ```
+
 
 __Endpoint__
 
@@ -9035,11 +12809,22 @@ __Description__
 
 Create an RDE template
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:rde_template) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9055,15 +12840,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/rde_templates"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9073,9 +12862,15 @@ __Description__
 
 Get a list of RDE Templates
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9089,15 +12884,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/rde_templates/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9107,11 +12912,18 @@ __Description__
 
 Get an RDE template record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9125,13 +12937,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/rde_templates/1"
 
 ```
+
 
 __Endpoint__
 
@@ -9141,11 +12965,18 @@ __Description__
 
 Delete an RDE Template
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9159,16 +12990,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/required_fields/1"
 
 ```
+
 
 __Endpoint__
 
@@ -9178,15 +13027,27 @@ __Description__
 
 Require fields for a record type
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:required_fields) <request body> -- The fields required
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String record_type -- 
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Created", :id => (id of created object), :warnings => {(warnings)}}
@@ -9200,15 +13061,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/required_fields/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9218,13 +13089,20 @@ __Description__
 
 Get required fields for a record type
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String record_type -- 
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Created", :id => (id of created object), :warnings => {(warnings)}}
@@ -9239,23 +13117,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_descriptions/1.:fmt/metadata?fmt=DGVPG"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_descriptions/1.:fmt/metadata?fmt=J555OFW"
 
 ```
+
 
 __Endpoint__
 
@@ -9265,13 +13159,25 @@ __Description__
 
 Get export metadata for a Resource Description
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String fmt (Optional) -- Format of the request
 
 __Returns__
@@ -9286,47 +13192,87 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_descriptions/1.pdf?include_unpublished=true&include_daos=true&numbered_cs=true&print_pdf=true&ead3=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9336,21 +13282,53 @@ __Description__
 
 Get an EAD representation of a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam include_unpublished (Optional) -- Include unpublished records
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam include_daos (Optional) -- Include digital objects in dao tags
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam numbered_cs (Optional) -- Use numbered <c> tags in ead
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam print_pdf (Optional) -- Print EAD to pdf
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam ead3 (Optional) -- Export using EAD3 schema
 
 __Returns__
@@ -9365,47 +13343,87 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_descriptions/1.xml?include_unpublished=true&include_daos=true&numbered_cs=true&print_pdf=true&ead3=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9415,21 +13433,53 @@ __Description__
 
 Get an EAD representation of a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam include_unpublished (Optional) -- Include unpublished records
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam include_daos (Optional) -- Include digital objects in dao tags
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam numbered_cs (Optional) -- Use numbered <c> tags in ead
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam print_pdf (Optional) -- Print EAD to pdf
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam ead3 (Optional) -- Export using EAD3 schema
 
 __Returns__
@@ -9443,15 +13493,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_labels/1.:fmt/metadata"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9461,11 +13521,18 @@ __Description__
 
 Get export metadata for Resource labels
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9479,15 +13546,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resource_labels/1.tsv"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9497,11 +13574,18 @@ __Description__
 
 Get a tsv list of printable labels for a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9515,10 +13599,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"resource",
@@ -9527,59 +13622,62 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
 "portion":"part",
-"number":"35",
-"extent_type":"terabytes",
-"dimensions":"SGER537",
-"physical_details":"778130656IO"}],
+"number":"86",
+"extent_type":"reels",
+"dimensions":"JDO786A",
+"physical_details":"QS542509424"}],
 "dates":[{ "jsonmodel_type":"date",
 "date_type":"single",
 "label":"creation",
-"begin":"2007-08-31",
-"end":"2007-08-31",
+"begin":"2012-07-29",
+"end":"2012-07-29",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"DVGVC"},
+"expression":"BJ4225148"},
 { "jsonmodel_type":"date",
 "date_type":"single",
 "label":"creation",
-"begin":"1973-08-15",
+"begin":"1976-04-13",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"TRB50X"}],
+"expression":"833QR754P"}],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
+"is_slug_auto":true,
 "restrictions":false,
 "revision_statements":[{ "jsonmodel_type":"revision_statement",
-"date":"MW82OO",
-"description":"687634502IQ"}],
+"date":"HELXT",
+"description":"318991934467A"}],
 "instances":[{ "jsonmodel_type":"instance",
 "is_representative":false,
-"instance_type":"realia",
+"instance_type":"text",
 "sub_container":{ "jsonmodel_type":"sub_container",
-"top_container":{ "ref":"/repositories/2/top_containers/185"},
-"type_2":"object",
-"indicator_2":"YJL308J",
-"type_3":"folder",
-"indicator_3":"LEWGB"}}],
+"top_container":{ "ref":"/repositories/2/top_containers/207"},
+"type_2":"case",
+"indicator_2":"TPJL180",
+"type_3":"case",
+"indicator_3":"SUTSP"}}],
 "deaccessions":[],
 "related_accessions":[],
 "classifications":[],
 "notes":[],
-"title":"Resource Title: <emph render='italic'>149</emph>",
-"id_0":"894I483W399",
-"level":"subseries",
-"language":"iba",
-"ead_id":"XO549J999",
-"finding_aid_date":"HIJH376",
-"finding_aid_series_statement":"W38485B38",
-"finding_aid_note":"QN710N707",
-"ead_location":"V33358S515"}' \
+"title":"Resource Title: <emph render='italic'>162</emph>",
+"id_0":"IOVRG",
+"level":"item",
+"language":"xal",
+"finding_aid_description_rules":"dacs",
+"finding_aid_date":"UI148IV",
+"finding_aid_series_statement":"EWASB",
+"finding_aid_language":"861832LN369",
+"finding_aid_note":"843X725952T",
+"ead_location":"FCOK853"}' \
   "http://localhost:8089/repositories/2/resources"
 
 ```
+
 
 __Endpoint__
 
@@ -9589,11 +13687,22 @@ __Description__
 
 Create a Resource
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:resource) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9609,20 +13718,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9632,6 +13745,7 @@ __Description__
 
 Get a list of Resources for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -9639,11 +13753,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9658,6 +13777,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -9666,13 +13794,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9682,13 +13817,25 @@ __Description__
 
 Get a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -9702,10 +13849,27 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"resource",
@@ -9714,59 +13878,62 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "linked_events":[],
 "extents":[{ "jsonmodel_type":"extent",
 "portion":"part",
-"number":"35",
-"extent_type":"terabytes",
-"dimensions":"SGER537",
-"physical_details":"778130656IO"}],
+"number":"86",
+"extent_type":"reels",
+"dimensions":"JDO786A",
+"physical_details":"QS542509424"}],
 "dates":[{ "jsonmodel_type":"date",
 "date_type":"single",
 "label":"creation",
-"begin":"2007-08-31",
-"end":"2007-08-31",
+"begin":"2012-07-29",
+"end":"2012-07-29",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"DVGVC"},
+"expression":"BJ4225148"},
 { "jsonmodel_type":"date",
 "date_type":"single",
 "label":"creation",
-"begin":"1973-08-15",
+"begin":"1976-04-13",
 "certainty":"inferred",
 "era":"ce",
 "calendar":"gregorian",
-"expression":"TRB50X"}],
+"expression":"833QR754P"}],
 "external_documents":[],
 "rights_statements":[],
 "linked_agents":[],
+"is_slug_auto":true,
 "restrictions":false,
 "revision_statements":[{ "jsonmodel_type":"revision_statement",
-"date":"MW82OO",
-"description":"687634502IQ"}],
+"date":"HELXT",
+"description":"318991934467A"}],
 "instances":[{ "jsonmodel_type":"instance",
 "is_representative":false,
-"instance_type":"realia",
+"instance_type":"text",
 "sub_container":{ "jsonmodel_type":"sub_container",
-"top_container":{ "ref":"/repositories/2/top_containers/185"},
-"type_2":"object",
-"indicator_2":"YJL308J",
-"type_3":"folder",
-"indicator_3":"LEWGB"}}],
+"top_container":{ "ref":"/repositories/2/top_containers/207"},
+"type_2":"case",
+"indicator_2":"TPJL180",
+"type_3":"case",
+"indicator_3":"SUTSP"}}],
 "deaccessions":[],
 "related_accessions":[],
 "classifications":[],
 "notes":[],
-"title":"Resource Title: <emph render='italic'>149</emph>",
-"id_0":"894I483W399",
-"level":"subseries",
-"language":"iba",
-"ead_id":"XO549J999",
-"finding_aid_date":"HIJH376",
-"finding_aid_series_statement":"W38485B38",
-"finding_aid_note":"QN710N707",
-"ead_location":"V33358S515"}' \
+"title":"Resource Title: <emph render='italic'>162</emph>",
+"id_0":"IOVRG",
+"level":"item",
+"language":"xal",
+"finding_aid_description_rules":"dacs",
+"finding_aid_date":"UI148IV",
+"finding_aid_series_statement":"EWASB",
+"finding_aid_language":"861832LN369",
+"finding_aid_note":"843X725952T",
+"ead_location":"FCOK853"}' \
   "http://localhost:8089/repositories/2/resources/1"
 
 ```
+
 
 __Endpoint__
 
@@ -9776,13 +13943,25 @@ __Description__
 
 Update a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:resource) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9798,13 +13977,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/resources/1"
 
 ```
+
 
 __Endpoint__
 
@@ -9814,11 +14005,18 @@ __Description__
 
 Delete a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9833,29 +14031,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/resources/1/accept_children?children=F530BKX&position=1"
+  "http://localhost:8089/repositories/2/resources/1/accept_children?children=KT85I941&position=1"
 
 ```
+
 
 __Endpoint__
 
@@ -9865,15 +14087,28 @@ __Description__
 
 Move existing Archival Objects to become children of a Resource
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	[String] children (Optional) -- The children to move to the Resource
-
-	Integer id -- The ID of the Resource to move children to
-
-	Integer position -- The index for the first child to be moved to
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9891,16 +14126,34 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/resources/1/children"
 
 ```
+
 
 __Endpoint__
 
@@ -9910,13 +14163,25 @@ __Description__
 
 Batch create several Archival Objects as children of an existing Resource
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:archival_record_children) <request body> -- The children to add to the resource
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9934,15 +14199,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/models_in_graph"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9952,11 +14227,18 @@ __Description__
 
 Get a list of record types in the graph of a resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -9970,15 +14252,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/ordered_records"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -9988,11 +14280,18 @@ __Description__
 
 Get the list of URIs of this published resource and all published archival objects contained within.Ordered by tree order (i.e. if you fully expanded the record tree and read from top to bottom)
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10006,15 +14305,27 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/resources/1/publish"
 
 ```
+
 
 __Endpoint__
 
@@ -10024,11 +14335,18 @@ __Description__
 
 Publish a resource and all its sub-records and components
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10045,23 +14363,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/repositories/2/resources/1/suppressed?suppressed=true"
 
 ```
+
 
 __Endpoint__
 
@@ -10071,13 +14407,21 @@ __Description__
 
 Suppress this record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	RESTHelpers::BooleanParam suppressed -- Suppression state
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10092,6 +14436,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -10100,13 +14453,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/top_containers?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10116,13 +14476,25 @@ __Description__
 
 Get Top Containers linked to a published resource and published archival ojbects contained within.
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -10139,23 +14511,41 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/resources/1/transfer?target_repo=C960I777D"
+  "http://localhost:8089/repositories/2/resources/1/transfer?target_repo=YMT462273"
 
 ```
+
 
 __Endpoint__
 
@@ -10165,13 +14555,21 @@ __Description__
 
 Transfer this record to a different repository
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
-	String target_repo -- The URI of the target repository
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10186,23 +14584,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree?limit_to=O519MIG"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree?limit_to=337KR369C"
 
 ```
+
 
 __Endpoint__
 
@@ -10212,13 +14626,25 @@ __Description__
 
 Get a Resource tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String limit_to (Optional) -- An Archival Object URI or 'root'
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10233,29 +14659,51 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/node?node_uri=B14I938Y&published_only=true"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/node?node_uri=LYXJL&published_only=true"
 
 ```
+
 
 __Endpoint__
 
@@ -10265,15 +14713,28 @@ __Description__
 
 Fetch tree information for an Archival Object record within a tree
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	String node_uri -- The URI of the Archival Object record of interest
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -10305,29 +14766,51 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/node_from_root?node_ids=1&published_only=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10337,15 +14820,28 @@ __Description__
 
 Fetch tree paths from the root record to Archival Objects
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	[Integer] node_ids -- The IDs of the Archival Object records of interest
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -10365,23 +14861,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/root?published_only=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10391,13 +14903,25 @@ __Description__
 
 Fetch tree information for the top-level resource record
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -10422,35 +14946,63 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/waypoint?offset=1&parent_node=U85MKJ&published_only=true"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/1/tree/waypoint?offset=1&parent_node=TWD330U&published_only=true"
 
 ```
+
 
 __Endpoint__
 
@@ -10460,17 +15012,35 @@ __Description__
 
 Fetch the record slice for a given tree waypoint
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
-	Integer offset -- The page of records to return
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String parent_node (Optional) -- The URI of the parent of this waypoint (none for the root record)
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam published_only -- Whether to restrict to published/unsuppressed items
 
 __Returns__
@@ -10493,23 +15063,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/marc21/1.:fmt/metadata?include_unpublished_marc=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10519,13 +15105,25 @@ __Description__
 
 Get metadata for a MARC21 export
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam include_unpublished_marc (Optional) -- Include unpublished notes
 
 __Returns__
@@ -10540,23 +15138,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/resources/marc21/1.xml?include_unpublished_marc=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10566,13 +15180,25 @@ __Description__
 
 Get a MARC 21 representation of a Resource
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam include_unpublished_marc (Optional) -- Include unpublished notes
 
 __Returns__
@@ -10586,69 +15212,129 @@ __Returns__
 
 
 
-
-  
-
-```shell
   
     
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+```shell
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"PRWOY"' \
+  -d '"823238G594C"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"254EUNG"' \
+  -d '"IP356AO"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"748Q927P224"' \
+  -d '"741S261AT"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"426UAY615"' \
+  -d '"YRMT376"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"1"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"691LD662T"' \
+  -d '"MEJ29S"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"BooleanParam"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"LIDUG"' \
+  -d '"489K717AL"' \
   "http://localhost:8089/repositories/2/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"ENCN500"' \
+  -d '"NFDDU"' \
   "http://localhost:8089/repositories/2/search"
   
 
 ```
+
 
 __Endpoint__
 
@@ -10658,6 +15344,7 @@ __Description__
 
 Search this repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -10665,33 +15352,93 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String q (Optional) -- A search query string.  Uses Lucene 4.0 syntax: http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html  Search index structure can be found in solr/schema.xml
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) aq (Optional) -- A json string containing the advanced query
-
+  
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (defaults to all types if not specified)
-
+  
+    
+  
+  
+    
+    
 	String sort (Optional) -- The attribute to sort and the direction e.g. &sort=title desc&...
-
+  
+    
+  
+  
+    
+    
 	[String] facet (Optional) -- The list of the fields to produce facets for
-
+  
+    
+  
+  
+    
+    
 	Integer facet_mincount (Optional) -- The minimum count for a facet field to be included in the response
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) filter (Optional) -- A json string containing the advanced query to filter by
-
+  
+    
+  
+  
+    
+    
 	[String] exclude (Optional) -- A list of document IDs that should be excluded from results
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam hl (Optional) -- Whether to use highlighting
-
+  
+    
+  
+  
+    
+    
 	String root_record (Optional) -- Search within a collection of records (defined by the record at the root of the tree)
-
+  
+    
+  
+  
+    
+    
 	String dt (Optional) -- Format to return (JSON default)
 
 __Returns__
@@ -10705,10 +15452,21 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"top_container",
@@ -10716,15 +15474,16 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "container_locations":[],
 "series":[],
 "collection":[],
-"indicator":"W128EVJ",
+"indicator":"JXJP418",
 "type":"box",
-"barcode":"24a4216e745acf51073491abe2d913bb",
-"ils_holding_id":"V473689EM",
-"ils_item_id":"V4195154265",
-"exported_to_ils":"2019-01-14T06:59:58-08:00"}' \
+"barcode":"a6b4a4414a4c40b810c602e05b2623a2",
+"ils_holding_id":"C348SVC",
+"ils_item_id":"18DAL13",
+"exported_to_ils":"2019-05-29T15:19:31-07:00"}' \
   "http://localhost:8089/repositories/2/top_containers"
 
 ```
+
 
 __Endpoint__
 
@@ -10734,11 +15493,22 @@ __Description__
 
 Create a top container
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:top_container) <request body> -- The record to create
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10752,20 +15522,24 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10775,6 +15549,7 @@ __Description__
 
 Get a list of TopContainers for a Repository
 
+
 __Parameters__
 
 <aside class="notice">
@@ -10782,11 +15557,16 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10800,10 +15580,27 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
+  
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"top_container",
@@ -10811,15 +15608,16 @@ curl -H "X-ArchivesSpace-Session: $SESSION" \
 "container_locations":[],
 "series":[],
 "collection":[],
-"indicator":"W128EVJ",
+"indicator":"JXJP418",
 "type":"box",
-"barcode":"24a4216e745acf51073491abe2d913bb",
-"ils_holding_id":"V473689EM",
-"ils_item_id":"V4195154265",
-"exported_to_ils":"2019-01-14T06:59:58-08:00"}' \
+"barcode":"a6b4a4414a4c40b810c602e05b2623a2",
+"ils_holding_id":"C348SVC",
+"ils_item_id":"18DAL13",
+"exported_to_ils":"2019-05-29T15:19:31-07:00"}' \
   "http://localhost:8089/repositories/2/top_containers/1"
 
 ```
+
 
 __Endpoint__
 
@@ -10829,13 +15627,25 @@ __Description__
 
 Update a top container
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:top_container) <request body> -- The updated record
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10850,6 +15660,15 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
@@ -10858,13 +15677,20 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers/1?resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -10874,13 +15700,25 @@ __Description__
 
 Get a top container by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -10894,13 +15732,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/repositories/2/top_containers/1"
 
 ```
+
 
 __Endpoint__
 
@@ -10910,11 +15760,18 @@ __Description__
 
 Delete a top container
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10929,29 +15786,47 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/top_containers/batch/container_profile?ids=1&container_profile_uri=731DE775W"
+  "http://localhost:8089/repositories/2/top_containers/batch/container_profile?ids=1&container_profile_uri=G256UVS"
 
 ```
+
 
 __Endpoint__
 
@@ -10961,13 +15836,21 @@ __Description__
 
 Update container profile for a batch of top containers
 
+
 __Parameters__
 
-
-	[Integer] ids -- 
-
-	String container_profile_uri -- The uri of the container profile
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -10982,29 +15865,47 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/top_containers/batch/ils_holding_id?ids=1&ils_holding_id=156346BQG"
+  "http://localhost:8089/repositories/2/top_containers/batch/ils_holding_id?ids=1&ils_holding_id=VIVC489"
 
 ```
+
 
 __Endpoint__
 
@@ -11014,13 +15915,21 @@ __Description__
 
 Update ils_holding_id for a batch of top containers
 
+
 __Parameters__
 
-
-	[Integer] ids -- 
-
-	String ils_holding_id -- Value to set for ils_holding_id
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -11035,27 +15944,54 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
+  
+    
+  
+  
+  ```shell
+ curl -H "X-ArchivesSpace-Session: $SESSION" \
+   -d 'ids[]=[1,2,3,4,5]' \
+   -d 'location_uri=locations/1234' \
+   "http://localhost:8089/repositories/2/top_containers/batch/location"
 
-```shell
-curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/top_containers/batch/location?ids=1&location_uri=HP59891V"
+```
+
+
+```python
+client = ASnakeClient()
+client.post('repositories/2/top_containers/batch/location',
+            params={ 'ids': [1,2,3,4,5],
+                     'location_uri': 'locations/1234' })
 
 ```
 
@@ -11066,14 +16002,24 @@ __Endpoint__
 __Description__
 
 Update location for a batch of top containers
+This route takes the `ids` of one or more containers, and associates the containers
+with the location referenced by `location_uri`.
+
 
 __Parameters__
 
-
-	[Integer] ids -- 
-
-	String location_uri -- The uri of the location
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -11087,16 +16033,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"YQ673420874"' \
+  -d '"QQH35C"' \
   "http://localhost:8089/repositories/2/top_containers/bulk/barcodes"
 
 ```
+
 
 __Endpoint__
 
@@ -11106,11 +16064,22 @@ __Description__
 
 Bulk update barcodes
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	String <request body> -- JSON string containing barcode data {uri=>barcode}
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -11124,16 +16093,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"HLJFJ"' \
+  -d '"X53WVU"' \
   "http://localhost:8089/repositories/2/top_containers/bulk/locations"
 
 ```
+
 
 __Endpoint__
 
@@ -11143,11 +16124,22 @@ __Description__
 
 Bulk update locations
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	String <request body> -- JSON string containing location data {container_uri=>location_uri}
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -11162,83 +16154,153 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers/search?q=GTLUX&aq=["Example Missing"]&type=BTA253719&sort=V414285337S&facet=720776994YG&facet_mincount=1&filter=["Example Missing"]&exclude=CL680IQ&hl=true&root_record=P983UPQ&dt=YJNR981"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/top_containers/search?q=NRGC203&aq=["Example Missing"]&type=DB40775113&sort=510J947BY&facet=407666IBN&facet_mincount=1&filter=["Example Missing"]&exclude=BTD179U&hl=true&root_record=35W281O118&dt=838F767V113"
 
 ```
+
 
 __Endpoint__
 
@@ -11248,31 +16310,92 @@ __Description__
 
 Search for top containers
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
-
+  
+    
+  
+  
+    
+    
 	String q (Optional) -- A search query string.  Uses Lucene 4.0 syntax: http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html  Search index structure can be found in solr/schema.xml
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) aq (Optional) -- A json string containing the advanced query
-
+  
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (defaults to all types if not specified)
-
+  
+    
+  
+  
+    
+    
 	String sort (Optional) -- The attribute to sort and the direction e.g. &sort=title desc&...
-
+  
+    
+  
+  
+    
+    
 	[String] facet (Optional) -- The list of the fields to produce facets for
-
+  
+    
+  
+  
+    
+    
 	Integer facet_mincount (Optional) -- The minimum count for a facet field to be included in the response
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) filter (Optional) -- A json string containing the advanced query to filter by
-
+  
+    
+  
+  
+    
+    
 	[String] exclude (Optional) -- A list of document IDs that should be excluded from results
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam hl (Optional) -- Whether to use highlighting
-
+  
+    
+  
+  
+    
+    
 	String root_record (Optional) -- Search within a collection of records (defined by the record at the root of the tree)
-
+  
+    
+  
+  
+    
+    
 	String dt (Optional) -- Format to return (JSON default)
 
 __Returns__
@@ -11287,23 +16410,35 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/repositories/2/transfer?target_repo=232183228109J"
+  "http://localhost:8089/repositories/2/transfer?target_repo=337MOBX"
 
 ```
+
 
 __Endpoint__
 
@@ -11313,11 +16448,18 @@ __Description__
 
 Transfer this record to a different repository
 
+
 __Parameters__
 
-
-	String target_repo -- The URI of the target repository
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -11331,15 +16473,25 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/2/users/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -11349,11 +16501,18 @@ __Description__
 
 Get a user's details including their groups for the current repository
 
+
 __Parameters__
 
-
-	Integer id -- The username id to fetch
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	Integer repo_id -- The Repository ID -- The Repository must exist
 
 __Returns__
@@ -11367,16 +16526,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/with_agent"
 
 ```
+
 
 __Endpoint__
 
@@ -11386,9 +16551,15 @@ __Description__
 
 Create a Repository with an agent representation
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:repository_with_agent) <request body> -- The record to create
 
 __Returns__
@@ -11406,15 +16577,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/repositories/with_agent/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -11424,11 +16599,13 @@ __Description__
 
 Get a Repository by ID, including its agent representation
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- (:repository_with_agent)
@@ -11442,16 +16619,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/repositories/with_agent/1"
 
 ```
+
 
 __Endpoint__
 
@@ -11461,11 +16650,18 @@ __Description__
 
 Update a repository with an agent representation
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:repository_with_agent) <request body> -- The updated record
 
 __Returns__
@@ -11481,13 +16677,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/schemas"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -11496,6 +16690,7 @@ __Endpoint__
 __Description__
 
 Get all ArchivesSpace schemas
+
 
 __Parameters__
 
@@ -11511,15 +16706,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/schemas/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -11529,11 +16728,13 @@ __Description__
 
 Get an ArchivesSpace schema
 
+
 __Parameters__
 
-
-	String schema -- Schema name to retrieve
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- ArchivesSpace (:schema)
@@ -11547,68 +16748,123 @@ __Returns__
 
 
 
-
-  
-
-```shell
   
     
-curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"470V36140252"' \
-  "http://localhost:8089/search"
   
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+```shell
+  
+curl -H "X-ArchivesSpace-Session: $SESSION" \
+  -d '"LUEIT"' \
+  "http://localhost:8089/search"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"TLE581H"' \
+  -d '"405C609FJ"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"384417885ES"' \
+  -d '"TRGMX"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"QULJX"' \
+  -d '"KDRVG"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"1"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"BELD746"' \
+  -d '"N709A916F"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"BooleanParam"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"EY998B551"' \
+  -d '"568UHE767"' \
   "http://localhost:8089/search"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"PJU424Y"' \
+  -d '"VQ993513B"' \
   "http://localhost:8089/search"
   
 
 ```
+
 
 __Endpoint__
 
@@ -11618,6 +16874,7 @@ __Description__
 
 Search this archive
 
+
 __Parameters__
 
 <aside class="notice">
@@ -11625,31 +16882,86 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	String q (Optional) -- A search query string.  Uses Lucene 4.0 syntax: http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html  Search index structure can be found in solr/schema.xml
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) aq (Optional) -- A json string containing the advanced query
-
+  
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (defaults to all types if not specified)
-
+  
+    
+  
+  
+    
+    
 	String sort (Optional) -- The attribute to sort and the direction e.g. &sort=title desc&...
-
+  
+    
+  
+  
+    
+    
 	[String] facet (Optional) -- The list of the fields to produce facets for
-
+  
+    
+  
+  
+    
+    
 	Integer facet_mincount (Optional) -- The minimum count for a facet field to be included in the response
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) filter (Optional) -- A json string containing the advanced query to filter by
-
+  
+    
+  
+  
+    
+    
 	[String] exclude (Optional) -- A list of document IDs that should be excluded from results
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam hl (Optional) -- Whether to use highlighting
-
+  
+    
+  
+  
+    
+    
 	String root_record (Optional) -- Search within a collection of records (defined by the record at the root of the tree)
-
+  
+    
+  
+  
+    
+    
 	String dt (Optional) -- Format to return (JSON default)
 
 __Returns__
@@ -11663,20 +16975,84 @@ __Returns__
 
 
 
-
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
   
 
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/location_profile?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/location_profile?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/location_profile?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -11686,6 +17062,7 @@ __Description__
 
 Search across Location Profiles
 
+
 __Parameters__
 
 <aside class="notice">
@@ -11693,31 +17070,86 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	String q (Optional) -- A search query string.  Uses Lucene 4.0 syntax: http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html  Search index structure can be found in solr/schema.xml
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) aq (Optional) -- A json string containing the advanced query
-
+  
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (defaults to all types if not specified)
-
+  
+    
+  
+  
+    
+    
 	String sort (Optional) -- The attribute to sort and the direction e.g. &sort=title desc&...
-
+  
+    
+  
+  
+    
+    
 	[String] facet (Optional) -- The list of the fields to produce facets for
-
+  
+    
+  
+  
+    
+    
 	Integer facet_mincount (Optional) -- The minimum count for a facet field to be included in the response
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) filter (Optional) -- A json string containing the advanced query to filter by
-
+  
+    
+  
+  
+    
+    
 	[String] exclude (Optional) -- A list of document IDs that should be excluded from results
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam hl (Optional) -- Whether to use highlighting
-
+  
+    
+  
+  
+    
+    
 	String root_record (Optional) -- Search within a collection of records (defined by the record at the root of the tree)
-
+  
+    
+  
+  
+    
+    
 	String dt (Optional) -- Format to return (JSON default)
 
 __Returns__
@@ -11732,23 +17164,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/published_tree?node_uri=470421105ED"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/search/published_tree?node_uri=285FWAL"
 
 ```
+
 
 __Endpoint__
 
@@ -11758,11 +17194,13 @@ __Description__
 
 Find the tree view for a particular archival record
 
+
 __Parameters__
 
-
-	String node_uri -- The URI of the archival record to find the tree view for
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- OK
@@ -11777,37 +17215,47 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
   
+curl -H "X-ArchivesSpace-Session: $SESSION" \
+  -d '"538E95477142"' \
+  "http://localhost:8089/search/record_types_by_repository?record_types=538E95477142&repo_uri=662QDS477"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"WGND817"' \
-  "http://localhost:8089/search/record_types_by_repository?record_types=WGND817&repo_uri=E54147JQ"
-  
-    
-curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"E54147JQ"' \
-  "http://localhost:8089/search/record_types_by_repository?record_types=WGND817&repo_uri=E54147JQ"
+  -d '"662QDS477"' \
+  "http://localhost:8089/search/record_types_by_repository?record_types=538E95477142&repo_uri=662QDS477"
   
 
 ```
+
 
 __Endpoint__
 
@@ -11817,11 +17265,18 @@ __Description__
 
 Return the counts of record types of interest by repository
 
+
 __Parameters__
 
-
-	[String] record_types -- The list of record types to tally
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String repo_uri (Optional) -- An optional repository URI.  If given, just return counts for the single repository
 
 __Returns__
@@ -11836,12 +17291,18 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
@@ -11850,21 +17311,25 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
   
+curl -H "X-ArchivesSpace-Session: $SESSION" \
+  -d '"TQG394872"' \
+  "http://localhost:8089/search/records?uri=TQG394872&resolve[]=[record_types, to_resolve]"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"S842YVK"' \
-  "http://localhost:8089/search/records?uri=S842YVK&resolve[]=[record_types, to_resolve]"
-  
-    
-curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"AOG83W"' \
-  "http://localhost:8089/search/records?uri=S842YVK&resolve[]=[record_types, to_resolve]"
+  -d '"QABOM"' \
+  "http://localhost:8089/search/records?uri=TQG394872&resolve[]=[record_types, to_resolve]"
   
 
 ```
+
 
 __Endpoint__
 
@@ -11874,11 +17339,18 @@ __Description__
 
 Return a set of records by URI
 
+
 __Parameters__
 
-
-	[String] uri -- The list of record URIs to fetch
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- The list of result fields to resolve (if any)
 
 __Returns__
@@ -11892,68 +17364,123 @@ __Returns__
 
 
 
-
-  
-
-```shell
   
     
-curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"VMU665744"' \
-  "http://localhost:8089/search/repositories"
   
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+```shell
+  
+curl -H "X-ArchivesSpace-Session: $SESSION" \
+  -d '"ANA726I"' \
+  "http://localhost:8089/search/repositories"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"JJ961KS"' \
+  -d '"O390AGU"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"FULFQ"' \
+  -d '"580PH229480"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"381G787DL"' \
+  -d '"B405WHW"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"1"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"S940YXP"' \
+  -d '"I838L632G"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"BooleanParam"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"645GX455649"' \
+  -d '"QM267XR"' \
   "http://localhost:8089/search/repositories"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"J404959SW"' \
+  -d '"UI423QW"' \
   "http://localhost:8089/search/repositories"
   
 
 ```
+
 
 __Endpoint__
 
@@ -11963,6 +17490,7 @@ __Description__
 
 Search across repositories
 
+
 __Parameters__
 
 <aside class="notice">
@@ -11970,31 +17498,86 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	String q (Optional) -- A search query string.  Uses Lucene 4.0 syntax: http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html  Search index structure can be found in solr/schema.xml
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) aq (Optional) -- A json string containing the advanced query
-
+  
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (defaults to all types if not specified)
-
+  
+    
+  
+  
+    
+    
 	String sort (Optional) -- The attribute to sort and the direction e.g. &sort=title desc&...
-
+  
+    
+  
+  
+    
+    
 	[String] facet (Optional) -- The list of the fields to produce facets for
-
+  
+    
+  
+  
+    
+    
 	Integer facet_mincount (Optional) -- The minimum count for a facet field to be included in the response
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) filter (Optional) -- A json string containing the advanced query to filter by
-
+  
+    
+  
+  
+    
+    
 	[String] exclude (Optional) -- A list of document IDs that should be excluded from results
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam hl (Optional) -- Whether to use highlighting
-
+  
+    
+  
+  
+    
+    
 	String root_record (Optional) -- Search within a collection of records (defined by the record at the root of the tree)
-
+  
+    
+  
+  
+    
+    
 	String dt (Optional) -- Format to return (JSON default)
 
 __Returns__
@@ -12008,68 +17591,123 @@ __Returns__
 
 
 
-
-  
-
-```shell
   
     
-curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"281707W543R"' \
-  "http://localhost:8089/search/subjects"
   
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+```shell
+  
+curl -H "X-ArchivesSpace-Session: $SESSION" \
+  -d '"561252T421K"' \
+  "http://localhost:8089/search/subjects"
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"546304Q941W"' \
+  -d '"O295LB383"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"3K984990A"' \
+  -d '"392U858BQ"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"897301XB679"' \
+  -d '"478570431N717"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"1"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"JFFRI"' \
+  -d '"WV532PI"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '"BooleanParam"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"493F235EJ"' \
+  -d '"261JVI882"' \
   "http://localhost:8089/search/subjects"
-  
     
 curl -H "X-ArchivesSpace-Session: $SESSION" \
-  -d '"Y139SS17"' \
+  -d '"798L124BE"' \
   "http://localhost:8089/search/subjects"
   
 
 ```
+
 
 __Endpoint__
 
@@ -12079,6 +17717,7 @@ __Description__
 
 Search across subjects
 
+
 __Parameters__
 
 <aside class="notice">
@@ -12086,33 +17725,168 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
-
+  
+    
+  
+  
+    
+    
 	String q (Optional) -- A search query string.  Uses Lucene 4.0 syntax: http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html  Search index structure can be found in solr/schema.xml
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) aq (Optional) -- A json string containing the advanced query
-
+  
+    
+  
+  
+    
+    
 	[String] type (Optional) -- The record type to search (defaults to all types if not specified)
-
+  
+    
+  
+  
+    
+    
 	String sort (Optional) -- The attribute to sort and the direction e.g. &sort=title desc&...
-
+  
+    
+  
+  
+    
+    
 	[String] facet (Optional) -- The list of the fields to produce facets for
-
+  
+    
+  
+  
+    
+    
 	Integer facet_mincount (Optional) -- The minimum count for a facet field to be included in the response
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:advanced_query) filter (Optional) -- A json string containing the advanced query to filter by
-
+  
+    
+  
+  
+    
+    
 	[String] exclude (Optional) -- A list of document IDs that should be excluded from results
-
+  
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam hl (Optional) -- Whether to use highlighting
-
+  
+    
+  
+  
+    
+    
 	String root_record (Optional) -- Search within a collection of records (defined by the record at the root of the tree)
-
+  
+    
+  
+  
+    
+    
 	String dt (Optional) -- Format to return (JSON default)
 
+__Returns__
+
+  	200 -- 
+
+
+
+
+## Find the record given the slug, return id, repo_id, and table name
+
+
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+    
+      
+        
+      
+        
+  
+    
+      
+        
+      
+        
+  
+    
+      
+        
+      
+        
+  
+  
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+```shell
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/slug?slug=slug&controller=controller&action=action"
+
+```
+
+
+__Endpoint__
+
+```[:GET] /slug ```
+
+__Description__
+
+Find the record given the slug, return id, repo_id, and table name
+
+
+__Parameters__
+
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
 __Returns__
 
   	200 -- 
@@ -12126,13 +17900,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/buildings"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -12141,6 +17913,7 @@ __Endpoint__
 __Description__
 
 Get a Location by ID
+
 
 __Parameters__
 
@@ -12157,47 +17930,75 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
     
       
         
       
-    
+        
   
   
 
   
-
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_building?container_profile_uri=C906247D822&building=ODQ46834&floor=18TMLL&room=E564763856A&area=G11364CS"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_building?container_profile_uri=661719N247F&building=PIO930C&floor=62DXAS&room=RSXT587&area=GA907U787"
 
 ```
+
 
 __Endpoint__
 
@@ -12207,17 +18008,35 @@ __Description__
 
 Calculate how many containers will fit in locations for a given building
 
+
 __Parameters__
 
-
-	String container_profile_uri -- The uri of the container profile
-
-	String building -- The building to check for space in
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	String floor (Optional) -- The floor to check for space in
-
+  
+    
+  
+  
+    
+    
 	String room (Optional) -- The room to check for space in
-
+  
+    
+  
+  
+    
+    
 	String area (Optional) -- The area to check for space in
 
 __Returns__
@@ -12232,29 +18051,39 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_location?container_profile_uri=461160846N997&location_uris=OA95120J"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/space_calculator/by_location?container_profile_uri=B501XSC&location_uris=K553HPX"
 
 ```
+
 
 __Endpoint__
 
@@ -12264,13 +18093,16 @@ __Description__
 
 Calculate how many containers will fit in a list of locations
 
+
 __Parameters__
 
-
-	String container_profile_uri -- The uri of the container profile
-
-	[String] location_uris -- A list of location uris to calculate space for
-
+  
+    
+  
+    
+    
+  
+  
 __Returns__
 
   	200 -- Calculation results
@@ -12282,29 +18114,36 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"subject",
 "external_ids":[],
 "publish":true,
+"is_slug_auto":true,
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "terms":[{ "jsonmodel_type":"term",
-"term":"Term 132",
-"term_type":"temporal",
-"vocabulary":"/vocabularies/156"}],
+"term":"Term 135",
+"term_type":"cultural_context",
+"vocabulary":"/vocabularies/162"}],
 "external_documents":[],
-"vocabulary":"/vocabularies/157",
-"authority_id":"http://www.example-572.com",
-"scope_note":"EFYWK",
-"source":"aat"}' \
+"vocabulary":"/vocabularies/163",
+"authority_id":"http://www.example-616.com",
+"scope_note":"976PS945506",
+"source":"gmgpc"}' \
   "http://localhost:8089/subjects"
 
 ```
+
 
 __Endpoint__
 
@@ -12314,9 +18153,15 @@ __Description__
 
 Create a Subject
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:subject) <request body> -- The record to create
 
 __Returns__
@@ -12332,18 +18177,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/subjects?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/subjects?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/subjects?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -12353,6 +18196,7 @@ __Description__
 
 Get a list of Subjects
 
+
 __Parameters__
 
 <aside class="notice">
@@ -12360,7 +18204,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -12376,29 +18220,42 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"subject",
 "external_ids":[],
 "publish":true,
+"is_slug_auto":true,
 "used_within_repositories":[],
 "used_within_published_repositories":[],
 "terms":[{ "jsonmodel_type":"term",
-"term":"Term 132",
-"term_type":"temporal",
-"vocabulary":"/vocabularies/156"}],
+"term":"Term 135",
+"term_type":"cultural_context",
+"vocabulary":"/vocabularies/162"}],
 "external_documents":[],
-"vocabulary":"/vocabularies/157",
-"authority_id":"http://www.example-572.com",
-"scope_note":"EFYWK",
-"source":"aat"}' \
+"vocabulary":"/vocabularies/163",
+"authority_id":"http://www.example-616.com",
+"scope_note":"976PS945506",
+"source":"gmgpc"}' \
   "http://localhost:8089/subjects/1"
 
 ```
+
 
 __Endpoint__
 
@@ -12408,11 +18265,18 @@ __Description__
 
 Update a Subject
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:subject) <request body> -- The updated record
 
 __Returns__
@@ -12426,15 +18290,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/subjects/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -12444,11 +18312,13 @@ __Description__
 
 Get a Subject by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- (:subject)
@@ -12460,13 +18330,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/subjects/1"
 
 ```
+
 
 __Endpoint__
 
@@ -12476,11 +18352,13 @@ __Description__
 
 Delete a Subject
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -12493,23 +18371,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/terms?q=JSPFL"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/terms?q=VLK658W"
 
 ```
+
 
 __Endpoint__
 
@@ -12519,11 +18401,13 @@ __Description__
 
 Get a list of Terms matching a prefix
 
+
 __Parameters__
 
-
-	String q -- The prefix to match
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- [(:term)]
@@ -12536,12 +18420,18 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
@@ -12550,13 +18440,17 @@ __Returns__
   
 
   
-
+    
+  
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/update-feed?last_sequence=1&resolve[]=[record_types, to_resolve]"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -12566,11 +18460,22 @@ __Description__
 
 Get a stream of updated records
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	Integer last_sequence (Optional) -- The last sequence number seen
-
+  
+    
+  
+  
+    
+    
 	[String] resolve (Optional) -- A list of references to resolve and embed in the response
 
 __Returns__
@@ -12584,16 +18489,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/update_monitor"
 
 ```
+
 
 __Endpoint__
 
@@ -12603,9 +18514,15 @@ __Description__
 
 Refresh the list of currently known edits
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:active_edits) <request body> -- The list of active edits
 
 __Returns__
@@ -12620,34 +18537,52 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
   
-
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"user",
 "groups":[],
 "is_admin":false,
 "username":"username_21",
-"name":"Name Number 608"}' \
-  "http://localhost:8089/users?password=XR132524686&groups=S28IT167"
+"name":"Name Number 693"}' \
+  "http://localhost:8089/users?password=192GDU198&groups=403994KV139"
 
 ```
+
 
 __Endpoint__
 
@@ -12657,13 +18592,25 @@ __Description__
 
 Create a local user
 
+
 __Parameters__
 
-
-	String password -- The user's password
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] groups (Optional) -- Array of groups URIs to assign the user to
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:user) <request body> -- The record to create
 
 __Returns__
@@ -12681,18 +18628,16 @@ __Returns__
 
 
   
-
 ```shell
-  
 # return first 10 records
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users?page=1&page_size=10"
 # return first 5 records in the Fibonacci sequence
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users?id_set=1,2,3,5,8"
 # return an array of all the ids
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users?all_ids=true"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -12702,6 +18647,7 @@ __Description__
 
 Get a list of users
 
+
 __Parameters__
 
 <aside class="notice">
@@ -12709,7 +18655,7 @@ This endpoint is paginated. :page, :id_set, or :all_ids is required
 <ul>
   <li>Integer page &ndash; The page set to be returned</li>
   <li>Integer page_size &ndash; The size of the set to be returned ( Optional. default set in AppConfig )</li>
-  <li>Comma seperated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
+  <li>Comma separated list id_set &ndash; A list of ids to request resolved objects ( Must be smaller than default page_size )</li>
   <li>Boolean all_ids &ndash; Return a list of all object ids</li>
 </ul>
 </aside>
@@ -12725,15 +18671,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -12743,11 +18693,13 @@ __Description__
 
 Get a user's details (including their current permissions)
 
+
 __Parameters__
 
-
-	Integer id -- The username id to fetch
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- (:user)
@@ -12760,28 +18712,46 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
   
-
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '{ "jsonmodel_type":"user",
 "groups":[],
 "is_admin":false,
 "username":"username_21",
-"name":"Name Number 608"}' \
-  "http://localhost:8089/users/1?password=665176829757A"
+"name":"Name Number 693"}' \
+  "http://localhost:8089/users/1?password=746ND486W"
 
 ```
+
 
 __Endpoint__
 
@@ -12791,13 +18761,25 @@ __Description__
 
 Update a user's account
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	String password (Optional) -- The user's password
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:user) <request body> -- The updated record
 
 __Returns__
@@ -12813,13 +18795,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" -X DELETE "http://localhost:8089/users/1"
 
 ```
+
 
 __Endpoint__
 
@@ -12829,11 +18817,13 @@ __Description__
 
 Delete a user
 
+
 __Parameters__
 
-
-	Integer id -- The user to delete
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- deleted
@@ -12846,29 +18836,53 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/users/1/groups?groups=N958430AO&remove_groups=true"
+  "http://localhost:8089/users/1/groups?groups=960YLUG&remove_groups=true"
 
 ```
+
 
 __Endpoint__
 
@@ -12878,17 +18892,26 @@ __Description__
 
 Update a user's groups
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	[String] groups (Optional) -- Array of groups URIs to assign the user to
-
-	RESTHelpers::BooleanParam remove_groups -- Remove all groups from the user for the current repo_id if true
-
-	Integer repo_id -- The Repository groups to clear
-
+  
+    
+  
+    
+    
+  
+  
 __Returns__
 
   	200 -- {:status => "Updated", :id => (id of updated object)}
@@ -12902,15 +18925,21 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
   "http://localhost:8089/users/1/become-user"
 
 ```
+
 
 __Endpoint__
 
@@ -12920,11 +18949,13 @@ __Description__
 
 Become a different user
 
+
 __Parameters__
 
-
-	Username username -- The username to become
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- Accepted
@@ -12939,29 +18970,47 @@ __Returns__
 
 
   
+    
+  
+  
+    
+  
+  
+    
+  
+  
   
     
       
         
       
-    
+        
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
+    
   
-
+  
+    
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d 'Example Missing' \
-  "http://localhost:8089/users/1/login?password=256QEU327&expiring=true"
+  "http://localhost:8089/users/1/login?password=C758434BT&expiring=true"
 
 ```
+
 
 __Endpoint__
 
@@ -12971,13 +19020,21 @@ __Description__
 
 Log in
 
+
 __Parameters__
 
-
-	Username username -- Your username
-
-	String password -- Your password
-
+  
+    
+  
+    
+    
+  
+    
+    
+  
+  
+    
+    
 	RESTHelpers::BooleanParam expiring -- If true, the session will expire after 3600 seconds of inactivity.  If false, it will  expire after 604800 seconds of inactivity.
 
 NOTE: Previously this parameter would cause the created session to last forever, but this generally isn't what you want.  The parameter name is unfortunate, but we're keeping it for backward-compatibility.
@@ -12996,23 +19053,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users/complete?query=YN881MP"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users/complete?query=VJTQV"
 
 ```
+
 
 __Endpoint__
 
@@ -13022,11 +19083,13 @@ __Description__
 
 Get a list of system users
 
+
 __Parameters__
 
-
-	String query -- A prefix to search for
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- A list of usernames
@@ -13040,13 +19103,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/users/current-user"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -13055,6 +19116,7 @@ __Endpoint__
 __Description__
 
 Get the currently logged in user
+
 
 __Parameters__
 
@@ -13074,13 +19136,11 @@ __Returns__
 
 
   
-
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/version"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -13089,6 +19149,7 @@ __Endpoint__
 __Description__
 
 Get the ArchivesSpace application version
+
 
 __Parameters__
 
@@ -13104,16 +19165,22 @@ __Returns__
 
 
 
+  
+    
+  
 
   
+    
   
-
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/vocabularies"
 
 ```
+
 
 __Endpoint__
 
@@ -13123,9 +19190,15 @@ __Description__
 
 Create a Vocabulary
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	JSONModel(:vocabulary) <request body> -- The record to create
 
 __Returns__
@@ -13140,23 +19213,27 @@ __Returns__
 
 
   
+    
+  
+  
   
     
       
         
       
+        
+  
+  
+
+  
     
   
   
-
-  
-
 ```shell
-  
-curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/vocabularies?ref_id=888Y224UN"
-  
+curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/vocabularies?ref_id=156XN750754"
 
 ```
+
 
 __Endpoint__
 
@@ -13166,9 +19243,15 @@ __Description__
 
 Get a list of Vocabularies
 
+
 __Parameters__
 
-
+  
+    
+  
+  
+    
+    
 	String ref_id (Optional) -- An alternate, externally-created ID for the vocabulary
 
 __Returns__
@@ -13182,16 +19265,28 @@ __Returns__
 
 
 
-
+  
+    
   
   
+    
+  
 
+  
+    
+  
+  
+    
+  
+  
+  
 ```shell
 curl -H "X-ArchivesSpace-Session: $SESSION" \
   -d '["Example Missing"]' \
   "http://localhost:8089/vocabularies/1"
 
 ```
+
 
 __Endpoint__
 
@@ -13201,11 +19296,18 @@ __Description__
 
 Update a Vocabulary
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+    
+    
+  
+  
+    
+    
 	JSONModel(:vocabulary) <request body> -- The updated record
 
 __Returns__
@@ -13219,15 +19321,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/vocabularies/1"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -13237,11 +19343,13 @@ __Description__
 
 Get a Vocabulary by ID
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- OK
@@ -13253,15 +19361,19 @@ __Returns__
 
 
 
-
+  
+    
   
 
+  
+    
+  
+  
 ```shell
-  
 curl -H "X-ArchivesSpace-Session: $SESSION" "http://localhost:8089/vocabularies/1/terms"
-  
 
 ```
+
 
 __Endpoint__
 
@@ -13271,11 +19383,13 @@ __Description__
 
 Get a list of Terms for a Vocabulary
 
+
 __Parameters__
 
-
-	Integer id -- The ID of the record
-
+  
+    
+  
+  
 __Returns__
 
   	200 -- [(:term)]
@@ -14794,6 +20908,12 @@ __Returns__
         <td><a href="#search-across-subjects">/search/subjects</a></td>
         <td>GET, POST</td>
         <td>Search across subjects</td>
+      </tr>
+    
+      <tr>
+        <td><a href="#find-the-record-given-the-slug--return-id--repo-id--and-table-name">/slug</a></td>
+        <td>GET</td>
+        <td>Find the record given the slug, return id, repo_id, and table name</td>
       </tr>
     
       <tr>

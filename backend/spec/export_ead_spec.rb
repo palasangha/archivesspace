@@ -15,7 +15,7 @@ describe "EAD export mappings" do
   def load_export_fixtures
     @agents = {}
     5.times {
-      a = create([:json_agent_person, :json_agent_corporate_entity, :json_agent_family].sample)
+      a = create([:json_agent_person, :json_agent_corporate_entity, :json_agent_family].sample, :publish => true)
       @agents[a.uri] = a
     }
 
@@ -915,8 +915,8 @@ describe "EAD export mappings" do
       mt(Regexp.new(date_regex), "//profiledesc/creation/date")
     end
 
-    it "maps resource.finding_aid_language to profiledesc/langusage" do
-      mt(@resource.finding_aid_language, "eadheader/profiledesc/langusage")
+    it "maps resource.finding_aid_language_note to profiledesc/langusage" do
+      mt(@resource.finding_aid_language_note, "eadheader/profiledesc/langusage")
     end
 
     it "maps resource.finding_aid_description_rules to profiledesc/descrules" do

@@ -73,7 +73,7 @@ AppConfig[:mysql_binlog] = false
 
 # By default, Solr backups will run at midnight.  See https://crontab.guru/ for
 # information about the schedule syntax.
-AppConfig[:solr_backup_schedule] = "0 * * * *"
+AppConfig[:solr_backup_schedule] = "0 0 * * *"
 AppConfig[:solr_backup_number_to_keep] = 1
 AppConfig[:solr_backup_directory] = proc { File.join(AppConfig[:data_directory], "solr_backups") }
 # add default solr params, i.e. use AND for search: AppConfig[:solr_params] = { "q.op" => "AND" }
@@ -103,16 +103,6 @@ AppConfig[:plugins] = ['local',  'lcnaf']
 AppConfig[:job_thread_count] = 2
 
 AppConfig[:oai_proxy_url] = 'http://your-public-oai-url.example.com'
-
-# DEPRECATED OAI Settings: Moved to database in ANW-674
-# NOTE: As of release 2.5.2, these settings should be set in the Staff User interface
-# To change these settings, select Manage OAI-PMH Settings from the System menu in the staff interface
-# These three settings are at the top of the page in the General Settings section
-# These settings will be removed from the config file completely when version 2.6.0 is released
-AppConfig[:oai_admin_email] = 'admin@example.com'
-AppConfig[:oai_record_prefix] = 'oai:archivesspace'
-AppConfig[:oai_repository_name] = 'ArchivesSpace OAI Provider'
-
 
 # In addition to the sets based on level of description, you can define OAI Sets
 # based on repository codes and/or sponsors as follows
@@ -482,7 +472,6 @@ AppConfig[:record_inheritance] = {
 AppConfig[:pui_search_results_page_size] = 10
 AppConfig[:pui_branding_img] = 'archivesspace.small.png'
 AppConfig[:pui_block_referrer] = true # patron privacy; blocks full 'referrer' when going outside the domain
-AppConfig[:pui_enable_staff_link] = true # attempt to add a link back to the staff interface
 
 # The number of PDFs that can be generated (in the background) at the same time.
 #
@@ -514,9 +503,6 @@ AppConfig[:pui_hide][:classification_badge] = false
 AppConfig[:pui_hide][:counts] = false
 # The following determines globally whether the 'container inventory' navigation tab/pill is hidden on resource/collection page
 AppConfig[:pui_hide][:container_inventory] = false
-# Other usage examples:
-# Don't display the accession ("unprocessed material") link on the main navigation menu
-# AppConfig[:pui_hide][:accessions] = true
 
 # Whether to display linked decaccessions
 AppConfig[:pui_display_deaccessions] = true
@@ -529,6 +515,7 @@ AppConfig[:pui_page_actions_cite] = true
 AppConfig[:pui_page_actions_bookmark] = true
 AppConfig[:pui_page_actions_request] = true
 AppConfig[:pui_page_actions_print] = true
+AppConfig[:pui_enable_staff_link] = true # when a user is authenticated, add a link back to the staff interface from the specified record
 
 # PUI Request Function (used when AppConfig[:pui_page_actions_request] = true)
 # the following determine on what kinds of records the request button is displayed
@@ -617,14 +604,16 @@ AppConfig[:pui_page_custom_actions] = []
 #   'erb_partial' => 'shared/my_special_action',
 # }
 
-# Human-Readable URLs options                            
+# For Accessions browse set if accession date year filter values should be sorted ascending rather than descending (default)
+AppConfig[:sort_accession_date_filter_asc] = false
+
+# Human-Readable URLs options
 # use_human_readable_urls: determines whether fields and options related to human-readable URLs appear in the staff interface
+
 # Changing this option will not remove or clear any slugs that exist currently.
 # This setting only affects links that are displayed. URLs that point to valid slugs will still work.
 # WARNING: Changing this setting may require an index rebuild for changes to take effect.
 
-# TODO: for release, uncomment below and remove line that follows that so that HRU's are off by default.
-#AppConfig[:use_human_readable_urls] = false
 AppConfig[:use_human_readable_urls] = false
 
 # Use the repository in human-readable URLs
@@ -636,9 +625,10 @@ AppConfig[:auto_generate_slugs_with_id] = false
 
 # For Resources: if this option and auto_generate_slugs_with_id are both enabled, then slugs for Resources will be generated with EADID instead of the identifier.
 AppConfig[:generate_resource_slugs_with_eadid] = false
-                            
-# For archival objects: if this option and auto_generate_slugs_with_id are both enabled, then slugs for archival resources will be generated with Component Unique Identifier instead of the identifier.                            
+
+# For archival objects: if this option and auto_generate_slugs_with_id are both enabled, then slugs for archival resources will be generated with Component Unique Identifier instead of the identifier.
 AppConfig[:generate_archival_object_slugs_with_cuid] = false
 
-# For Accessions browse set if accession date year filter values should be sorted ascending rather than descending (default)
-AppConfig[:sort_accession_date_filter_asc] = false
+# Determines if the subject source is shown along with the subject heading in records' subject listings
+# This can help differentiate between subjects with the same heading
+AppConfig[:show_source_in_subject_listing] = false

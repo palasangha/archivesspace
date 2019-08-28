@@ -44,10 +44,17 @@ es:
 
   slug: &slug_attributes
     slug: Slug
+    slug_tooltip: |
+        <p>When using human-readable URLs, the last part of the public URL for this record in the ArchivesSpace public interface. The slug can be manually added or updated, or generated automatically based on the configuration settings for human-readable URLs in the config.rb file on the server.</p>
     public_url: Public URL
+    public_url_tooltip: |
+        <p>If this record is published or updated to be published, the full URL for this record in the public user interface. If human-readable URLs are being used the end of the URL will be the slug.</p>
+        <p>Whether human-readable URLs are being used or not, the original URI for this record always remains valid.</p>
     is_slug_auto: Automatically generate Slug?
-    autogen_disabled: " -- Generated empty slug, Automatically generate slug option disabled"
-    autogen_repo_slug: " -- Empty slug field so automatically generated repository slug"
+    is_slug_auto_tooltip: |
+        <p>If this field is checked, the slug for this record will be automatically generated when the record is saved based on the configuration settings for human-readable URLs in the config.rb file on the server.</p>
+    autogen_disabled: "A slug cannot be automatically generated from the provided data based on the current configuration settings"
+    autogen_repo_slug: "Since a slug was not manually entered the repository slug was automatically generated using the repository short name"
 
   content_items:
     content: Contenido
@@ -1128,7 +1135,7 @@ es:
     accession_date_unknown: desconocida
     accession_date_inline_help: por ejemplo AAAA-MM-DD
     accession_date_tooltip: |
-      <p> CAMPO REQUERIDO: La fecha en que se realizó la adhesión. No es necesariamente la misma fecha que cuando se crea el registro. </p>
+      <p>CAMPO REQUERIDO: La fecha en que se realizó la adhesión. No es necesariamente la misma fecha que cuando se crea el registro. </p>
     accession_id: Identificador
     accession_id_tooltip: |
         <p>El número de la base de datos interna para un registro específico de acta de ingreso.</p>
@@ -1138,16 +1145,16 @@ es:
     id_2: Identificador 3
     id_3: Identificador 4
     id_0_tooltip: |
-        <p> CAMPO REQUERIDO: el identificador único para una accesión dentro de un repositorio. </p>
-        <p> En ArchivesSpace, se proporcionan cuatro campos para analizar un identificador de acceso en sus partes componentes. Cada segmento está limitado a 50 caracteres, o 200 caracteres en total para el identificador. Al menos la primera parte debe usarse para un registro de acceso válido. </p>
-        <p> Los valores predeterminados se pueden usar para completar las partes componentes que son iguales en todos los números de acceso. </p>
+        <p>CAMPO REQUERIDO: el identificador único para una accesión dentro de un repositorio. </p>
+        <p>En ArchivesSpace, se proporcionan cuatro campos para analizar un identificador de acceso en sus partes componentes. Cada segmento está limitado a 50 caracteres, o 200 caracteres en total para el identificador. Al menos la primera parte debe usarse para un registro de acceso válido. </p>
+        <p>Los valores predeterminados se pueden usar para completar las partes componentes que son iguales en todos los números de acceso. </p>
         <p>Ver DACS 5.2.5</p>
     content_description: Descripción de contenido
     content_description_tooltip: |
-        <p> Una descripción de los tipos de documentos y contenidos temáticos de la adhesión. </p>
-        <p> Ver DACS 3.1.4-3.1.7 </p>
-        <p> Ejemplos: </p>
-        <p> Diez cartones de materiales que contienen notas de campo, diarios y borradores de mapas que documentan los 10 años de residencia del Sr. Smith en Otay Mesa Ranch. </p>
+        <p>Una descripción de los tipos de documentos y contenidos temáticos de la adhesión. </p>
+        <p>Ver DACS 3.1.4-3.1.7 </p>
+        <p>Ejemplos: </p>
+        <p>Diez cartones de materiales que contienen notas de campo, diarios y borradores de mapas que documentan los 10 años de residencia del Sr. Smith en Otay Mesa Ranch. </p>
     condition_description: Descripción de la condición
     condition_description_tooltip: |
         <p>Una descripción de la condición física de los contenidos de la
@@ -1232,7 +1239,7 @@ es:
         <p>Ver DACS 4.1.5 - 4.1.6; 4.2.5 - 4.2.7, 4.3.4 - 4.3.6</p>
     title: Título
     title_tooltip: |
-        <p> El título asignado a una accesión o recurso. El título de la accesión no necesita ser el mismo que el título del recurso. Además, no es necesario expresar un título para el registro de acceso, ya que puede heredarse implícitamente del registro de recursos al que está vinculado el acceso. </p>
+        <p>El título asignado a una accesión o recurso. El título de la accesión no necesita ser el mismo que el título del recurso. Además, no es necesario expresar un título para el registro de acceso, ya que puede heredarse implícitamente del registro de recursos al que está vinculado el acceso. </p>
         <p>Ver 2.3.18-2.3.22 DACS</p>
     related_resources_tooltip: |
         <p>Utilizado para vincular los recursos asociados con este proceso de entrada.</p>
@@ -1418,6 +1425,7 @@ es:
       update_location_record: crear/modificar/borrar location records en este repositorio
       update_subject_record: crear/modificar registros de subject
       update_agent_record: crear/modificar registros de autoridad
+      view_agent_contact_record: ver los detalles de contacto de los registros del agente
       update_vocabulary_record: crear/modificar registros de vocabulary
       update_accession_record: crear/modificar registros de entradas en este repositorio
       update_resource_record: crear/modificar resources en este repositorio
@@ -1545,6 +1553,12 @@ es:
     finding_aid_language: Lengua del instrumento de descripción
     finding_aid_language_tooltip: |
         <p>Indica todas las lenguas presentes en el instrumento de descripción.</p>
+    finding_aid_script: Guión de Descripción
+    finding_aid_script_tooltip: |
+        <p>Indica todos los scripts presentes en la ayuda de búsqueda generada a partir de la descripción del recurso.</p>
+    finding_aid_language_note: Idioma de la descripción Nota
+    finding_aid_language_note_tooltip: |
+        <p>Notas sobre los idiomas presentes en la ayuda para la búsqueda generada a partir de la descripción del recurso.</p>
     finding_aid_sponsor: Patrocinador
     finding_aid_sponsor_tooltip: |
         <p>Indica patrocinadores que contribuyeron a la descripción.</p>
@@ -1670,6 +1684,7 @@ es:
     authority_id_tooltip: |
         <p>El identificador único para el registro de la fuente de la cual fue adquirida, (es decir, un número LCSH). El identificador puede ser representado como un URI.</p>
     source: Fuente
+    subject_source: Fuente de la materia
     source_tooltip: |
         <p>El vocabulario desde donde se toma un plazo establecido.</p>
         <p>Los valores en esta lista de valores controlados pueden ser modificados.</p>
@@ -1915,6 +1930,7 @@ es:
   validation_errors:
     agent_must_be_unique: Registros de autoridad no pueden ser idénticos
     subject_must_be_unique: Los registros de sujetos no pueden ser idénticos
+    conflicting_record: Registro conflictivo
     missing_required_property: Propiedad es necesaria pero falta
     missing_property: Faltaba propiedad
     not_a_valid_date: No es una fecha válida
@@ -1980,6 +1996,7 @@ es:
     _plural: Tareas en el background
     job_type: Tipo de tarea
     types:
+      container_labels_job: Container Labels
       print_to_pdf_job: Generar PDF
       import_job: Importar Datos
       find_and_replace_job: Busca y reemplaza en bloque (Beta)

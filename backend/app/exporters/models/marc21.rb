@@ -11,7 +11,7 @@ class MARCModel < ASpaceExport::ExportModel
   end
 
   @archival_object_map = {
-    [:repository, :language] => :handle_repo_code,
+    [:repository, :finding_aid_language] => :handle_repo_code,
     [:title, :linked_agents, :dates] => :handle_title,
     :linked_agents => :handle_agents,
     :subjects => :handle_subjects,
@@ -373,8 +373,7 @@ class MARCModel < ASpaceExport::ExportModel
       role = link['role']
 
       if link['relator']
-        relator = I18n.t("enumerations.linked_agent_archival_record_relators.#{link['relator']}")
-        relator_sf = ['4', relator]
+        relator_sf = ['4', link['relator']]
       elsif role == 'source'
         relator_sf =  ['e', 'former owner']
       else

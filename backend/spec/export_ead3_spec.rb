@@ -11,7 +11,7 @@ describe "EAD3 export mappings" do
   def load_export_fixtures
     @agents = {}
     5.times {
-      a = create([:json_agent_person, :json_agent_corporate_entity, :json_agent_family].sample)
+      a = create([:json_agent_person, :json_agent_corporate_entity, :json_agent_family].sample, :publish => true)
       @agents[a.uri] = a
     }
 
@@ -391,8 +391,12 @@ describe "EAD3 export mappings" do
     end
 
 
-    it "maps resource.finding_aid_language to profiledesc/language" do
-      mt(@resource.finding_aid_language, "control/languagedeclaration/language")
+    it "maps resource finding_aid_language fields to languagedeclaration fields" do
+      mt(I18n.t("enumerations.language_iso639_2.#{@resource.finding_aid_language}"), "control/languagedeclaration/language")
+      mt(@resource.finding_aid_language, "control/languagedeclaration/language", 'langcode')
+      mt(I18n.t("enumerations.script_iso15924.#{@resource.finding_aid_script}"), "control/languagedeclaration/script")
+      mt(@resource.finding_aid_script, "control/languagedeclaration/script", 'scriptcode')
+      mt(@resource.finding_aid_language_note, "control/languagedeclaration/descriptivenote")
     end
 
 
