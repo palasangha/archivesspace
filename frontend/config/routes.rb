@@ -272,9 +272,11 @@ ArchivesSpace::Application.routes.draw do
     match 'assessment_attributes' => 'assessment_attributes#update', :via => [:post]
 
 
-    resources :custom_report_templates
-    match('custom_report_templates/:id/delete' => 'custom_report_templates#delete', :via => [:post])
-    match('custom_report_templates/:id' => 'custom_report_templates#update', :via => [:post])
+    if AppConfig[:enable_custom_reports]
+      resources :custom_report_templates
+      match('custom_report_templates/:id/delete' => 'custom_report_templates#delete', :via => [:post])
+      match('custom_report_templates/:id' => 'custom_report_templates#update', :via => [:post])
+    end
 
 
     match 'oai_config/edit'   => 'oai_config#edit',   :via => [:get]
