@@ -104,6 +104,16 @@ AppConfig[:job_thread_count] = 2
 
 AppConfig[:oai_proxy_url] = 'http://your-public-oai-url.example.com'
 
+# DEPRECATED OAI Settings: Moved to database in ANW-674
+# NOTE: As of release 2.5.2, these settings should be set in the Staff User interface
+# To change these settings, select Manage OAI-PMH Settings from the System menu in the staff interface
+# These three settings are at the top of the page in the General Settings section
+# These settings will be removed from the config file completely when version 2.6.0 is released
+AppConfig[:oai_admin_email] = 'admin@example.com'
+AppConfig[:oai_record_prefix] = 'oai:archivesspace'
+AppConfig[:oai_repository_name] = 'ArchivesSpace OAI Provider'
+
+
 # In addition to the sets based on level of description, you can define OAI Sets
 # based on repository codes and/or sponsors as follows
 #
@@ -632,3 +642,12 @@ AppConfig[:generate_archival_object_slugs_with_cuid] = false
 # Determines if the subject source is shown along with the subject heading in records' subject listings
 # This can help differentiate between subjects with the same heading
 AppConfig[:show_source_in_subject_listing] = false
+
+# NAAN value to use in ARK URLs.
+# Should be set to institutional NAAN, or any other value valid in URLs.
+AppConfig[:ark_naan] = "f00001"
+# URL prefix to use in ARK URLs.
+# In most cases this will be the same as the PUI URL.
+AppConfig[:ark_url_prefix] = proc { AppConfig[:public_proxy_url] }
+# Flag for turning ARKs in exports off and on
+AppConfig[:arks_enabled] = false

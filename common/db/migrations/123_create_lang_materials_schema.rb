@@ -1,5 +1,6 @@
 require_relative 'utils'
 require 'nokogiri'
+require 'json'
 
 def create_language_record_from_language_id(record_type, dataset, language_id)
   dataset.each do |row|
@@ -46,6 +47,7 @@ def migrate_langmaterial_notes
               )
 
           note = note_id[:notes]
+          puts "\nParsing note: #{JSON.parse(note)['content']}"
           # Handle notes that can be further parsed due to inline markup
           if note.lit.include?('<language')
 
@@ -55,12 +57,12 @@ def migrate_langmaterial_notes
               parsed = Nokogiri::XML::DocumentFragment.parse(split.to_s) rescue nil
               languages = parsed.xpath('.//language') rescue nil
               languages&.each do |language|
-                language = language.attr('langcode')
-                if !language.nil?
+                lang = language.attr('langcode')
+                if !lang.nil?
                   enum = self[:enumeration].filter(:name => 'language_iso639_2').get(:id)
-                  langcode = self[:enumeration_value].filter(:value => language, :enumeration_id => enum ).get(:id)
+                  langcode = self[:enumeration_value].filter(:value => lang, :enumeration_id => enum ).get(:id)
 
-                  puts "Updating language of material for #{obj} #{record_id}: #{language} (#{langcode})"
+                  puts "Updating language of material for #{obj} #{record_id}: #{lang} (#{langcode})"
                   parsed_language_record = self[:lang_material].insert(
                       :json_schema_version => 1,
                       "#{obj}" => record_id,
@@ -68,7 +70,7 @@ def migrate_langmaterial_notes
                       :system_mtime => Time.now,
                       :user_mtime => Time.now
                     )
-                  self[:language_and_script].insert(
+                  language_and_script = self[:language_and_script].insert(
                       :json_schema_version => 1,
                       :language_id => langcode,
                       :lang_material_id => parsed_language_record,
@@ -78,26 +80,14 @@ def migrate_langmaterial_notes
                     )
                 end
 
-                script = parsed.xpath('.//language').attr('scriptcode') rescue nil
+                script = language.attr('scriptcode') rescue nil
                 if !script.nil?
                   enum = self[:enumeration].filter(:name => 'script_iso15924').get(:id)
                   scriptcode = self[:enumeration_value].filter(:value => script, :enumeration_id => enum ).get(:id)
 
                   puts "Updating script code for #{obj} #{record_id}: #{script} (#{scriptcode})"
-                  parsed_script_record = self[:lang_material].insert(
-                      :json_schema_version => 1,
-                      "#{obj}" => record_id,
-                      :create_time => Time.now,
-                      :system_mtime => Time.now,
-                      :user_mtime => Time.now
-                    )
-                  self[:language_and_script].insert(
-                      :json_schema_version => 1,
-                      :language_id => scriptcode,
-                      :lang_material_id => parsed_script_record,
-                      :create_time => Time.now,
-                      :system_mtime => Time.now,
-                      :user_mtime => Time.now
+                  self[:language_and_script].filter(:id => language_and_script).update(
+                      :script_id => scriptcode,
                     )
                 end
               end
@@ -108,8 +98,8 @@ def migrate_langmaterial_notes
               new_note = content.lit.gsub('note_singlepart', 'note_langmaterial')
 
               puts "Updating language of material note content for #{obj} #{record_id}"
-              puts "ORIGINAL CONTENT: #{note}"
-              puts "NEW CONTENT: #{new_note}"
+              puts "ORIGINAL CONTENT: #{JSON.parse(note)['content']}"
+              puts "NEW CONTENT: #{JSON.parse(new_note)['content']}"
 
               # Switch note from linking to resource to linking to the new language record
               self[:note].filter(:id => note_id[:id]).update(

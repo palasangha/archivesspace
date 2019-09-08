@@ -94,9 +94,24 @@ class EADSerializer < ASpaceExport::Serializer
     content = content.gsub(/\xE2\x80\x9C/, '"').gsub(/\xE2\x80\x9D/, '"').gsub(/\xE2\x80\x98/, "\'").gsub(/\xE2\x80\x99/, "\'")
   end
 
-  def sanitize_mixed_content(content, context, fragments, allow_p = false  )
-#    return "" if content.nil?
 
+  # ANW-669: Fix for attributes in mixed content causing errors when validating against the EAD schema.
+
+  # If content looks like it contains a valid XML element with an attribute from the expected list,
+  # then replace the attribute like " foo=" with " xlink:foo=".
+
+  # References used for valid element and attribute names:
+  # https://www.xml.com/pub/a/2001/07/25/namingparts.html
+  # https://razzed.com/2009/01/30/valid-characters-in-attribute-names-in-htmlxml/
+
+  def add_xlink_prefix(content)
+    %w{ actuate arcrole entityref from href id linktype parent role show target title to xpointer }.each do | xa |
+      content.gsub!(/ #{xa}=/) {|match| " xlink:#{match.strip}"} if content =~ / #{xa}=/
+    end
+    content
+  end
+
+  def sanitize_mixed_content(content, context, fragments, allow_p = false  )
     # remove smart quotes from text
     content = remove_smart_quotes(content)
 
@@ -110,6 +125,12 @@ class EADSerializer < ASpaceExport::Serializer
       escape_content(content)
       content = strip_p(content)
     end
+
+    # ANW-669 - only certain EAD elements will have attributes that need
+    # xlink added so only do this processing if the element is there
+    # attribute check is inside the add_xlink_prefix method
+    xlink_eles = %w{ arc archref bibref extptr extptrloc extref extrefloc linkgrp ptr ptrloc ref refloc resource title }
+    content = add_xlink_prefix(content) if xlink_eles.any? { |word| content =~ /<#{word}\s/ }
 
     begin
       if ASpaceExport::Utils.has_html?(content)
@@ -272,6 +293,20 @@ class EADSerializer < ASpaceExport::Serializer
       xml.did {
         if (val = data.title)
           xml.unittitle {  sanitize_mixed_content( val,xml, fragments) }
+        end
+
+        if AppConfig[:arks_enabled]
+          ark_url = ArkName::get_ark_url(data.id, :archival_object)
+          if ark_url
+            # <unitid><extref xlink:href="ARK" xlink:actuate="onLoad" xlink:show="new" xlink:linktype="simple">ARK</extref></unitid>
+            xml.unitid {
+              xml.extref ({"xlink:href" => ark_url,
+                          "xlink:actuate" => "onLoad",
+                          "xlink:show" => "new",
+                          "xlink:type" => "simple"
+                          }) { xml.text 'Archival Resource Key' }
+                          }
+          end
         end
 
         if !data.component_id.nil? && !data.component_id.empty?
@@ -780,6 +815,11 @@ class EADSerializer < ASpaceExport::Serializer
 
 
   def serialize_eadheader(data, xml, fragments)
+
+    ark_url = AppConfig[:arks_enabled] ? ArkName::get_ark_url(data.id, :resource) : nil
+
+    eadid_url = ark_url.nil? ? data.ead_location : ark_url
+
     eadheader_atts = {:findaidstatus => data.finding_aid_status,
                       :repositoryencoding => "iso15511",
                       :countryencoding => "iso3166-1",
@@ -789,7 +829,7 @@ class EADSerializer < ASpaceExport::Serializer
     xml.eadheader(eadheader_atts) {
 
       eadid_atts = {:countrycode => data.repo.country,
-              :url => data.ead_location,
+              :url => eadid_url,
               :mainagencycode => data.mainagencycode}.reject{|k,v| v.nil? || v.empty? || v == "null" }
 
       xml.eadid(eadid_atts) {
